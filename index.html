@@ -57,12 +57,10 @@
   .card{background:#F2EBDC;border-radius:12px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:10px;cursor:pointer}
   .card:hover{background:#eee3cb}
   .card:focus-visible{outline:3px solid #44506A;outline-offset:2px}
-  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
   .tag{background:#44506A;color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:5px 12px;white-space:nowrap;line-height:1.4}
   .card h3{font-size:26px}
   .latin{font-style:italic;font-size:15px;margin-top:-6px}
   .card-line{margin:0;font-size:15px;line-height:1.6;flex:1}
-  .card-benefits{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
   .fg-sub{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#44506A;margin:16px 0 8px}
   .fg-sub:first-child{margin-top:0}
   .mini{font-size:12px;border:1px solid #b9b09a;border-radius:999px;padding:4px 10px;background:#f5efe4;line-height:1.4}
@@ -122,8 +120,7 @@
   .view-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
   /* Class badges */
   .class-badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.03em;border-radius:999px;padding:4px 10px;line-height:1.4;border:1px solid #44506A;background:#44506A;color:#fff;white-space:normal}
-  .card-tags{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end}
-  .card-top{flex-wrap:wrap}
+  .card-tags{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-start}
   .entry-class{margin:10px 0 0}
   .entry-class .class-badge{font-size:13px;padding:5px 12px}
   /* Family tree */
@@ -139,7 +136,7 @@
   .branch::before{content:"";position:absolute;left:-29px;top:28px;width:26px;border-top:3px solid #cfc6ae}
   .family.lit .branches{border-left-color:#44506A}
   .branch.lit::before{border-top-color:#44506A}
-  .branch-card{background:#F2EBDC;border-radius:12px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;border:2px solid transparent;cursor:pointer}
+  .branch-card{background:#F2EBDC;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;border:2px solid transparent;cursor:pointer}
   .branch:hover .branch-card{background:#eee3cb}
   .branch:focus-visible{outline:none}
   .branch:focus-visible .branch-card{outline:3px solid #44506A;outline-offset:2px}
@@ -213,7 +210,6 @@
       <div class="fg" data-family="benefit">
         <h2 class="fg-head"><button class="fg-bar" type="button" id="fg-bar-benefit" aria-expanded="false" aria-controls="fg-panel-benefit"><span>Benefit</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
         <div class="fg-panel" id="fg-panel-benefit" role="region" aria-labelledby="fg-bar-benefit" hidden>
-        <p class="fg-note">Choose a benefit to see the entries that support it. Choose it again to clear it.</p>
         <div class="chips" role="group" aria-label="Browse by benefit">
           <button class="chip benefit-chip" type="button" data-benefit="blood-sugar-health" aria-pressed="false">Blood Sugar Health</button>
           <button class="chip benefit-chip" type="button" data-benefit="bone-health" aria-pressed="false">Bone Health</button>
@@ -231,10 +227,9 @@
       </div>
 
       <div class="fg" data-family="class">
-        <h2 class="fg-head"><button class="fg-bar" type="button" id="fg-bar-class" aria-expanded="false" aria-controls="fg-panel-class"><span>Class</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+        <h2 class="fg-head"><button class="fg-bar" type="button" id="fg-bar-class" aria-expanded="false" aria-controls="fg-panel-class"><span>Use</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
         <div class="fg-panel" id="fg-panel-class" role="region" aria-labelledby="fg-bar-class" hidden>
-        <p class="fg-note">Choose a class to see the entries in it. Choose it again to clear it.</p>
-        <div class="chips" role="group" aria-label="Browse by class">
+        <div class="chips" role="group" aria-label="Browse by use">
           <button class="chip class-chip" type="button" data-class="culinary" aria-pressed="false">Culinary</button>
           <button class="chip class-chip" type="button" data-class="medicinal" aria-pressed="false">Medicinal</button>
           <button class="chip class-chip" type="button" data-class="ornamental" aria-pressed="false">Ornamental</button>
@@ -276,531 +271,531 @@
       <div class="grid" id="cardGrid">
 
         <article class="card" tabindex="0" data-id="aloe-vera" data-name="aloe vera" data-latin="aloe vera" data-parts="leaf" data-letter="A" data-benefits="skin-health" data-seasons="" data-search="aloe vera aloe vera barbados aloe, burn plant, first aid plant — aloe vera is the original windowsill remedy. aloe vera is a desert succulent that has been cultivated for thousa skin" data-classes="medicinal culinary">
-          <figure class="card-photo"><img src="img/img-001.jpg" alt="Aloe Vera" loading="lazy"><figcaption class="photo-credit">Photo: Dandy1022, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Aloe Vera</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — gel only, prepared</span></div></div>
+          <figure class="card-photo"><img src="img/img-075.jpg" alt="Aloe Vera" loading="lazy"><figcaption class="photo-credit">Photo: Cephas, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Aloe Vera</h3>
           <p class="latin">Aloe vera</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — gel only, prepared</span><span class="mini">Skin Health</span></div>
           <p class="card-line">Barbados Aloe, Burn Plant, First Aid Plant — Aloe Vera is the original windowsill remedy.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="apple" data-name="apple" data-latin="malus domestica" data-parts="fruit" data-letter="A" data-benefits="digestive-health heart-health" data-seasons="autumn" data-search="apple malus domestica honeycrisp granny smith fuji gala cox orange pippin pectin fibre peel kazakhstan grafting digestion heart autumn" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-002.jpg" alt="Apple" loading="lazy"><figcaption class="photo-credit">Photo: W.carter, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Apple</h3><div class="card-tags"><span class="class-badge">Culinary — fruit</span></div></div>
+          <h3>Apple</h3>
           <p class="latin">Malus domestica</p>
+          <div class="card-tags"><span class="class-badge">Culinary — fruit</span><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></div>
           <p class="card-line">Every named variety descends from wild forests in Kazakhstan — and every one is a clone, carried down the centuries by grafting.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="arrowhead" data-name="arrowhead" data-latin="syngonium podophyllum 'gold allusion'" data-parts="" data-letter="A" data-benefits="" data-seasons="" data-search="arrowhead syngonium podophyllum 'gold allusion' also called the goosefoot plant and american evergreen. the 'gold allusion' form has golden-green, arrow-shaped leaves traced with pink veins. a young plant sits in a neat, bushy mound made for tabletop" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-003.jpg" alt="Arrowhead" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Arrowhead</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Arrowhead</h3>
           <p class="latin">Syngonium podophyllum 'Gold Allusion'</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">The 'Gold Allusion' form has golden-green, arrow-shaped leaves traced with pink veins.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="banana" data-name="banana" data-latin="musa" data-parts="leaf flower fruit" data-letter="B" data-benefits="digestive-health heart-health" data-seasons="" data-search="banana musa acuminata cavendish gros michel lady finger blue java ice cream red dacca plantain potassium digestion heart tropical" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-004.jpg" alt="Banana" loading="lazy"><figcaption class="photo-credit">Photo: Forest and Kim Starr, CC BY 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Banana</h3><div class="card-tags"><span class="class-badge">Culinary — leaf, flower, fruit</span></div></div>
+          <h3>Banana</h3>
           <p class="latin">Musa</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf, flower, fruit</span><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></div>
           <p class="card-line">A giant herb, not a tree — the fruit is seedless, and almost every banana in every shop is a clone of the Cavendish.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="burdock" data-name="burdock" data-latin="arctium lappa" data-parts="root" data-letter="B" data-benefits="skin-health" data-seasons="summer" data-search="burdock arctium lappa gobo root inulin urinary appetite skin daisy summer" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-005.jpg" alt="Burdock" loading="lazy"><figcaption class="photo-credit">Photo: Famberhorst, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Burdock</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — root</span></div></div>
+          <h3>Burdock</h3>
           <p class="latin">Arctium lappa</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — root</span><span class="mini">Skin Health</span></div>
           <p class="card-line">A biennial of disturbed ground whose deep root is eaten as a vegetable in Japan, where it is called gobo.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="cabbage" data-name="cabbage" data-latin="brassica oleracea" data-parts="leaf" data-letter="C" data-benefits="digestive-health" data-seasons="spring autumn" data-search="cabbage brassica oleracea capitata golden acre ruby perfection savoy napa sauerkraut kimchi vitamin k digestion spring autumn" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-006.jpg" alt="Cabbage" loading="lazy"><figcaption class="photo-credit">Photo: Dinesh Valke, CC BY-SA 2.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Cabbage</h3><div class="card-tags"><span class="class-badge">Culinary — leaf</span></div></div>
+          <h3>Cabbage</h3>
           <p class="latin">Brassica oleracea var. capitata</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf</span><span class="mini">Digestive Health</span></div>
           <p class="card-line">A cool-season leaf vegetable bred into a tight head — cheap, long-keeping, and made new again in the fermenting crock.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="calendula" data-name="calendula" data-latin="calendula officinalis" data-parts="flower" data-letter="C" data-benefits="skin-health" data-seasons="spring summer autumn" data-search="calendula officinalis salve skin sunburn wounds mouth throat petals saffron spring summer autumn" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-007.jpg" alt="Calendula" loading="lazy"><figcaption class="photo-credit">Photo: Ermell, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Calendula</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span></div></div>
+          <h3>Calendula</h3>
           <p class="latin">Calendula officinalis</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span><span class="mini">Skin Health</span></div>
           <p class="card-line">The classic salve flower, in bloom from late spring to the first frosts.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="cannabis" data-name="cannabis" data-latin="cannabis sativa" data-parts="flower leaf root seed" data-letter="C" data-benefits="digestive-health mental-health" data-seasons="summer autumn" data-search="cannabis cannabis sativa a tall, fast-growing annual in the hemp family, cannabaceae — the same family as hops — native to central asia and now grown in temperate regions all over the world. cannabis is a single species with two very different crops digestion sleep summer autumn" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-074.jpg" alt="Cannabis" loading="lazy"><figcaption class="photo-credit">Photo: H. Zell, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Cannabis</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower, leaf, root, seed</span></div></div>
+          <h3>Cannabis</h3>
           <p class="latin">Cannabis sativa</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower, leaf, root, seed</span><span class="mini">Digestive Health</span><span class="mini">Mental Health</span></div>
           <p class="card-line">A tall, fast-growing annual in the hemp family, Cannabaceae — the same family as hops — native to Central Asia and now grown i…</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Mental Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="carrot" data-name="carrot" data-latin="daucus carota" data-parts="root leaf" data-letter="C" data-benefits="eye-health" data-seasons="spring autumn" data-search="carrot daucus carota sativus scarlet nantes danvers purple haze yellowstone parisian market beta-carotene vitamin a vision spring autumn tops queen annes lace" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-008.jpg" alt="Carrot" loading="lazy"><figcaption class="photo-credit">Photo: woodleywonderworks, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Carrot</h3><div class="card-tags"><span class="class-badge">Culinary — root, leaf</span></div></div>
+          <h3>Carrot</h3>
           <p class="latin">Daucus carota subsp. sativus</p>
+          <div class="card-tags"><span class="class-badge">Culinary — root, leaf</span><span class="mini">Eye Health</span></div>
           <p class="card-line">A sweet storage root in the parsley family — purple and yellow first; the orange carrot arrived only in the 1600s.</p>
-          <div class="card-benefits"><span class="mini">Eye Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="chamomile" data-name="chamomile" data-latin="matricaria chamomilla" data-parts="flower" data-letter="C" data-benefits="digestive-health skin-health mental-health" data-seasons="spring" data-search="chamomile matricaria chamomilla a feathery annual in the daisy family, native to europe and western asia, with small daisy-like flowers whose hollow, apple-scented centres give the plant away — the name comes from the greek for "ground apple." the flow digestion skin calm sleep spring" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-063.jpg" alt="Chamomile" loading="lazy"><figcaption class="photo-credit">Photo: Rob Hille, Public domain, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Chamomile</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span></div></div>
+          <h3>Chamomile</h3>
           <p class="latin">Matricaria chamomilla</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Mental Health</span></div>
           <p class="card-line">A feathery annual in the daisy family, native to Europe and western Asia, with small daisy-like flowers whose…</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Mental Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="chickweed" data-name="chickweed" data-latin="stellaria media" data-parts="" data-letter="C" data-benefits="digestive-health skin-health" data-seasons="spring" data-search="chickweed stellaria media skin itching poultice tea digestion throat spring green vitamin c spring digestion" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-009.jpg" alt="Chickweed" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Chickweed</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary</span></div></div>
+          <h3>Chickweed</h3>
           <p class="latin">Stellaria media</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">A low spring green eaten fresh, and used on the skin to soothe itching and irritation.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="cleavers" data-name="cleavers" data-latin="galium aparine" data-parts="" data-letter="C" data-benefits="skin-health" data-seasons="spring" data-search="cleavers galium aparine goosegrass spring tonic diuretic lymphatic skin spring" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-010.jpg" alt="Cleavers" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Cleavers</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary</span></div></div>
+          <h3>Cleavers</h3>
           <p class="latin">Galium aparine</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary</span><span class="mini">Skin Health</span></div>
           <p class="card-line">A scrambling spring herb, also called goosegrass, gathered fresh as a spring tonic.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="clover" data-name="clover" data-latin="trifolium repens" data-parts="leaf flower" data-letter="C" data-benefits="" data-seasons="" data-search="clover white clover trifolium repens flowers leaves tea expectorant cough colds tonic nitrogen bees edible" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-011.jpg" alt="Clover" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Clover</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower</span></div></div>
+          <h3>Clover</h3>
           <p class="latin">Trifolium repens</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower</span></div>
           <p class="card-line">White clover — a creeping perennial forming a soft green carpet in lawns and pastures, and not to be confused with red clover.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="collards" data-name="collard greens" data-latin="brassica oleracea var. viridis" data-parts="leaf" data-letter="C" data-benefits="eye-health bone-health" data-seasons="autumn" data-search="collard greens brassica oleracea var. viridis a loose-leafed brassica that never learned to make a head — and never needed to. collards are cabbage's older, plainer branch: broad flat leaves on a sturdy stalk, bred for the leaf alone, and one of the oldest greens in vision bones autumn" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-012.jpg" alt="Collard Greens" loading="lazy"><figcaption class="photo-credit">Photo: Evan-Amos, Public domain, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Collard Greens</h3><div class="card-tags"><span class="class-badge">Culinary — leaf</span></div></div>
+          <h3>Collard Greens</h3>
           <p class="latin">Brassica oleracea var. viridis</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf</span><span class="mini">Eye Health</span><span class="mini">Bone Health</span></div>
           <p class="card-line">A loose-leafed brassica that never learned to make a head — and never needed to.</p>
-          <div class="card-benefits"><span class="mini">Eye Health</span><span class="mini">Bone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="comfrey" data-name="comfrey" data-latin="symphytum officinale" data-parts="root leaf" data-letter="C" data-benefits="skin-health" data-seasons="spring summer" data-search="comfrey symphytum officinale skin only external sprains bruises knitbone allantoin liver spring summer" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-013.jpg" alt="Comfrey" loading="lazy"><figcaption class="photo-credit">Photo: Reinhold Möller Ermell, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Comfrey</h3><div class="card-tags"><span class="class-badge">Medicinal — external use only</span></div></div>
+          <h3>Comfrey</h3>
           <p class="latin">Symphytum officinale</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — external use only</span><span class="mini">Skin Health</span></div>
           <p class="card-line">For the skin only — never eat it. A traditional herb for minor sprains and bruises.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="corn" data-name="corn" data-latin="zea mays" data-parts="flower seed" data-letter="C" data-benefits="urinary-health" data-seasons="summer" data-search="corn zea mays first, the plain fact: corn is a grain. botanically it is a giant grass, and its ear is a cluster of grains — seeds — on a cob. sweet corn is eaten young and milky, as a vegetable, but the plant's life and history are th urinary summer" data-classes="culinary medicinal">
           <figure class="card-photo"><img src="img/img-014.jpg" alt="Corn" loading="lazy"><figcaption class="photo-credit">Photo: High Contrast, CC BY 3.0 de, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Corn</h3><div class="card-tags"><span class="class-badge">Culinary · Medicinal — flower, seed</span></div></div>
+          <h3>Corn</h3>
           <p class="latin">Zea mays</p>
+          <div class="card-tags"><span class="class-badge">Culinary · Medicinal — flower, seed</span><span class="mini">Urinary Health</span></div>
           <p class="card-line">First, the plain fact: corn is a grain.</p>
-          <div class="card-benefits"><span class="mini">Urinary Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="curly-dock" data-name="curly dock" data-latin="rumex crispus" data-parts="root" data-letter="C" data-benefits="digestive-health" data-seasons="" data-search="curly dock yellow dock rumex crispus root laxative constipation iron digestion oxalates" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-015.jpg" alt="Curly Dock" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Curly Dock</h3><div class="card-tags"><span class="class-badge">Medicinal — root</span></div></div>
+          <h3>Curly Dock</h3>
           <p class="latin">Rumex crispus</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — root</span><span class="mini">Digestive Health</span></div>
           <p class="card-line">Also called Yellow Dock. A deep-rooted plant whose root is a traditional gentle laxative.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="dandelion" data-name="dandelion" data-latin="taraxacum officinale" data-parts="root leaf flower" data-letter="D" data-benefits="digestive-health urinary-health" data-seasons="spring autumn" data-search="dandelion taraxacum officinale leaves root flowers inulin digestion prebiotic urinary bees spring autumn digestion" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-016.jpg" alt="Dandelion" loading="lazy"><figcaption class="photo-credit">Photo: Dominicus Johannes Bergsma, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Dandelion</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — root, leaf, flower</span></div></div>
+          <h3>Dandelion</h3>
           <p class="latin">Taraxacum officinale</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — root, leaf, flower</span><span class="mini">Digestive Health</span><span class="mini">Urinary Health</span></div>
           <p class="card-line">A daisy-family perennial where the whole plant is used — leaves, root and flowers are all food.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Urinary Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="echinacea" data-name="echinacea" data-latin="echinacea purpurea" data-parts="root" data-letter="E" data-benefits="immune-health skin-health" data-seasons="summer autumn" data-search="echinacea purpurea purple coneflower cold immunity daisy allergy immunosuppressant summer autumn immunity skin" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-017.jpg" alt="Echinacea" loading="lazy"><figcaption class="photo-credit">Photo: Diego Delso, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Echinacea</h3><div class="card-tags"><span class="class-badge">Medicinal — root</span></div></div>
+          <h3>Echinacea</h3>
           <p class="latin">Echinacea purpurea</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — root</span><span class="mini">Immune Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">Purple coneflower — a prairie native, and the herb most people reach for at the first sign of a cold.</p>
-          <div class="card-benefits"><span class="mini">Immune Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="elecampane" data-name="elecampane" data-latin="inula helenium" data-parts="root" data-letter="E" data-benefits="respiratory-health" data-seasons="autumn" data-search="elecampane inula helenium a tall, bold daisy-family perennial from europe and western asia — big leaves, yellow sunflower-like heads, and a thick, aromatic root. the root is the part used, dug in autumn from plants two or three years old, when it respiratory autumn" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-064.jpg" alt="Elecampane" loading="lazy"><figcaption class="photo-credit">Photo: Agnieszka Kwiecień, Nova, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Elecampane</h3><div class="card-tags"><span class="class-badge">Medicinal — root</span></div></div>
+          <h3>Elecampane</h3>
           <p class="latin">Inula helenium</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — root</span><span class="mini">Respiratory Health</span></div>
           <p class="card-line">A tall, bold daisy-family perennial from Europe and western Asia — big leaves, yellow sunflower-like heads, and a thick, aromatic root.</p>
-          <div class="card-benefits"><span class="mini">Respiratory Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="fenugreek" data-name="fenugreek" data-latin="trigonella foenum-graecum" data-parts="leaf seed" data-letter="F" data-benefits="blood-sugar-health" data-seasons="spring" data-search="fenugreek trigonella foenum-graecum one of the oldest cultivated plants in the world — a small legume of the mediterranean and western asia, grown since the bronze age. the seed is the part used as spice and medicine: hard, yellow-brown and sharply aromati blood sugar spring" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-065.jpg" alt="Fenugreek" loading="lazy"><figcaption class="photo-credit">Photo: Zenon Sych, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Fenugreek</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, seed</span></div></div>
+          <h3>Fenugreek</h3>
           <p class="latin">Trigonella foenum-graecum</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, seed</span><span class="mini">Blood Sugar Health</span></div>
           <p class="card-line">One of the oldest cultivated plants in the world — a small legume of the Mediterranean and western Asia, grown since the Bronze Age.</p>
-          <div class="card-benefits"><span class="mini">Blood Sugar Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="fiddle-leaf-fig" data-name="fiddle leaf fig" data-latin="ficus lyrata" data-parts="" data-letter="F" data-benefits="" data-seasons="" data-search="fiddle leaf fig ficus lyrata banjo fig, lyre-leaf fig — the fiddle leaf fig is the statement tree of the modern home. a rainforest tree from western africa with enormous, viol" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-018.jpg" alt="Fiddle Leaf Fig" loading="lazy"><figcaption class="photo-credit">Photo: Agnes Trekker, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Fiddle Leaf Fig</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Fiddle Leaf Fig</h3>
           <p class="latin">Ficus lyrata</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">A rainforest tree from western Africa with enormous, violin-shaped leaves.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="garlic" data-name="garlic" data-latin="allium sativum" data-parts="root" data-letter="G" data-benefits="heart-health" data-seasons="autumn" data-search="garlic allium sativum a bulb of the onion family, and one of the oldest flavourings in the world — a plant people have grown for at least 5,000 years less as a vegetable than as a force: the pungency that makes it indispensable in the kitchen heart autumn" data-classes="culinary medicinal">
           <figure class="card-photo"><img src="img/img-019.jpg" alt="Garlic" loading="lazy"><figcaption class="photo-credit">Photo: Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Garlic</h3><div class="card-tags"><span class="class-badge">Culinary · Medicinal — root</span></div></div>
+          <h3>Garlic</h3>
           <p class="latin">Allium sativum</p>
+          <div class="card-tags"><span class="class-badge">Culinary · Medicinal — root</span><span class="mini">Heart Health</span></div>
           <p class="card-line">A bulb of the onion family, and one of the oldest flavourings in the world — a plant people have grown for at least…</p>
-          <div class="card-benefits"><span class="mini">Heart Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="ginger" data-name="ginger" data-latin="zingiber officinale" data-parts="root" data-letter="G" data-benefits="digestive-health" data-seasons="summer" data-search="ginger zingiber officinale the knobbly "root" in the produce aisle is not a root at all — it is a rhizome, a thick underground stem that creeps sideways through the soil, sending leaves up and true roots down. ginger is a tropical plant of the sam digestion summer" data-classes="culinary medicinal">
           <figure class="card-photo"><img src="img/img-020.jpg" alt="Ginger" loading="lazy"><figcaption class="photo-credit">Photo: ritirene, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Ginger</h3><div class="card-tags"><span class="class-badge">Culinary · Medicinal — root</span></div></div>
+          <h3>Ginger</h3>
           <p class="latin">Zingiber officinale</p>
+          <div class="card-tags"><span class="class-badge">Culinary · Medicinal — root</span><span class="mini">Digestive Health</span></div>
           <p class="card-line">The knobbly "root" in the produce aisle is not a root at all — it is a rhizome, a thick underground stem that creeps sideways through the…</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="goldenrod" data-name="goldenrod" data-latin="solidago spp." data-parts="" data-letter="G" data-benefits="urinary-health" data-seasons="summer autumn" data-search="goldenrod solidago urinary diuretic hay fever ragweed daisy autumn nectar summer autumn" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-021.jpg" alt="Goldenrod" loading="lazy"><figcaption class="photo-credit">Photo: Cbaile19, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Goldenrod</h3><div class="card-tags"><span class="class-badge">Medicinal</span></div></div>
+          <h3>Goldenrod</h3>
           <p class="latin">Solidago spp.</p>
+          <div class="card-tags"><span class="class-badge">Medicinal</span><span class="mini">Urinary Health</span></div>
           <p class="card-line">A late-season flower of great value to bees and migrating butterflies, traditionally used as a urinary tea.</p>
-          <div class="card-benefits"><span class="mini">Urinary Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="green-beans" data-name="green beans" data-latin="phaseolus vulgaris" data-parts="fruit seed" data-letter="G" data-benefits="digestive-health" data-seasons="summer" data-search="green beans phaseolus vulgaris blue lake kentucky wonder provider romano haricots verts maxibel cherokee wax nitrogen three sisters digestion summer" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-022.jpg" alt="Green Beans" loading="lazy"><figcaption class="photo-credit">Photo: Juan Emilio Prades Bel, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Green Beans</h3><div class="card-tags"><span class="class-badge">Culinary — fruit, seed</span></div></div>
+          <h3>Green Beans</h3>
           <p class="latin">Phaseolus vulgaris</p>
+          <div class="card-tags"><span class="class-badge">Culinary — fruit, seed</span><span class="mini">Digestive Health</span></div>
           <p class="card-line">The young, tender pod of the common bean — picked weeks early and eaten pod and all, before the seeds inside have swelled.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="ground-ivy" data-name="ground ivy" data-latin="glechoma hederacea" data-parts="" data-letter="G" data-benefits="digestive-health skin-health" data-seasons="spring" data-search="ground ivy glechoma hederacea cough expectorant digestion stomachic ale bees spring digestion skin" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-023.jpg" alt="Ground Ivy" loading="lazy"><figcaption class="photo-credit">Photo: Jasper Shide, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Ground Ivy</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary</span></div></div>
+          <h3>Ground Ivy</h3>
           <p class="latin">Glechoma hederacea</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">An evergreen ground cover for shade, once used to flavour ale before hops took over.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="hawthorn" data-name="hawthorn" data-latin="crataegus monogyna / c. laevigata" data-parts="leaf flower fruit" data-letter="H" data-benefits="heart-health" data-seasons="spring autumn" data-search="hawthorn crataegus monogyna / c. laevigata a thorny hedgerow tree native across europe — common hawthorn and its close cousin the midland hawthorn — white with blossom in may and red with berries in autumn. two parts are used: the leaf together with the flower, t heart spring autumn" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-066.jpg" alt="Hawthorn" loading="lazy"><figcaption class="photo-credit">Photo: Didier Descouens, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Hawthorn</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower, fruit</span></div></div>
+          <h3>Hawthorn</h3>
           <p class="latin">Crataegus monogyna / C. laevigata</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower, fruit</span><span class="mini">Heart Health</span></div>
           <p class="card-line">A thorny hedgerow tree native across Europe — common hawthorn and its close cousin the Midland hawthorn — white with blossom in May and red with berries in autumn.</p>
-          <div class="card-benefits"><span class="mini">Heart Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="heartleaf-philodendron" data-name="heartleaf philodendron" data-latin="philodendron hederaceum" data-parts="" data-letter="H" data-benefits="" data-seasons="" data-search="heartleaf philodendron philodendron hederaceum the sweetheart plant: a trailing or climbing vine with glossy, heart-shaped leaves, two to four inches across, that unfold bronze and settle to deep green. one of the most forgiving houseplants ever sold — and one of the" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-024.jpg" alt="Heartleaf Philodendron" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Heartleaf Philodendron</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Heartleaf Philodendron</h3>
           <p class="latin">Philodendron hederaceum</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">The sweetheart plant: a trailing or climbing vine with glossy, heart-shaped leaves, two to four inches across, that unfold bronze and settle to deep green.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="hops" data-name="hops" data-latin="humulus lupulus" data-parts="flower" data-letter="H" data-benefits="mental-health hormone-health" data-seasons="summer" data-search="hops humulus lupulus a vigorous perennial climbing plant — a bine, twisting clockwise up any support — native across europe, western asia and north america, and a cousin of cannabis in the hemp family. the medicinal and brewing part is the s sleep hormones summer" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-067.jpg" alt="Hops" loading="lazy"><figcaption class="photo-credit">Photo: JackyM59, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Hops</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span></div></div>
+          <h3>Hops</h3>
           <p class="latin">Humulus lupulus</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span><span class="mini">Mental Health</span><span class="mini">Hormone Health</span></div>
           <p class="card-line">A vigorous perennial climbing plant — a bine, twisting clockwise up any support — native across Europe, western Asia and North…</p>
-          <div class="card-benefits"><span class="mini">Mental Health</span><span class="mini">Hormone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="kale" data-name="kale" data-latin="brassica oleracea (acephala group)" data-parts="leaf" data-letter="K" data-benefits="eye-health bone-health" data-seasons="spring autumn" data-search="kale brassica oleracea (acephala group) kale is what cabbage was before it learned to fold. it belongs to one of the most remarkable species in the garden: brassica oleracea, the wild cabbage of europe's coasts, which human hands have bred into cabbage, brocco vision bones spring autumn" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-025.jpg" alt="Kale" loading="lazy"><figcaption class="photo-credit">Photo: Rasbak, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Kale</h3><div class="card-tags"><span class="class-badge">Culinary — leaf</span></div></div>
+          <h3>Kale</h3>
           <p class="latin">Brassica oleracea (Acephala Group)</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf</span><span class="mini">Eye Health</span><span class="mini">Bone Health</span></div>
           <p class="card-line">Kale is what cabbage was before it learned to fold.</p>
-          <div class="card-benefits"><span class="mini">Eye Health</span><span class="mini">Bone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="lambs-quarters" data-name="lamb's quarters" data-latin="chenopodium album" data-parts="leaf seed" data-letter="L" data-benefits="skin-health bone-health" data-seasons="" data-search="lambs quarters chenopodium album wild spinach leaves vitamins seeds quinoa oxalates nitrates skin" data-classes="culinary medicinal">
           <figure class="card-photo"><img src="img/img-026.jpg" alt="Lamb&#x27;s Quarters" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Lamb&#x27;s Quarters</h3><div class="card-tags"><span class="class-badge">Culinary · Medicinal — leaf, seed</span></div></div>
+          <h3>Lamb&#x27;s Quarters</h3>
           <p class="latin">Chenopodium album</p>
+          <div class="card-tags"><span class="class-badge">Culinary · Medicinal — leaf, seed</span><span class="mini">Skin Health</span><span class="mini">Bone Health</span></div>
           <p class="card-line">A wild spinach — leaves rich in vitamins A, C and K, and seeds eaten like a grain.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span><span class="mini">Bone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="lavender" data-name="lavender" data-latin="lavandula angustifolia" data-parts="flower" data-letter="L" data-benefits="mental-health" data-seasons="summer" data-search="lavender lavandula angustifolia a compact, grey-leaved shrub from the dry hills of the mediterranean, in the mint family, grown for its spikes of violet buds — the part used, picked just before the flowers fully open. lavender is at once a medicine, a calm sleep summer" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-068.jpg" alt="Lavender" loading="lazy"><figcaption class="photo-credit">Photo: Валерія Матвєєва, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Lavender</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span></div></div>
+          <h3>Lavender</h3>
           <p class="latin">Lavandula angustifolia</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span><span class="mini">Mental Health</span></div>
           <p class="card-line">A compact, grey-leaved shrub from the dry hills of the Mediterranean, in the mint family, grown for its spikes of violet buds — the part…</p>
-          <div class="card-benefits"><span class="mini">Mental Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="lemon-balm" data-name="lemon balm" data-latin="melissa officinalis" data-parts="leaf" data-letter="L" data-benefits="digestive-health skin-health mental-health" data-seasons="" data-search="lemon balm melissa officinalis a lemon-scented perennial in the mint family, native to southern europe and central asia and grown in herb gardens for well over a thousand years. the leaf is the part used — fresh, dried for tea, or as an extract — and digestion skin calm sleep" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-069.jpg" alt="Lemon Balm" loading="lazy"><figcaption class="photo-credit">Photo: Cbaile19, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Lemon Balm</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf</span></div></div>
+          <h3>Lemon Balm</h3>
           <p class="latin">Melissa officinalis</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Mental Health</span></div>
           <p class="card-line">A lemon-scented perennial in the mint family, native to southern Europe and Central Asia and grown in herb gardens for well over a thousand years.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Mental Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="mallow" data-name="mallow" data-latin="malva sylvestris" data-parts="root leaf flower" data-letter="M" data-benefits="digestive-health skin-health" data-seasons="" data-search="mallow malva sylvestris mucilage throat cough mouth stomach gut digestion skin poultice edible hibiscus okra digestion" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-027.jpg" alt="Mallow" loading="lazy"><figcaption class="photo-credit">Photo: Christian Ferrer, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Mallow</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — root, leaf, flower</span></div></div>
+          <h3>Mallow</h3>
           <p class="latin">Malva sylvestris</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — root, leaf, flower</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">A soft-leaved plant in the same family as hibiscus and okra — the whole plant is edible, and its mucilage coats and soothes.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="monstera" data-name="monstera" data-latin="monstera deliciosa" data-parts="" data-letter="M" data-benefits="" data-seasons="" data-search="monstera monstera deliciosa swiss cheese plant, ceriman, mexican breadfruit, or — mistakenly — split-leaf philodendron. few houseplants make an entrance like a monstera. in the wild it is a climbing vine of the tropical forest, scrambling up tree t" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-028.jpg" alt="Monstera" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Monstera</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Monstera</h3>
           <p class="latin">Monstera deliciosa</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">Few houseplants make an entrance like a Monstera.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="mullein" data-name="mullein" data-latin="verbascum thapsus" data-parts="leaf flower" data-letter="M" data-benefits="respiratory-health" data-seasons="summer" data-search="mullein verbascum thapsus flowers sore throat cough mucilage seeds poisonous summer" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-029.jpg" alt="Mullein" loading="lazy"><figcaption class="photo-credit">Photo: Marc Ryckaert (MJJR), CC BY 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Mullein</h3><div class="card-tags"><span class="class-badge">Medicinal — leaf, flower</span></div></div>
+          <h3>Mullein</h3>
           <p class="latin">Verbascum thapsus</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — leaf, flower</span><span class="mini">Respiratory Health</span></div>
           <p class="card-line">A tall pioneer of dry, open ground, its flowers traditionally used for sore throats with a dry cough.</p>
-          <div class="card-benefits"><span class="mini">Respiratory Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="nettle" data-name="nettle" data-latin="urtica dioica" data-parts="root leaf seed" data-letter="N" data-benefits="bone-health urinary-health hormone-health" data-seasons="" data-search="nettle urtica dioica stinging leaf root prostate urinary diuretic joint pain hay fever fibre butterflies compost" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-030.jpg" alt="Nettle" loading="lazy"><figcaption class="photo-credit">Photo: Dominicus Johannes Bergsma, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Nettle</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — root, leaf, seed</span></div></div>
+          <h3>Nettle</h3>
           <p class="latin">Urtica dioica</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — root, leaf, seed</span><span class="mini">Bone Health</span><span class="mini">Urinary Health</span><span class="mini">Hormone Health</span></div>
           <p class="card-line">The stinging nettle — a tall perennial whose sting cooking or drying removes, and one of the most nutritious wild greens there is.</p>
-          <div class="card-benefits"><span class="mini">Bone Health</span><span class="mini">Urinary Health</span><span class="mini">Hormone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="okra" data-name="okra" data-latin="abelmoschus esculentus" data-parts="fruit" data-letter="O" data-benefits="digestive-health heart-health blood-sugar-health" data-seasons="summer" data-search="okra abelmoschus esculentus mallow gumbo pods digestion heart blood sugar fibre vitamin c summer" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-031.jpg" alt="Okra" loading="lazy"><figcaption class="photo-credit">Photo: Rohan Pinto, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Okra</h3><div class="card-tags"><span class="class-badge">Culinary — fruit</span></div></div>
+          <h3>Okra</h3>
           <p class="latin">Abelmoschus esculentus</p>
+          <div class="card-tags"><span class="class-badge">Culinary — fruit</span><span class="mini">Digestive Health</span><span class="mini">Heart Health</span><span class="mini">Blood Sugar Health</span></div>
           <p class="card-line">A warm-season pod vegetable in the mallow family.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Heart Health</span><span class="mini">Blood Sugar Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="onion" data-name="onion" data-latin="allium cepa" data-parts="root leaf" data-letter="O" data-benefits="digestive-health" data-seasons="summer" data-search="onion allium cepa patterson redwing white bermuda walla walla shallot quercetin fructans prebiotic digestion summer" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-032.jpg" alt="Onion" loading="lazy"><figcaption class="photo-credit">Photo: Alex Lomas, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Onion</h3><div class="card-tags"><span class="class-badge">Culinary — root, leaf</span></div></div>
+          <h3>Onion</h3>
           <p class="latin">Allium cepa</p>
+          <div class="card-tags"><span class="class-badge">Culinary — root, leaf</span><span class="mini">Digestive Health</span></div>
           <p class="card-line">A bulb of layered leaves — the base note of nearly every cuisine on earth, cultivated for more than 5,000 years.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="passionflower" data-name="passionflower" data-latin="passiflora incarnata" data-parts="leaf flower fruit" data-letter="P" data-benefits="mental-health" data-seasons="" data-search="passionflower passiflora incarnata a vigorous climbing vine native to the southeastern united states, bearing some of the most intricate flowers in the plant kingdom — spanish missionaries read the parts of the flower as symbols of the passion of christ, calm sleep" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-070.jpg" alt="Passionflower" loading="lazy"><figcaption class="photo-credit">Photo: OceanGunfish, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Passionflower</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower, fruit</span></div></div>
+          <h3>Passionflower</h3>
           <p class="latin">Passiflora incarnata</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower, fruit</span><span class="mini">Mental Health</span></div>
           <p class="card-line">A vigorous climbing vine native to the southeastern United…</p>
-          <div class="card-benefits"><span class="mini">Mental Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="peace-lily" data-name="peace lily" data-latin="spathiphyllum wallisii" data-parts="" data-letter="P" data-benefits="" data-seasons="" data-search="peace lily spathiphyllum wallisii white sails, spathe flower, or most commonly the peace lily — and, despite the name, not a lily at all. the peace lily is the calm diplomat of the houseplant world. a tropical forest-floor plant, it settles happily into" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-033.jpg" alt="Peace Lily" loading="lazy"><figcaption class="photo-credit">Photo: Killarnee, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Peace Lily</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Peace Lily</h3>
           <p class="latin">Spathiphyllum wallisii</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">The Peace Lily is the calm diplomat of the houseplant world.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="peppermint" data-name="peppermint" data-latin="mentha × piperita" data-parts="leaf" data-letter="P" data-benefits="digestive-health respiratory-health" data-seasons="" data-search="peppermint mentha × piperita peppermint is a natural hybrid — a cross between watermint and spearmint that arose in england and was first described there in 1696. it is sterile: it never sets viable seed, so every peppermint plant in the world is a digestion respiratory" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-071.jpg" alt="Peppermint" loading="lazy"><figcaption class="photo-credit">Photo: Kızıl, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Peppermint</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf</span></div></div>
+          <h3>Peppermint</h3>
           <p class="latin">Mentha × piperita</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf</span><span class="mini">Digestive Health</span><span class="mini">Respiratory Health</span></div>
           <p class="card-line">Peppermint is a natural hybrid — a cross between watermint and spearmint that arose in England and was first described there in 1696.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Respiratory Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="peppers" data-name="peppers" data-latin="capsicum" data-parts="fruit" data-letter="P" data-benefits="immune-health eye-health skin-health" data-seasons="summer autumn" data-search="peppers capsicum bell jalapeno poblano cayenne habanero banana immunity vision vitamin c capsaicin heat summer autumn" data-classes="culinary medicinal">
           <figure class="card-photo"><img src="img/img-034.jpg" alt="Peppers" loading="lazy"><figcaption class="photo-credit">Photo: George Chernilevsky, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Peppers</h3><div class="card-tags"><span class="class-badge">Culinary · Medicinal — fruit</span></div></div>
+          <h3>Peppers</h3>
           <p class="latin">Capsicum</p>
+          <div class="card-tags"><span class="class-badge">Culinary · Medicinal — fruit</span><span class="mini">Immune Health</span><span class="mini">Eye Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">From the sweet bell, with no heat at all, to the habanero, where a sliver flavours a pot.</p>
-          <div class="card-benefits"><span class="mini">Immune Health</span><span class="mini">Eye Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="plantain" data-name="plantain" data-latin="plantago major" data-parts="leaf seed" data-letter="P" data-benefits="digestive-health skin-health" data-seasons="" data-search="plantain plantago major broadleaf leaf wounds scrapes bites skin digestion stomach seeds psyllium mucilage bowels digestion" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-035.jpg" alt="Plantain" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Plantain</h3><div class="card-tags"><span class="class-badge">Medicinal — leaf, seed</span></div></div>
+          <h3>Plantain</h3>
           <p class="latin">Plantago major</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — leaf, seed</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">Broadleaf plantain — no relation to the banana-like fruit — a low rosette of wide, ribbed leaves found in lawns, paths and compacted ground.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="potato" data-name="potato" data-latin="solanum tuberosum" data-parts="root" data-letter="P" data-benefits="" data-seasons="spring" data-search="potato solanum tuberosum a starchy tuber in the nightshade family — kin to the tomato and peppers in this chapter — and the most consequential vegetable ever to leave the americas. the tuber is the food, and it feeds more of the world than any c spring" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-036.jpg" alt="Potato" loading="lazy"><figcaption class="photo-credit">Photo: George Chernilevsky, Public domain, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Potato</h3><div class="card-tags"><span class="class-badge">Culinary — root</span></div></div>
+          <h3>Potato</h3>
           <p class="latin">Solanum tuberosum</p>
+          <div class="card-tags"><span class="class-badge">Culinary — root</span></div>
           <p class="card-line">A starchy tuber in the nightshade family — kin to the Tomato and Peppers in this chapter — and the most consequential vegetable ever to leave the Americas.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="pothos" data-name="pothos" data-latin="epipremnum aureum" data-parts="" data-letter="P" data-benefits="" data-seasons="" data-search="pothos epipremnum aureum golden pothos — also called devil's ivy and hunter's robe. a glossy vine with heart-shaped green leaves marbled in gold, so hard to kill that folklore gave it the devil's name. the classic first houseplant, and still one" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-037.jpg" alt="Pothos" loading="lazy"><figcaption class="photo-credit">Photo: Filo gèn', CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Pothos</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Pothos</h3>
           <p class="latin">Epipremnum aureum</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">Golden pothos — also called devil's ivy and hunter's robe.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="pumpkin" data-name="pumpkin" data-latin="cucurbita pepo" data-parts="flower fruit seed" data-letter="P" data-benefits="immune-health eye-health" data-seasons="summer" data-search="pumpkin cucurbita pepo a true squash wearing a famous name. "pumpkin" is not a species — it is what we call the round, orange, hard-shelled members of the squash family, and the best-known of them belong to cucurbita pepo, the same single spec immunity vision summer" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-038.jpg" alt="Pumpkin" loading="lazy"><figcaption class="photo-credit">Photo: George Chernilevsky, Public domain, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Pumpkin</h3><div class="card-tags"><span class="class-badge">Culinary — flower, fruit, seed</span></div></div>
+          <h3>Pumpkin</h3>
           <p class="latin">Cucurbita pepo</p>
+          <div class="card-tags"><span class="class-badge">Culinary — flower, fruit, seed</span><span class="mini">Immune Health</span><span class="mini">Eye Health</span></div>
           <p class="card-line">A true squash wearing a famous name.</p>
-          <div class="card-benefits"><span class="mini">Immune Health</span><span class="mini">Eye Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="purple-dead-nettle" data-name="purple dead-nettle" data-latin="lamium purpureum" data-parts="leaf flower" data-letter="P" data-benefits="skin-health" data-seasons="winter spring" data-search="purple dead nettle lamium purpureum mint edible vitamins bees winter spring skin" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-039.jpg" alt="Purple Dead-Nettle" loading="lazy"><figcaption class="photo-credit">Photo: Ermell, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Purple Dead-Nettle</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower</span></div></div>
+          <h3>Purple Dead-Nettle</h3>
           <p class="latin">Lamium purpureum</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower</span><span class="mini">Skin Health</span></div>
           <p class="card-line">A stingless mint-family plant — the whole plant above ground is edible, and its early flowers feed queen bumblebees.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="purslane" data-name="purslane" data-latin="portulaca oleracea" data-parts="leaf seed" data-letter="P" data-benefits="" data-seasons="" data-search="purslane portulaca oleracea omega-3 alpha-linolenic acid leaves stems seeds vegetable potassium magnesium succulent liver" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-040.jpg" alt="Purslane" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Purslane</h3><div class="card-tags"><span class="class-badge">Culinary — leaf, seed</span></div></div>
+          <h3>Purslane</h3>
           <p class="latin">Portulaca oleracea</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf, seed</span></div>
           <p class="card-line">A fleshy, low-spreading succulent eaten as a vegetable since ancient times — one of the most nutrient-packed plants in the garden.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="red-clover" data-name="red clover" data-latin="trifolium pratense" data-parts="" data-letter="R" data-benefits="skin-health hormone-health" data-seasons="" data-search="red clover trifolium pratense isoflavones menopause skin cough nitrogen bees" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-041.jpg" alt="Red Clover" loading="lazy"><figcaption class="photo-credit">Photo: Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Red Clover</h3><div class="card-tags"><span class="class-badge">Medicinal</span></div></div>
+          <h3>Red Clover</h3>
           <p class="latin">Trifolium pratense</p>
+          <div class="card-tags"><span class="class-badge">Medicinal</span><span class="mini">Skin Health</span><span class="mini">Hormone Health</span></div>
           <p class="card-line">A nitrogen-fixing legume grown as a cover crop, with flowers pollinated by bumblebees.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span><span class="mini">Hormone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="roselle" data-name="roselle" data-latin="hibiscus sabdariffa" data-parts="flower" data-letter="R" data-benefits="heart-health" data-seasons="summer" data-search="roselle hibiscus sabdariffa jamaican sorrel calyx blood pressure heart vitamin c summer heart" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-042.jpg" alt="Roselle" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Roselle</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span></div></div>
+          <h3>Roselle</h3>
           <p class="latin">Hibiscus sabdariffa</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — flower</span><span class="mini">Heart Health</span></div>
           <p class="card-line">Jamaican sorrel — the hibiscus whose red calyces make the ruby drinks called sorrel, bissap and karkadé.</p>
-          <div class="card-benefits"><span class="mini">Heart Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="self-heal" data-name="self-heal" data-latin="prunella vulgaris" data-parts="flower" data-letter="S" data-benefits="skin-health" data-seasons="" data-search="self heal prunella vulgaris heal all wound sore throat flower spike bees erosion skin" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-043.jpg" alt="Self-Heal" loading="lazy"><figcaption class="photo-credit">Photo: T. Kebert, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Self-Heal</h3><div class="card-tags"><span class="class-badge">Medicinal — flower</span></div></div>
+          <h3>Self-Heal</h3>
           <p class="latin">Prunella vulgaris</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — flower</span><span class="mini">Skin Health</span></div>
           <p class="card-line">Called heal-all — a traditional wound herb with purple flower spikes that feed bees and butterflies.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="shepherds-purse" data-name="shepherd's purse" data-latin="capsella bursa-pastoris" data-parts="" data-letter="S" data-benefits="" data-seasons="spring" data-search="shepherds purse capsella bursa pastoris menstrual bleeding pioneer bees seeds spring" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-044.jpg" alt="Shepherd&#x27;s Purse" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Shepherd&#x27;s Purse</h3><div class="card-tags"><span class="class-badge">Medicinal</span></div></div>
+          <h3>Shepherd&#x27;s Purse</h3>
           <p class="latin">Capsella bursa-pastoris</p>
+          <div class="card-tags"><span class="class-badge">Medicinal</span></div>
           <p class="card-line">One of the commonest weeds in the world, traditionally used to reduce heavy menstrual bleeding.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="snake-plant" data-name="snake plant" data-latin="dracaena trifasciata" data-parts="" data-letter="S" data-benefits="" data-seasons="" data-search="snake plant dracaena trifasciata snake plant — also called mother-in-law's tongue and saint george's sword. stiff, upright swords of leaves, deep green with darker bands and, on the best-known form 'laurentii', bright yellow edges, rising two to four fe" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-045.jpg" alt="Snake Plant" loading="lazy"><figcaption class="photo-credit">Photo: Derek Ramsey (Ram-Man), CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Snake Plant</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Snake Plant</h3>
           <p class="latin">Dracaena trifasciata</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">Snake plant — also called mother-in-law's tongue and Saint George's sword.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="sorrel" data-name="sorrel (wood sorrel)" data-latin="oxalis spp." data-parts="leaf flower seed" data-letter="S" data-benefits="" data-seasons="" data-search="sorrel wood sorrel oxalis leaves flowers seed pods oxalic acid vitamin c small amounts" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-046.jpg" alt="Sorrel (Wood Sorrel)" loading="lazy"><figcaption class="photo-credit">Photo: W.carter, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Sorrel (Wood Sorrel)</h3><div class="card-tags"><span class="class-badge">Culinary — leaf, flower, seed</span></div></div>
+          <h3>Sorrel (Wood Sorrel)</h3>
           <p class="latin">Oxalis spp.</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf, flower, seed</span></div>
           <p class="card-line">The little lawn weed with three heart-shaped leaflets and a sharp, lemony taste — eaten only in small amounts.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="spider-plant" data-name="spider plant" data-latin="chlorophytum comosum" data-parts="" data-letter="S" data-benefits="" data-seasons="" data-search="spider plant chlorophytum comosum spider plant — also called the airplane plant and the ribbon plant. a fountain of long, arching leaves, each striped cream or pale yellow down its centre, that sends out trailing stems tipped with small white flowers and" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-047.jpg" alt="Spider Plant" loading="lazy"><figcaption class="photo-credit">Photo: Qian2007, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Spider Plant</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>Spider Plant</h3>
           <p class="latin">Chlorophytum comosum</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">Spider plant — also called the airplane plant and the ribbon plant.</p>
-          <div class="card-benefits"></div>
         </article>
 
         <article class="card" tabindex="0" data-id="st-johns-wort" data-name="st. john's wort" data-latin="hypericum perforatum" data-parts="" data-letter="S" data-benefits="skin-health mental-health hormone-health" data-seasons="summer" data-search="st johns wort hypericum perforatum depression interactions contraceptive transplant warfarin serotonin sunlight summer skin" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-048.jpg" alt="St. John&#x27;s Wort" loading="lazy"><figcaption class="photo-credit">Photo: JackyM59, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>St. John&#x27;s Wort</h3><div class="card-tags"><span class="class-badge">Medicinal</span></div></div>
+          <h3>St. John&#x27;s Wort</h3>
           <p class="latin">Hypericum perforatum</p>
+          <div class="card-tags"><span class="class-badge">Medicinal</span><span class="mini">Skin Health</span><span class="mini">Mental Health</span><span class="mini">Hormone Health</span></div>
           <p class="card-line">Studied for mild to moderate depression — and a herb whose medicine interactions must come first.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span><span class="mini">Mental Health</span><span class="mini">Hormone Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="strawberry" data-name="strawberry" data-latin="fragaria × ananassa" data-parts="leaf fruit" data-letter="S" data-benefits="immune-health" data-seasons="spring" data-search="strawberry fragaria × ananassa the garden strawberry is a newcomer wearing an ancient name, and — said plainly and kindly — it is not, in the botanist's sense, a berry at all. the red flesh we eat is the swollen base of the flower; the true fruits are immunity spring" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-049.jpg" alt="Strawberry" loading="lazy"><figcaption class="photo-credit">Photo: Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Strawberry</h3><div class="card-tags"><span class="class-badge">Culinary — leaf, fruit</span></div></div>
+          <h3>Strawberry</h3>
           <p class="latin">Fragaria × ananassa</p>
+          <div class="card-tags"><span class="class-badge">Culinary — leaf, fruit</span><span class="mini">Immune Health</span></div>
           <p class="card-line">The garden strawberry is a newcomer wearing an ancient name — and, said plainly, not a botanical berry at all.</p>
-          <div class="card-benefits"><span class="mini">Immune Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="sweet-potato" data-name="sweet potato" data-latin="ipomoea batatas" data-parts="root leaf" data-letter="S" data-benefits="digestive-health immune-health eye-health heart-health blood-sugar-health" data-seasons="summer autumn" data-search="sweet potato ipomoea batatas beauregard garnet jewel murasaki okinawan leaves beta-carotene polyphenols digestion immunity vision heart blood sugar vitamin a summer autumn leaves" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-050.jpg" alt="Sweet Potato" loading="lazy"><figcaption class="photo-credit">Photo: Filo gèn', CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Sweet Potato</h3><div class="card-tags"><span class="class-badge">Culinary — root, leaf</span></div></div>
+          <h3>Sweet Potato</h3>
           <p class="latin">Ipomoea batatas</p>
+          <div class="card-tags"><span class="class-badge">Culinary — root, leaf</span><span class="mini">Digestive Health</span><span class="mini">Immune Health</span><span class="mini">Eye Health</span><span class="mini">Heart Health</span><span class="mini">Blood Sugar Health</span></div>
           <p class="card-line">A sweet, starchy storage root — a root that swells to store the plant's food, and the part we eat — from tropical America.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span><span class="mini">Eye Health</span><span class="mini">Heart Health</span><span class="mini">Blood Sugar Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="thyme" data-name="thyme" data-latin="thymus vulgaris" data-parts="leaf" data-letter="T" data-benefits="digestive-health respiratory-health" data-seasons="" data-search="thyme thymus vulgaris a small, woody mint-family shrub from the dry, rocky hillsides of the western mediterranean, where it grows in poor, sun-baked soil. the leaves and flowering tops are the parts used — in the kitchen, and for much longer digestion respiratory" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-072.jpg" alt="Thyme" loading="lazy"><figcaption class="photo-credit">Photo: Syrio, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Thyme</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf</span></div></div>
+          <h3>Thyme</h3>
           <p class="latin">Thymus vulgaris</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf</span><span class="mini">Digestive Health</span><span class="mini">Respiratory Health</span></div>
           <p class="card-line">A small, woody mint-family shrub from the dry, rocky hillsides of the western Mediterranean, where it grows in poor, sun-baked soil.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Respiratory Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="tomato" data-name="tomato" data-latin="solanum lycopersicum" data-parts="fruit" data-letter="T" data-benefits="eye-health heart-health" data-seasons="summer" data-search="tomato solanum lycopersicum brandywine cherokee purple san marzano roma sungold lycopene nightshade vision heart summer" data-classes="culinary">
           <figure class="card-photo"><img src="img/img-051.jpg" alt="Tomato" loading="lazy"><figcaption class="photo-credit">Photo: 4028mdk09, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Tomato</h3><div class="card-tags"><span class="class-badge">Culinary — fruit</span></div></div>
+          <h3>Tomato</h3>
           <p class="latin">Solanum lycopersicum</p>
+          <div class="card-tags"><span class="class-badge">Culinary — fruit</span><span class="mini">Eye Health</span><span class="mini">Heart Health</span></div>
           <p class="card-line">A tender fruit eaten as a vegetable — the ripe fruit is the food; the leaves, stems and green fruit are not.</p>
-          <div class="card-benefits"><span class="mini">Eye Health</span><span class="mini">Heart Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="valerian" data-name="valerian" data-latin="valeriana officinalis" data-parts="root" data-letter="V" data-benefits="mental-health" data-seasons="autumn" data-search="valerian valeriana officinalis a tall perennial native to europe and asia, with flat heads of sweet-scented pink-white flowers in early summer. the root — dug in autumn, and famously pungent once dried, with a smell often compared to old socks — is th sleep autumn" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-073.jpg" alt="Valerian" loading="lazy"><figcaption class="photo-credit">Photo: Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Valerian</h3><div class="card-tags"><span class="class-badge">Medicinal — root</span></div></div>
+          <h3>Valerian</h3>
           <p class="latin">Valeriana officinalis</p>
+          <div class="card-tags"><span class="class-badge">Medicinal — root</span><span class="mini">Mental Health</span></div>
           <p class="card-line">A tall perennial native to Europe and Asia, with flat heads of sweet-scented pink-white flowers in early summer.</p>
-          <div class="card-benefits"><span class="mini">Mental Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="violet" data-name="violet" data-latin="viola spp." data-parts="leaf flower" data-letter="V" data-benefits="skin-health" data-seasons="spring" data-search="violet viola leaves flowers syrup cough vitamins mucilage salicylate fritillary spring skin" data-classes="medicinal culinary">
           <figure class="card-photo"><img src="img/img-052.jpg" alt="Violet" loading="lazy"><figcaption class="photo-credit">Photo: Uoaei1, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Violet</h3><div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower</span></div></div>
+          <h3>Violet</h3>
           <p class="latin">Viola spp.</p>
+          <div class="card-tags"><span class="class-badge">Medicinal · Culinary — leaf, flower</span><span class="mini">Skin Health</span></div>
           <p class="card-line">Leaves and flowers in syrups, teas and salads — and the only food of fritillary caterpillars.</p>
-          <div class="card-benefits"><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="yarrow" data-name="yarrow" data-latin="achillea millefolium" data-parts="" data-letter="Y" data-benefits="digestive-health skin-health" data-seasons="" data-search="yarrow achillea millefolium woundwort wounds appetite digestion menstrual daisy allergy digestion skin" data-classes="medicinal">
           <figure class="card-photo"><img src="img/img-053.jpg" alt="Yarrow" loading="lazy"><figcaption class="photo-credit">Photo: Petar Milošević, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>Yarrow</h3><div class="card-tags"><span class="class-badge">Medicinal</span></div></div>
+          <h3>Yarrow</h3>
           <p class="latin">Achillea millefolium</p>
+          <div class="card-tags"><span class="class-badge">Medicinal</span><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
           <p class="card-line">One of the oldest traditional wound herbs, known as soldier&#x27;s woundwort.</p>
-          <div class="card-benefits"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></div>
         </article>
 
         <article class="card" tabindex="0" data-id="zz-plant" data-name="zz plant" data-latin="zamioculcas zamiifolia" data-parts="" data-letter="Z" data-benefits="" data-seasons="" data-search="zz plant zamioculcas zamiifolia zanzibar gem, aroid palm, emerald palm, eternity plant — or simply the zz. the zz plant is the strong, silent type. from the dry grasslands and forest edges of eastern africa, it is built for neglect: it stores its own w" data-classes="ornamental">
           <figure class="card-photo"><img src="img/img-054.jpg" alt="ZZ Plant" loading="lazy"><figcaption class="photo-credit">Photo: O fungo azul, CC0, via Wikimedia Commons</figcaption></figure>
-          <div class="card-top"><h3>ZZ Plant</h3><div class="card-tags"><span class="class-badge">Ornamental</span></div></div>
+          <h3>ZZ Plant</h3>
           <p class="latin">Zamioculcas zamiifolia</p>
+          <div class="card-tags"><span class="class-badge">Ornamental</span></div>
           <p class="card-line">The ZZ Plant is the strong, silent type.</p>
-          <div class="card-benefits"></div>
         </article>
 
       </div>
@@ -4586,7 +4581,7 @@
   <article class="entry-view" id="entry-aloe-vera" aria-label="Aloe Vera">
     <button class="back-btn" type="button" data-back>← Back to the library</button>
     <div class="entry-head">
-      <figure class="entry-photo"><img src="img/img-001.jpg" alt="Aloe Vera" loading="lazy"><figcaption class="photo-credit">Photo: Dandy1022, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+      <figure class="entry-photo"><img src="img/img-075.jpg" alt="Aloe Vera" loading="lazy"><figcaption class="photo-credit">Photo: Cephas, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Aloe Vera</h2>
       <p class="latin">Aloe vera</p>
       <p class="entry-class"><span class="class-badge">Medicinal · Culinary — gel only, prepared</span></p>
