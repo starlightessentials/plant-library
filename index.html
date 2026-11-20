@@ -307,6 +307,12 @@
      the class tags, row 2 the health tags a touch smaller. */
   .card-health-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
   .card-health-row .mini{font-size:11.5px;padding:3px 8px}
+  /* Entry head tags: one line per category — class tags first, then
+     the health benefit tags, then preparation, then parts used. */
+  .entry-tags{margin-top:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .entry-tag-row{margin:0;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .entry-tag-row .class-badge,.entry-tag-row .prep-badge,.entry-tag-row .part-badge{font-size:13px;padding:5px 12px}
+  .entry-health-row .mini{font-size:12.5px;padding:4px 11px}
 
   /* Sliding filter panel */
   .filters-row{margin-top:14px}
@@ -2190,7 +2196,12 @@
       <figure class="entry-photo"><img src="img/img-031.jpg" alt="Okra" loading="lazy"><figcaption class="photo-credit">Photo: Rohan Pinto, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Okra</h2>
       <p class="latin">Abelmoschus esculentus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Blood Sugar Health</span><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">A warm-season pod vegetable in the mallow family — kin to mallow, and to hibiscus and cotton — its pale-yellow flowers show it. The young pods are picked tender; left alone they grow tough and woody.</p>
     </div>
 
@@ -2276,7 +2287,12 @@
       <figure class="entry-photo"><img src="img/img-034.jpg" alt="Peppers" loading="lazy"><figcaption class="photo-credit">Photo: George Chernilevsky, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Peppers</h2>
       <p class="latin">Capsicum (five domesticated species)</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">One plant family that runs the whole scale — from the sweet bell, with no heat at all, to the habanero, where a sliver flavours a pot. Peppers are a single genus, <em>Capsicum</em>, with five domesticated species; the everyday kinds are mostly <em>Capsicum annuum</em>, with the habanero from <em>Capsicum chinense</em>. The heat comes from capsaicin, concentrated in the pale membrane inside the fruit — not, as most people guess, mainly in the seeds.</p>
     </div>
 
@@ -2382,7 +2398,12 @@
       <figure class="entry-photo"><img src="img/img-050.jpg" alt="Sweet Potato" loading="lazy"><figcaption class="photo-credit">Photo: Filo gèn', CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Sweet Potato</h2>
       <p class="latin">Ipomoea batatas</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Blood Sugar Health</span><span class="mini">Digestive Health</span><span class="mini">Eye Health</span><span class="mini">Heart Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A sweet, starchy storage root — a root that swells to store the plant's food, and the part we eat — from tropical America, and a member of the morning glory family — the trailing vines and trumpet flowers give it away. It is not a true yam, and not a potato either: it is its own plant, and a nourishing common food.</p>
     </div>
 
@@ -2474,7 +2495,12 @@
       <figure class="entry-photo"><img src="img/img-051.jpg" alt="Tomato" loading="lazy"><figcaption class="photo-credit">Photo: 4028mdk09, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Tomato</h2>
       <p class="latin">Solanum lycopersicum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A tender fruit eaten as a vegetable, and a member of the nightshade family — kin to the Peppers, and to potatoes and aubergines. The ripe fruit is the food; the rest of the plant is not. Few garden plants have travelled further, or been more wrongly accused along the way.</p>
     </div>
 
@@ -2559,7 +2585,12 @@
       <figure class="entry-photo"><img src="img/img-032.jpg" alt="Onion" loading="lazy"><figcaption class="photo-credit">Photo: Alex Lomas, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Onion</h2>
       <p class="latin">Allium cepa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A bulb of layered leaves in the allium family — kin to garlic, leeks, chives and shallots — and the base note of nearly every cuisine on earth. Cultivated for more than 5,000 years, it is one of the oldest truly global vegetables, and it flavours a dish raw, sweated, caramelised, pickled or fried.</p>
     </div>
 
@@ -2650,7 +2681,12 @@
       <figure class="entry-photo"><img src="img/img-080.jpg" alt="Green Beans" loading="lazy"><figcaption class="photo-credit">Photo: Nirajan_pant, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Green Beans</h2>
       <p class="latin">Phaseolus vulgaris</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">The green bean is the young, tender pod of the common bean — the same species that gives the world kidney beans, black beans and pintos, picked weeks early, before the seeds inside have swelled. Eaten pod and all, it is one of the heaviest-cropping plants in the garden, and one of the few vegetables that feeds the soil while it feeds the gardener.</p>
     </div>
 
@@ -2739,7 +2775,12 @@
       <figure class="entry-photo"><img src="img/img-008.jpg" alt="Carrot" loading="lazy"><figcaption class="photo-credit">Photo: woodleywonderworks, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Carrot</h2>
       <p class="latin">Daucus carota subsp. sativus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A sweet storage root in the parsley family — kin to parsnips, celery and coriander — and the vegetable with the most surprising colour history in the garden. The root is the famous part, but the feathery tops are food too.</p>
     </div>
 
@@ -2826,7 +2867,12 @@
       <figure class="entry-photo"><img src="img/img-006.jpg" alt="Cabbage" loading="lazy"><figcaption class="photo-credit">Photo: Dinesh Valke, CC BY-SA 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Cabbage</h2>
       <p class="latin">Brassica oleracea (var. capitata)</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A cool-season leaf vegetable bred into a tight head — and one branch of the most versatile species in the vegetable garden. Cabbage is cheap, keeps for weeks, feeds a crowd, and turns into something new again in the fermenting crock.</p>
     </div>
 
@@ -2910,7 +2956,12 @@
       <figure class="entry-photo"><img src="img/img-004.jpg" alt="Banana" loading="lazy"><figcaption class="photo-credit">Photo: Forest and Kim Starr, CC BY 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Banana</h2>
       <p class="latin">Musa (chiefly Musa acuminata and its hybrids)</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">The banana is a staple food for much of the tropics and a snack for everywhere else — and one of the strangest crops on earth. The “tree” is a giant herb, not a tree at all; the fruit is seedless and sterile; and almost every banana in every shop is a cutting of a cutting of a single variety, the Cavendish. That sameness is the banana's triumph, and its danger.</p>
     </div>
 
@@ -3003,7 +3054,12 @@
       <figure class="entry-photo"><img src="img/img-002.jpg" alt="Apple" loading="lazy"><figcaption class="photo-credit">Photo: W.carter, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Apple</h2>
       <p class="latin">Malus domestica</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">The apple is a fruit of the rose family with the most branching family tree of any food plant: every named variety in the world descends in part from wild forests still standing in the mountains of Kazakhstan. It is also a fruit with a rule — an apple never grows true from its own seed, so every variety in existence is a clone, carried down the centuries by grafting from one original tree.</p>
     </div>
 
@@ -3093,7 +3149,12 @@
       <figure class="entry-photo"><img src="img/img-081.jpg" alt="Mango" loading="lazy"><figcaption class="photo-credit">Photo: Denis kasozi, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Mango</h2>
       <p class="latin">Mangifera indica</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Eye Health</span><span class="mini">Immune Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">The mango is the fruit of a big evergreen tree in the cashew family — kin to cashew and pistachio, and a far-off cousin of poison ivy. It has been grown in South Asia for more than 4,000 years, and it is now the everyday fruit of the tropics: eaten ripe and sweet, green and sour, dried, juiced and pickled — and even its seed is pressed into a butter for the skin.</p>
     </div>
 
@@ -3206,7 +3267,12 @@
       <figure class="entry-photo"><img src="img/img-005.jpg" alt="Burdock" loading="lazy"><figcaption class="photo-credit">Photo: Famberhorst, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Burdock</h2>
       <p class="latin">Arctium lappa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A biennial pioneer of disturbed ground — waste places, roadsides and field edges. The root is a food as much as a medicine, eaten as a vegetable in Japan, and the purple, thistle-like flowers feed bees through the summer.</p>
     </div>
 
@@ -3272,7 +3338,12 @@
       <figure class="entry-photo"><img src="img/img-007.jpg" alt="Calendula" loading="lazy"><figcaption class="photo-credit">Photo: Ermell, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Calendula</h2>
       <p class="latin">Calendula officinalis</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span><span class="mini">Wound Care</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">The classic salve flower — calendula-infused oil is the heart of many herbal salves and balms. The petals are edible too, with a mild peppery tang.</p>
     </div>
 
@@ -3337,7 +3408,11 @@
       <figure class="entry-photo"><img src="img/img-074.jpg" alt="Cannabis" loading="lazy"><figcaption class="photo-credit">Photo: H. Zell, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Cannabis</h2>
       <p class="latin">Cannabis sativa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="part-badge">Flower</span><span class="part-badge">Leaf</span><span class="part-badge">Root</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Mental Health</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span><span class="part-badge">Leaf</span><span class="part-badge">Root</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">A tall, fast-growing annual in the hemp family, Cannabaceae — the same family as hops — native to Central Asia and now grown in temperate regions all over the world. Cannabis is a single species with two very different crops bred from it: hemp, grown for fibre and seed and bred to make almost none of the intoxicating compound THC, and drug cannabis, bred to make a great deal of it. Which of the two a plant is depends on its breeding and its chemistry, not on a different species name. Most plants are either male or female, and it is the female flower that carries the plant's richest store of active compounds, held in a sticky resin coating the flowers.</p>
       <p class="intro">The parts divide by purpose. The female flower is the medicinal and intoxicating part. The seed — hemp seed — is a straightforward food, rich in protein and oil, and carries no meaningful amount of THC or CBD, because those compounds are made in the flower, not in the seed. The stem gives one of the oldest textile fibres in the world. The leaf holds far less of the active compounds than the flower and is mostly a by-product, and the root has a small place in old medicine and in modern laboratory research.</p>
       <p class="intro">The plant makes over a hundred related compounds called cannabinoids. Two dominate. THC (tetrahydrocannabinol) is the one that intoxicates: it changes perception, mood, appetite and the sense of time. CBD (cannabidiol) does not intoxicate, and is the basis of one licensed medicine. The plant also makes terpenes — the aromatic compounds that give many plants their scent, the same family of compounds found in lemon peel, pine resin and lavender. Terpenes give each cannabis variety its characteristic smell; whether they change the plant's effects in people is not established.</p>
@@ -3417,7 +3492,12 @@
       <figure class="entry-photo"><img src="img/img-009.jpg" alt="Chickweed" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Chickweed</h2>
       <p class="latin">Stellaria media</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Whole plant</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Whole plant</span></p>
+      </div>
       <p class="intro">A low, mat-forming spring plant. The whole plant is edible and has long been eaten as a spring green, and it has a traditional place on the skin as well as in teas.</p>
     </div>
 
@@ -3477,7 +3557,12 @@
       <figure class="entry-photo"><img src="img/img-010.jpg" alt="Cleavers" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Cleavers</h2>
       <p class="latin">Galium aparine</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A scrambling, tangled spring herb — also called goosegrass, because geese and poultry graze the leaves. It is gathered fresh in spring, as a classic spring tonic herb in European tradition.</p>
     </div>
 
@@ -3542,7 +3627,11 @@
       <figure class="entry-photo"><img src="img/img-011.jpg" alt="Clover" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Clover</h2>
       <p class="latin">Trifolium repens</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">White clover is a creeping perennial in the pea family, native to Europe and Central Asia and now naturalised in lawns and pastures worldwide, rooting as it spreads to form a soft green carpet. Its flowers and leaves are the parts traditionally used — and it should not be confused with red clover, a different plant with different uses.</p>
     </div>
 
@@ -3600,7 +3689,11 @@
       <figure class="entry-photo"><img src="img/img-013.jpg" alt="Comfrey" loading="lazy"><figcaption class="photo-credit">Photo: Reinhold Möller Ermell, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Comfrey</h2>
       <p class="latin">Symphytum officinale</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="part-badge">External use only</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="part-badge">External use only</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">Comfrey is for the skin only — never eat it, and never drink it as a tea. Its old folk name is “knitbone”, from its traditional use on injuries, and its root and leaves contain allantoin, a compound also used in skin creams.</p>
     </div>
 
@@ -3669,7 +3762,12 @@
       <figure class="entry-photo"><img src="img/img-015.jpg" alt="Curly Dock" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Curly Dock</h2>
       <p class="latin">Rumex crispus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">Also called Yellow Dock. A pioneer of disturbed ground with a strong taproot that can reach about four feet down, and tall stems of reddish-brown seed.</p>
     </div>
 
@@ -3733,7 +3831,12 @@
       <figure class="entry-photo"><img src="img/img-016.jpg" alt="Dandelion" loading="lazy"><figcaption class="photo-credit">Photo: Dominicus Johannes Bergsma, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Dandelion</h2>
       <p class="latin">Taraxacum officinale</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Urinary Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">The dandelion is a daisy-family perennial from Europe and Asia, carried by wind and people to lawns and roadsides on every continent. Almost uniquely among familiar plants, the whole thing is used — leaves, root and flowers are all food, and the root and leaf are both traditional medicines, in different ways.</p>
     </div>
 
@@ -3800,7 +3903,12 @@
       <figure class="entry-photo"><img src="img/img-017.jpg" alt="Echinacea" loading="lazy"><figcaption class="photo-credit">Photo: Diego Delso, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Echinacea</h2>
       <p class="latin">Echinacea purpurea</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="prep-badge">Fresh</span><span class="part-badge">Root</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Immune Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">One of North America's classic medicinal plants — better known in the garden as purple coneflower. It is a native of the rocky prairies and open woodlands of central and eastern North America.</p>
     </div>
 
@@ -3860,7 +3968,12 @@
       <figure class="entry-photo"><img src="img/img-021.jpg" alt="Goldenrod" loading="lazy"><figcaption class="photo-credit">Photo: Cbaile19, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Goldenrod</h2>
       <p class="latin">Solidago spp.</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Urinary Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">One of the most important late-season flowers in North America. Goldenrod is usually blamed for late-summer hay fever, but its pollen is heavy and sticky and carried by insects — wind-pollinated ragweed, flowering at the same time, is the usual culprit. The flowering tops are the part used.</p>
     </div>
 
@@ -3925,7 +4038,11 @@
       <figure class="entry-photo"><img src="img/img-023.jpg" alt="Ground Ivy" loading="lazy"><figcaption class="photo-credit">Photo: Jasper Shide, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Ground Ivy</h2>
       <p class="latin">Glechoma hederacea</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">An evergreen perennial ground cover for shady places. Before hops took over, ground ivy was used to flavour, clarify and preserve ale — one of the oldest brewing herbs in Britain.</p>
     </div>
 
@@ -3983,7 +4100,12 @@
       <figure class="entry-photo"><img src="img/img-026.jpg" alt="Lamb&#x27;s Quarters" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Lamb&#x27;s Quarters</h2>
       <p class="latin">Chenopodium album</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Bone Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">Valued first as a food: a wild spinach whose leaves are eaten as a green, and whose seeds — from a wild relative of quinoa — were gathered and cooked like a grain for thousands of years.</p>
     </div>
 
@@ -4045,7 +4167,12 @@
       <figure class="entry-photo"><img src="img/img-027.jpg" alt="Mallow" loading="lazy"><figcaption class="photo-credit">Photo: Christian Ferrer, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Mallow</h2>
       <p class="latin">Malva sylvestris</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A soft-leaved flowering plant in the same family as hibiscus and okra, native to Europe, North Africa and western Asia and now found almost everywhere. Leaves, flowers and roots are all used, and the whole plant is edible; what it gives is mucilage, the slippery gel it makes when soaked, which coats and soothes.</p>
     </div>
 
@@ -4110,7 +4237,12 @@
       <figure class="entry-photo"><img src="img/img-029.jpg" alt="Mullein" loading="lazy"><figcaption class="photo-credit">Photo: Marc Ryckaert (MJJR), CC BY 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Mullein</h2>
       <p class="latin">Verbascum thapsus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Respiratory Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A classic pioneer of open, disturbed ground — dry, sandy or gravelly soils, rail banks and waste places. Its tall yellow flower spikes are visited by bees through the summer.</p>
     </div>
 
@@ -4178,7 +4310,12 @@
       <figure class="entry-photo"><img src="img/img-030.jpg" alt="Nettle" loading="lazy"><figcaption class="photo-credit">Photo: Dominicus Johannes Bergsma, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Nettle</h2>
       <p class="latin">Urtica dioica</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Bone Health</span><span class="mini">Hormone Health</span><span class="mini">Urinary Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">The stinging nettle is a tall perennial of rich, damp ground, native to temperate Europe and Asia and now found worldwide; its hollow hairs act like tiny needles, injecting a sting that cooking or drying completely removes. Its leaf, root, stem fibre and seed are all used. Its genus holds roughly 80 species, and the wider nettle family over 2,600.</p>
     </div>
 
@@ -4252,7 +4389,12 @@
       <figure class="entry-photo"><img src="img/img-035.jpg" alt="Plantain" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Plantain</h2>
       <p class="latin">Plantago major</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Wound Care</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">Broadleaf plantain — no relation to the banana-like fruit — is a low rosette of wide, ribbed leaves native to Europe and Asia that has followed people around the world, springing up in lawns, paths and compacted ground everywhere. The leaf is the main medicinal part; the seeds are used too.</p>
     </div>
 
@@ -4317,7 +4459,12 @@
       <figure class="entry-photo"><img src="img/img-039.jpg" alt="Purple Dead-Nettle" loading="lazy"><figcaption class="photo-credit">Photo: Ermell, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Purple Dead-Nettle</h2>
       <p class="latin">Lamium purpureum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A member of the mint family. The “dead” in its name means stingless — unlike its cousin the stinging nettle, it has no stinging hairs and is safe to handle. It is one of the earliest flowers of the year.</p>
     </div>
 
@@ -4381,7 +4528,11 @@
       <figure class="entry-photo"><img src="img/img-040.jpg" alt="Purslane" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Purslane</h2>
       <p class="latin">Portulaca oleracea</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">Purslane is a fleshy, low-spreading succulent with spoon-shaped leaves and small yellow flowers, eaten as a vegetable since ancient times and now found in gardens and warm ground all over the world; its exact wild origin is debated, somewhere in the Old World. Leaves, stems and seeds are all edible — and it is a nutrient-rich garden plant.</p>
     </div>
 
@@ -4445,7 +4596,11 @@
       <figure class="entry-photo"><img src="img/img-041.jpg" alt="Red Clover" loading="lazy"><figcaption class="photo-credit">Photo: Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Red Clover</h2>
       <p class="latin">Trifolium pratense</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="part-badge">Flower</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Hormone Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A nitrogen-fixing legume: bacteria in its root nodules take nitrogen from the air and add it to the soil, which is why farmers grow it as a cover crop and green manure. The flower heads are the part used.</p>
     </div>
 
@@ -4502,7 +4657,12 @@
       <figure class="entry-photo"><img src="img/img-042.jpg" alt="Roselle" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Roselle</h2>
       <p class="latin">Hibiscus sabdariffa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Flower</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">This is Jamaican sorrel — the plant behind the ruby-red Christmas drink. It is a hibiscus, and no relation at all to wood sorrel or to garden sorrel: three different plants that share a name because they share a tart taste. The part used is the fleshy red calyx — the cup that swells around the seed pod after the flower falls.</p>
     </div>
 
@@ -4570,7 +4730,12 @@
       <figure class="entry-photo"><img src="img/img-084.jpg" alt="Sage" loading="lazy"><figcaption class="photo-credit">Photo: Silvio Rossi, CC BY 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Sage</h2>
       <p class="latin">Salvia officinalis</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Blood Sugar Health</span><span class="mini">Digestive Health</span><span class="mini">Hormone Health</span><span class="mini">Mental Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A low, evergreen subshrub — woody at the base, soft and leafy above — in the mint family, Lamiaceae, alongside lavender, peppermint, lemon balm and thyme. Sage is native to the dry, rocky ground around the northern Mediterranean, and it has been carried into gardens everywhere since. It is a kitchen herb first: the grey-green, wrinkled leaves, strongly scented and slightly bitter, flavour stuffings, sausages, beans and brown butter across Europe, and the leaf is the part everything in this entry is about.</p>
       <p class="intro">The other parts play small roles. The violet-blue flower spikes that rise in early summer are edible and go into salads as a garnish, but no medicine is made from them. The seed is occasionally eaten in a few regional dishes and is not a remedy. The root is not used at all. What the leaf carries is a strong essential oil, and one compound in that oil matters for safety: thujone, which in quantity is toxic to the nervous system. The amounts in a seasoning of leaves are small; the amounts in the concentrated oil are not, and the two should never be confused.</p>
     </div>
@@ -4643,7 +4808,12 @@
       <figure class="entry-photo"><img src="img/img-043.jpg" alt="Self-Heal" loading="lazy"><figcaption class="photo-credit">Photo: T. Kebert, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Self-Heal</h2>
       <p class="latin">Prunella vulgaris</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">One of the great traditional wound herbs — its old name is “heal-all” — used for centuries across Europe, Asia and North America for wounds, sores and sore throats. In Chinese medicine the dried flower spike, called xiakucao, is a long-standing traditional remedy in its own right.</p>
     </div>
 
@@ -4703,7 +4873,10 @@
       <figure class="entry-photo"><img src="img/img-044.jpg" alt="Shepherd&#x27;s Purse" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Shepherd&#x27;s Purse</h2>
       <p class="latin">Capsella bursa-pastoris</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="part-badge">Whole plant</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Whole plant</span></p>
+      </div>
       <p class="intro">One of the commonest weeds in the world — a pioneer of disturbed ground, gardens, paths and field edges, and one of the first plants to colonise bare soil. It can flower in almost any month of the year. The whole above-ground plant is the part used, gathered while in flower.</p>
     </div>
 
@@ -4761,7 +4934,11 @@
       <figure class="entry-photo"><img src="img/img-046.jpg" alt="Sorrel (Wood Sorrel)" loading="lazy"><figcaption class="photo-credit">Photo: W.carter, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Sorrel (Wood Sorrel)</h2>
       <p class="latin">Oxalis spp.</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">Wood sorrel — the little lawn weed with three heart-shaped leaflets — is not the garden salad herb of the same name. Jamaican sorrel is a different plant again — a hibiscus, sharing nothing with this one but the name and the sharp taste.</p>
     </div>
 
@@ -4819,7 +4996,12 @@
       <figure class="entry-photo"><img src="img/img-048.jpg" alt="St. John&#x27;s Wort" loading="lazy"><figcaption class="photo-credit">Photo: JackyM59, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>St. John&#x27;s Wort</h2>
       <p class="latin">Hypericum perforatum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Mental Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A sunny meadow and wayside perennial whose flowers offer no nectar but give bees plenty of pollen through the summer. Its medicine interactions are the first thing to know about it. The flowering tops are the part used.</p>
     </div>
 
@@ -4882,7 +5064,12 @@
       <figure class="entry-photo"><img src="img/img-052.jpg" alt="Violet" loading="lazy"><figcaption class="photo-credit">Photo: Uoaei1, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Violet</h2>
       <p class="latin">Viola spp.</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">The leaves and flowers are the parts used — in syrups, teas and salads, and in skin preparations. Among the earliest spring flowers, violets feed emerging bees, including a mining bee that specialises in violets.</p>
     </div>
 
@@ -4949,7 +5136,12 @@
       <figure class="entry-photo"><img src="img/img-089.jpg" alt="Vitex" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Vitex</h2>
       <p class="latin">Vitex agnus-castus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Hormone Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A deciduous shrub or small tree in the mint family, Lamiaceae — older books shelve it with the verbena family, and it was moved on modern evidence — native to the Mediterranean and east into Central Asia, where it grows along riverbanks and on coastal ground. In summer it carries long spikes of lilac flowers over leaves divided into narrow leaflets spread like the fingers of a hand, and the whole plant smells peppery when brushed. Its other names — chaste tree, chasteberry, monk's pepper — all point at the fruit: small, hard, dark berries the size of peppercorns, and the only part modern medicine uses.</p>
       <p class="intro">The parts divide cleanly. The ripe fruit is the medicine, gathered in autumn and dried, and every trial in this entry used a standardised extract of it. The leaves were used in ancient practice and in the old chastity customs, but no modern preparation is made from them. The flowers are garden ornament and bee forage. The root is not used. What the fruit does in the body is unusual for a plant: some of its compounds act on dopamine, a chemical messenger in the brain. Dopamine is the brake on prolactin, a hormone best known for driving milk production; prolactin running slightly high in the days before a period is one of the drivers linked to premenstrual breast pain and other symptoms. Ease the brake's target down, and those symptoms ease with it — that is the working explanation, and it is also why this plant comes with medicine interactions most herbs do not have.</p>
     </div>
@@ -5022,7 +5214,11 @@
       <figure class="entry-photo"><img src="img/img-053.jpg" alt="Yarrow" loading="lazy"><figcaption class="photo-credit">Photo: Petar Milošević, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Yarrow</h2>
       <p class="latin">Achillea millefolium</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="part-badge">Flower</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">One of the oldest traditional wound herbs — long used on small cuts and superficial wounds, and known as “soldier's woundwort” from its battlefield history. The flower heads and leaves — the parts above ground — are the parts used.</p>
     </div>
 
@@ -5085,7 +5281,12 @@
       <figure class="entry-photo"><img src="img/img-079.jpg" alt="Garlic" loading="lazy"><figcaption class="photo-credit">Photo: Tony Austin, CC BY 2.0, via Flickr</figcaption></figure>
       <h2>Garlic</h2>
       <p class="latin">Allium sativum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">A bulb of the onion family, and one of the oldest flavourings in the world — a plant people have grown for at least 5,000 years less as a vegetable than as a force: the pungency that makes it indispensable in the kitchen is the plant's own chemical defence, and it is also where nearly everything studied about garlic begins.</p>
     </div>
 
@@ -5171,7 +5372,12 @@
       <figure class="entry-photo"><img src="img/img-020.jpg" alt="Ginger" loading="lazy"><figcaption class="photo-credit">Photo: ritirene, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Ginger</h2>
       <p class="latin">Zingiber officinale</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">The knobbly "root" in the produce aisle is not a root at all — it is a rhizome, a thick underground stem that creeps sideways through the soil, sending leaves up and true roots down. Ginger is a tropical plant of the same family as turmeric and cardamom, and one of the first spices ever traded across the world.</p>
     </div>
 
@@ -5251,7 +5457,12 @@
       <figure class="entry-photo"><img src="img/img-025.jpg" alt="Kale" loading="lazy"><figcaption class="photo-credit">Photo: Rasbak, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Kale</h2>
       <p class="latin">Brassica oleracea (Acephala Group)</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Bone Health</span><span class="mini">Eye Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">Kale is what cabbage was before it learned to fold. It belongs to one of the most remarkable species in the garden: <em>Brassica oleracea</em>, the wild cabbage of Europe's coasts, which human hands have bred into cabbage, broccoli, cauliflower, Brussels sprouts, kohlrabi and kale — one plant, many bodies. Of them all, kale stayed closest to the wild leaf.</p>
     </div>
 
@@ -5331,7 +5542,12 @@
       <figure class="entry-photo"><img src="img/img-014.jpg" alt="Corn" loading="lazy"><figcaption class="photo-credit">Photo: High Contrast, CC BY 3.0 de, via Wikimedia Commons</figcaption></figure>
       <h2>Corn</h2>
       <p class="latin">Zea mays</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Urinary Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">First, the plain fact: corn is a grain. Botanically it is a giant grass, and its ear is a cluster of grains — seeds — on a cob. Sweet corn is eaten young and milky, as a vegetable, but the plant's life and history are the life of a cereal, kin to wheat, rice and sorghum, and one of the three grains that feed the world.</p>
     </div>
 
@@ -5418,7 +5634,12 @@
       <figure class="entry-photo"><img src="img/img-077.jpg" alt="Collard Greens" loading="lazy"><figcaption class="photo-credit">Photo: Coolbrizzy, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Collard Greens</h2>
       <p class="latin">Brassica oleracea var. viridis</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Bone Health</span><span class="mini">Eye Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A loose-leafed brassica that never learned to make a head — and never needed to. Collards are cabbage's older, plainer branch: broad flat leaves on a sturdy stalk, bred for the leaf alone, and one of the oldest greens in cultivation. In the American South they became far more than a vegetable.</p>
     </div>
 
@@ -5497,7 +5718,11 @@
       <figure class="entry-photo"><img src="img/img-036.jpg" alt="Potato" loading="lazy"><figcaption class="photo-credit">Photo: George Chernilevsky, Public domain, via Wikimedia Commons</figcaption></figure>
       <h2>Potato</h2>
       <p class="latin">Solanum tuberosum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">A starchy tuber in the nightshade family — kin to the Tomato and Peppers — and the most consequential vegetable ever to leave the Americas. The tuber is the food, and it feeds more of the world than any crop but the grains. The rest of the plant, though, is not food at all.</p>
     </div>
 
@@ -5578,7 +5803,12 @@
       <figure class="entry-photo"><img src="img/img-038.jpg" alt="Pumpkin" loading="lazy"><figcaption class="photo-credit">Photo: George Chernilevsky, Public domain, via Wikimedia Commons</figcaption></figure>
       <h2>Pumpkin</h2>
       <p class="latin">Cucurbita pepo</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">A true squash wearing a famous name. "Pumpkin" is not a species — it is what we call the round, orange, hard-shelled members of the squash family, and the best-known of them belong to <em>Cucurbita pepo</em>, the same single species as zucchini, acorn squash and spaghetti squash. One plant family, many forms — and nearly every part of this one is food.</p>
     </div>
 
@@ -5667,7 +5897,12 @@
       <figure class="entry-photo"><img src="img/img-085.jpg" alt="Strawberry" loading="lazy"><figcaption class="photo-credit">Photo: Kolforn, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Strawberry</h2>
       <p class="latin">Fragaria × ananassa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="part-badge">Leaf</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">The garden strawberry is a newcomer wearing an ancient name, and it is not, in the botanist's sense, a berry at all. The red flesh we eat is the swollen base of the flower; the true fruits are the little seeds, the achenes, studded over its surface. None of that changes the eating.</p>
     </div>
 
@@ -5751,7 +5986,12 @@
       <figure class="entry-photo"><img src="img/img-069.jpg" alt="Lemon Balm" loading="lazy"><figcaption class="photo-credit">Photo: Cbaile19, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Lemon Balm</h2>
       <p class="latin">Melissa officinalis</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Sleep</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A lemon-scented perennial in the mint family, native to southern Europe and Central Asia and grown in herb gardens for well over a thousand years. The leaf is the part used — fresh, dried for tea, or as an extract — and it is also the plant's gift to bees: <em>Melissa</em> is the Greek word for honey bee, and bees work the small white flowers all summer.</p>
     </div>
 
@@ -5821,7 +6061,12 @@
       <figure class="entry-photo"><img src="img/img-063.jpg" alt="Chamomile" loading="lazy"><figcaption class="photo-credit">Photo: Rob Hille, Public domain, via Wikimedia Commons</figcaption></figure>
       <h2>Chamomile</h2>
       <p class="latin">Matricaria chamomilla</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Skin Health</span><span class="mini">Sleep</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A feathery annual in the daisy family, native to Europe and western Asia, with small daisy-like flowers whose hollow, apple-scented centres give the plant away — the name comes from the Greek for "ground apple." The flower heads are the part used, picked fresh and dried for tea, or made into extracts. (This is German chamomile; the perennial Roman chamomile is a different plant.)</p>
     </div>
 
@@ -5886,7 +6131,12 @@
       <figure class="entry-photo"><img src="img/img-073.jpg" alt="Valerian" loading="lazy"><figcaption class="photo-credit">Photo: Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Valerian</h2>
       <p class="latin">Valeriana officinalis</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="prep-badge">Dried</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Sleep</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">A tall perennial native to Europe and Asia, with flat heads of sweet-scented pink-white flowers in early summer. The root — dug in autumn, and strong-smelling once dried, with a smell often compared to old socks — is the medicinal part, used for sleep and nervous tension since the time of Hippocrates and Galen. It is the classic herbal sleep herb, and also the one whose trial record most plainly disagrees with itself.</p>
     </div>
 
@@ -5948,7 +6198,12 @@
       <figure class="entry-photo"><img src="img/img-070.jpg" alt="Passionflower" loading="lazy"><figcaption class="photo-credit">Photo: OceanGunfish, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Passionflower</h2>
       <p class="latin">Passiflora incarnata</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Sleep</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A vigorous climbing vine native to the southeastern United States, bearing intricate flowers — Spanish missionaries read the parts of the flower as symbols of the Passion of Christ, which gave the plant its name. The parts above ground — leaves, stems and flowers — are the medicinal part, dried for tea or made into extracts. Its golf-ball-sized fruit, the maypop, is edible and was a food long before the vine was a medicine.</p>
     </div>
 
@@ -6012,7 +6267,12 @@
       <figure class="entry-photo"><img src="img/img-068.jpg" alt="Lavender" loading="lazy"><figcaption class="photo-credit">Photo: Валерія Матвєєва, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Lavender</h2>
       <p class="latin">Lavandula angustifolia</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Sleep</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A compact, grey-leaved shrub from the dry hills of the Mediterranean, in the mint family, grown for its spikes of violet buds — the part used, picked just before the flowers fully open. Lavender is at once a medicine, a perfume and a food: the buds flavour sugar, syrups, baking and the herb blend herbes de Provence. It is also the herb with the strongest trial evidence — provided the evidence is credited to the exact preparation that was studied, and to nothing else.</p>
     </div>
 
@@ -6085,7 +6345,12 @@
       <figure class="entry-photo"><img src="img/img-067.jpg" alt="Hops" loading="lazy"><figcaption class="photo-credit">Photo: JackyM59, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Hops</h2>
       <p class="latin">Humulus lupulus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Dried</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Hormone Health</span><span class="mini">Sleep</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">A vigorous perennial climbing plant — a bine, twisting clockwise up any support — native across Europe, western Asia and North America, and a cousin of cannabis in the hemp family. The medicinal and brewing part is the strobile: the cone-like cluster of female flowers, papery green and rich in the bitter, resinous yellow powder called lupulin that gives beer its bite and its keeping quality.</p>
     </div>
 
@@ -6157,7 +6422,12 @@
       <figure class="entry-photo"><img src="img/img-072.jpg" alt="Thyme" loading="lazy"><figcaption class="photo-credit">Photo: Syrio, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Thyme</h2>
       <p class="latin">Thymus vulgaris</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Respiratory Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A small, woody mint-family shrub from the dry, rocky hillsides of the western Mediterranean, where it grows in poor, sun-baked soil. The leaves and flowering tops are the parts used — in the kitchen, and for much longer than that, in the cough remedies of European households. Its hot, medicinal smell comes from thymol, the compound that does most of its work.</p>
     </div>
 
@@ -6220,7 +6490,12 @@
       <figure class="entry-photo"><img src="img/img-071.jpg" alt="Peppermint" loading="lazy"><figcaption class="photo-credit">Photo: Kızıl, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Peppermint</h2>
       <p class="latin">Mentha × piperita</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Respiratory Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">Peppermint is a natural hybrid — a cross between watermint and spearmint that arose in England and was first described there in 1696. It is sterile: it never sets viable seed, so every peppermint plant in the world is a piece of an older plant, spread by runners. The leaf is the part used for teas, and the strong oil distilled from the leaves and flowering tops is a medicine in its own right. Its cooling bite is menthol.</p>
     </div>
 
@@ -6289,7 +6564,12 @@
       <figure class="entry-photo"><img src="img/img-064.jpg" alt="Elecampane" loading="lazy"><figcaption class="photo-credit">Photo: Agnieszka Kwiecień, Nova, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Elecampane</h2>
       <p class="latin">Inula helenium</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="prep-badge">Dried</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Respiratory Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">A tall, bold daisy-family perennial from Europe and western Asia — big leaves, yellow sunflower-like heads, and a thick, aromatic root. The root is the part used, dug in autumn from plants two or three years old, when it is at its richest. Legend ties its Latin name to Helen of Troy, said to have held the plant when she was carried off to Troy; what is certain is that it has been a household lung herb in Europe for well over two thousand years. Its evidence, though, is thin.</p>
     </div>
 
@@ -6350,7 +6630,12 @@
       <figure class="entry-photo"><img src="img/img-065.jpg" alt="Fenugreek" loading="lazy"><figcaption class="photo-credit">Photo: Zenon Sych, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Fenugreek</h2>
       <p class="latin">Trigonella foenum-graecum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Blood Sugar Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">One of the oldest cultivated plants in the world — a small legume of the Mediterranean and western Asia, grown since the Bronze Age. The seed is the part used as spice and medicine: hard, yellow-brown and sharply aromatic. The leaves are food too, eaten fresh or dried as the herb methi across South Asia. Its Latin species name, <em>foenum-graecum</em>, means "Greek hay", after its ancient use as a fodder crop.</p>
     </div>
 
@@ -6422,7 +6707,12 @@
       <figure class="entry-photo"><img src="img/img-066.jpg" alt="Hawthorn" loading="lazy"><figcaption class="photo-credit">Photo: Didier Descouens, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Hawthorn</h2>
       <p class="latin">Crataegus monogyna / C. laevigata</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Flower</span><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A thorny hedgerow tree native across Europe — common hawthorn and its close cousin the Midland hawthorn — white with blossom in May and red with berries in autumn. Two parts are used: the leaf together with the flower, the "flowering tops", which is the standard medicinal form in Europe, and the ripe red berries, the haws, which are the gentler traditional hedgerow part. Both carry flavonoids and procyanidins — protective plant pigments of the same broad family that colours berries and tea.</p>
     </div>
 
@@ -6490,7 +6780,9 @@
       <figure class="entry-photo"><img src="img/img-003.jpg" alt="Arrowhead" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Arrowhead</h2>
       <p class="latin">Syngonium podophyllum 'Gold Allusion'</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">Also called the goosefoot plant and American evergreen. The 'Gold Allusion' form has golden-green, arrow-shaped leaves traced with pink veins. A young plant sits in a neat, bushy mound made for tabletops and shelves — but it is a vine by birth, and given time it will start to trail and climb.</p>
     </div>
 
@@ -6543,7 +6835,9 @@
       <figure class="entry-photo"><img src="img/img-024.jpg" alt="Heartleaf Philodendron" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Heartleaf Philodendron</h2>
       <p class="latin">Philodendron hederaceum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">The sweetheart plant: a trailing or climbing vine with glossy, heart-shaped leaves, two to four inches across, that unfold bronze and settle to deep green. One of the most forgiving houseplants ever sold — and one of the first to be sold to everyone.</p>
     </div>
 
@@ -6599,7 +6893,9 @@
       <figure class="entry-photo"><img src="img/img-037.jpg" alt="Pothos" loading="lazy"><figcaption class="photo-credit">Photo: Filo gèn', CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Pothos</h2>
       <p class="latin">Epipremnum aureum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">Golden pothos — also called devil's ivy and hunter's robe. A glossy vine with heart-shaped green leaves marbled in gold, so hard to kill that folklore gave it the devil's name. A common first houseplant.</p>
     </div>
 
@@ -6654,7 +6950,9 @@
       <figure class="entry-photo"><img src="img/img-045.jpg" alt="Snake Plant" loading="lazy"><figcaption class="photo-credit">Photo: Derek Ramsey (Ram-Man), CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Snake Plant</h2>
       <p class="latin">Dracaena trifasciata</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Craft</span><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Craft</span><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">Snake plant — also called mother-in-law's tongue and Saint George's sword. Stiff, upright swords of leaves, deep green with darker bands and, on the best-known form 'Laurentii', bright yellow edges, rising two to four feet from thick underground stems. A plant built for dry country and forgetful waterers.</p>
     </div>
 
@@ -6712,7 +7010,9 @@
       <figure class="entry-photo"><img src="img/img-047.jpg" alt="Spider Plant" loading="lazy"><figcaption class="photo-credit">Photo: Qian2007, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Spider Plant</h2>
       <p class="latin">Chlorophytum comosum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">Spider plant — also called the airplane plant and the ribbon plant. A fountain of long, arching leaves, each striped cream or pale yellow down its centre, that sends out trailing stems tipped with small white flowers and baby plantlets — "spiderettes" — every one of them a new plant. Fast, forgiving, and safe to keep around pets.</p>
     </div>
 
@@ -6767,7 +7067,11 @@
       <figure class="entry-photo"><img src="img/img-028.jpg" alt="Monstera" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Monstera</h2>
       <p class="latin">Monstera deliciosa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">Swiss Cheese Plant, Ceriman, Mexican Breadfruit, or — mistakenly — Split-Leaf Philodendron. A Monstera grows large and bold indoors. In the wild it is a climbing vine of the tropical forest, scrambling up tree trunks toward the light. It grows the same way indoors, growing fast through the warm months and unfurling leaf after enormous leaf.</p>
     </div>
 
@@ -6830,7 +7134,9 @@
       <figure class="entry-photo"><img src="img/img-033.jpg" alt="Peace Lily" loading="lazy"><figcaption class="photo-credit">Photo: Killarnee, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Peace Lily</h2>
       <p class="latin">Spathiphyllum wallisii</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">White Sails, Spathe Flower, or most commonly the Peace Lily — and, despite the name, not a lily at all. A tropical forest-floor plant, it settles happily into the shadier corners that other plants refuse, and rewards steady, simple care with glossy leaves and white blooms. It also has a famous way of asking for water: let it get too dry and the whole plant wilts dramatically — then perks up again within hours of a drink.</p>
     </div>
 
@@ -6885,7 +7191,9 @@
       <figure class="entry-photo"><img src="img/img-054.jpg" alt="ZZ Plant" loading="lazy"><figcaption class="photo-credit">Photo: O fungo azul, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>ZZ Plant</h2>
       <p class="latin">Zamioculcas zamiifolia</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">Zanzibar Gem, Aroid Palm, Emerald Palm, Eternity Plant — or simply the ZZ. The ZZ Plant is built for neglect. From the dry grasslands and forest edges of eastern Africa, it stores its own water underground, shrugs off dim rooms, and asks for almost nothing. Give it a corner and an occasional drink and it will stand there, glossy and upright, for years.</p>
     </div>
 
@@ -6939,7 +7247,12 @@
       <figure class="entry-photo"><img src="img/img-075.jpg" alt="Aloe Vera" loading="lazy"><figcaption class="photo-credit">Photo: Cephas, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Aloe Vera</h2>
       <p class="latin">Aloe vera</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="part-badge">Gel only</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Medicinal</span><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Skin Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Gel only</span></p>
+      </div>
       <p class="intro">Barbados Aloe, Burn Plant, First Aid Plant — Aloe Vera is the original windowsill remedy. Aloe Vera is a desert succulent that has been cultivated for thousands of years and still earns its place on the sunniest sill in the house. It asks for blazing light and almost no water, and in return gives gel-filled leaves.</p>
     </div>
 
@@ -7007,7 +7320,9 @@
       <figure class="entry-photo"><img src="img/img-018.jpg" alt="Fiddle Leaf Fig" loading="lazy"><figcaption class="photo-credit">Photo: Agnes Trekker, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Fiddle Leaf Fig</h2>
       <p class="latin">Ficus lyrata</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
       <p class="intro">Banjo Fig, Lyre-Leaf Fig — the Fiddle Leaf Fig is the statement tree of the modern home. A rainforest tree from western Africa with enormous, violin-shaped leaves, it became the defining houseplant of the last decade. It has a reputation for drama, but the truth is simpler: it loves routine, and it rewards the keeper who gives it a bright spot and then leaves it in peace.</p>
     </div>
 
@@ -7060,7 +7375,12 @@
       <figure class="entry-photo"><img src="img/img-076.jpg" alt="Beets" loading="lazy"><figcaption class="photo-credit">Photo: The Farmstrs, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Beets</h2>
       <p class="latin">Beta vulgaris</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Eye Health</span><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">The beet is four crops wearing one Latin name. Beetroot, chard, sugar beet and the fodder beet fed to cattle are all Beta vulgaris, bred in different directions from the same seaside plant — for the root, for the leaf, for sugar, for bulk. The red root is the branch that reached the kitchen, and it colours everything it touches: hands, boards and the plate itself.</p>
     </div>
 
@@ -7148,7 +7468,12 @@
       <figure class="entry-photo"><img src="img/img-082.jpg" alt="Parsnip" loading="lazy"><figcaption class="photo-credit">Photo: Tiia Monto, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Parsnip</h2>
       <p class="latin">Pastinaca sativa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">A pale, sweet root that was Europe's staple before the potato arrived and its sweetener before sugar was cheap — then was quietly set aside for both. The parsnip kept its place at the roast dinner and in the soup pot, where its sweetness, deepened by frost, still earns it.</p>
     </div>
 
@@ -7230,7 +7555,12 @@
       <figure class="entry-photo"><img src="img/img-086.jpg" alt="Three purple-top turnips with their greens attached, on a white plate" loading="lazy"><figcaption class="photo-credit">Photo: thebittenword.com, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Turnip</h2>
       <p class="latin">Brassica rapa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Bone Health</span><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">Two vegetables on one plant, and the humbler of the pair carries the stronger numbers. The turnip's white root is mild and quick; its greens are among the most nutritious leaves in the garden. For most of its long history the turnip was poor people's food and cattle food — which is another way of saying it kept people and animals alive.</p>
     </div>
 
@@ -7313,7 +7643,12 @@
       <figure class="entry-photo"><img src="img/img-083.jpg" alt="A bunch of round red radishes with their green tops, on dark weathered wood" loading="lazy"><figcaption class="photo-credit">Photo: Steffen Bauer (saatpilot.de), CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Radish</h2>
       <p class="latin">Raphanus sativus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">The sprinter of the vegetable garden — seed to plate in a month for the little spring kinds — and one of the oldest cultivated plants in the world. The radish's bite is the cabbage family's bite, concentrated: a crisp root that announces itself.</p>
     </div>
 
@@ -7403,7 +7738,11 @@
       <figure class="entry-photo"><img src="img/img-078.jpg" alt="Cucumbers ripening on the vine in open soil, yellow flowers open beside them" loading="lazy"><figcaption class="photo-credit">Photo: Stephen Ausmus, USDA Agricultural Research Service, public domain, via Wikimedia Commons</figcaption></figure>
       <h2>Cucumber</h2>
       <p class="latin">Cucumis sativus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">A vining annual grown for a fruit eaten unripe and raw, while the skin is still green and tender. Cucumber is about 95% water, and its gift is refreshment rather than nourishment: crisp, cool and mild, it hydrates and flavours salads, sandwiches and drinks while adding very few calories. The fruit is the part eaten, fresh or pickled; the yellow flowers are edible, and the seeds are eaten with the fruit and dried for use in some cuisines. Its relatives are the other gourds — pumpkin, zucchini, winter squash and watermelon — though cucumber's own line runs through Asia, not the Americas or Africa.</p>
     </div>
 
@@ -7495,7 +7834,12 @@
       <figure class="entry-photo"><img src="img/img-090.jpg" alt="A zucchini bush in garden soil carrying two dark-green fruit and open yellow blossoms" loading="lazy"><figcaption class="photo-credit">Photo: Silar, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Zucchini</h2>
       <p class="latin">Cucurbita pepo</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Flower</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">A summer squash picked young, while the rind is tender and the seeds still soft — the same fruit that, left on the vine, would harden into a marrow. Zucchini is mild, watery and quick-cooking: it grills, sautés, bakes into breads and disappears into sauces, and its golden flowers are a food in their own right. The fruit is the main part eaten; the blossoms are prized, and the seeds are eaten with the young fruit. It is the same species as pumpkin — Cucurbita pepo — and shares that species with acorn and spaghetti squash as well.</p>
     </div>
 
@@ -7583,7 +7927,12 @@
       <figure class="entry-photo"><img src="img/img-087.jpg" alt="Striped watermelons ripening on the vine in a field" loading="lazy"><figcaption class="photo-credit">Photo: Mihaib21, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Watermelon</h2>
       <p class="latin">Citrullus lanatus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Heart Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Seed</span></p>
+      </div>
       <p class="intro">A trailing African vine grown for the largest fruit in the garden: a hard-rinded berry that can pass 10 kg, filled with sweet, watery flesh — red in most modern varieties, yellow in some — and flat, dark seeds. Watermelon is eaten fresh by the slice, but the plant gives more than the slice: the seeds are roasted and eaten in many countries, and the rind is cooked and pickled where nothing is wasted. Among the gourds it is a more distant cousin, from another continent entirely.</p>
     </div>
 
@@ -7669,7 +8018,12 @@
       <figure class="entry-photo"><img src="img/img-088.jpg" alt="A field of ripe winter squashes resting on the ground where they grew" loading="lazy"><figcaption class="photo-credit">Photo: Allie_Caulfield, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Winter Squash</h2>
       <p class="latin">Cucurbita pepo · C. moschata · C. maxima</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span><span class="part-badge">Flower</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Dried</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Seed</span><span class="part-badge">Flower</span></p>
+      </div>
       <p class="intro">Winter squash is not one plant but a harvest: the mature, hard-shelled fruit of three Cucurbita species, picked fully ripe in autumn and able to keep for months in a cool room. Where summer squash is eaten young and tender, winter squash is eaten mature — the rind hard, the flesh dense, sweet and deep orange, and the seeds large enough to roast. The flesh is the main part eaten; the seeds — pepitas — are a food in themselves, and the blossoms are eaten in season. Pumpkin is the family's most famous member; this entry covers the rest of the hard-shelled tribe: butternut, acorn, spaghetti, kabocha, delicata and their kin.</p>
     </div>
 
@@ -7757,7 +8111,12 @@
       <figure class="entry-photo"><img src="img/img-094.jpg" alt="Acerola" loading="lazy"><figcaption class="photo-credit">Photo: Themium, CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Acerola</h2>
       <p class="latin">Malpighia emarginata</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A small red cherry that is not a cherry at all — and the richest natural source of vitamin C most people have never tasted. One small handful of acerola holds more vitamin C than a whole bag of oranges, and the fruit is gone in a day or two: it bruises at a touch and spoils fast, so it is best eaten straight from the tree, or frozen or juiced within hours.</p>
     </div>
 
@@ -7822,7 +8181,10 @@
       <figure class="entry-photo"><img src="img/img-111.jpg" alt="Achote" loading="lazy"><figcaption class="photo-credit">Photo: André Koehne, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Achote</h2>
       <p class="latin">Bixa orellana</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Craft</span><span class="class-badge">Culinary</span><span class="part-badge">Seeds</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Craft</span><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Seeds</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">The red seed that colours food. Achote — also called annatto and achiote, and nicknamed the lipstick tree — is a small tropical tree grown for one thing: the brick-red coating on its seeds. Rub a seed between your fingers and your skin turns orange-red. That colour, a pigment called bixin, has painted bodies, dyed cloth and coloured food for thousands of years. It is why cheddar cheese is orange, why Puerto Rican rice is gold, and why the seeds sit in spice jars across the Caribbean and Latin America. The flavour is mild and earthy; the colour is the point.</p>
     </div>
 
@@ -7888,7 +8250,12 @@
       <figure class="entry-photo"><img src="img/img-095.jpg" alt="Cassava" loading="lazy"><figcaption class="photo-credit">Photo: Florantsika, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Cassava</h2>
       <p class="latin">Manihot esculenta</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Root</span><span class="part-badge">Leaf (cooked only)</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Root</span><span class="part-badge">Leaf (cooked only)</span></p>
+      </div>
       <p class="intro">The root that feeds half a billion people. Cassava is a woody shrub grown for the thick starchy roots under it — a staple food across the tropics, the third-largest source of food carbohydrate there after rice and maize. It grows where other crops fail: poor soil, little rain, no fuss. It also carries a warning no other root in this library carries: never eat it raw. The roots — and the leaves — hold compounds that release cyanide, the poison, unless the plant is peeled, soaked and cooked properly. Cooked right, it is safe, filling food. Raw or rushed, it is dangerous.</p>
     </div>
 
@@ -7956,7 +8323,12 @@
       <figure class="entry-photo"><img src="img/img-096.jpg" alt="Goji" loading="lazy"><figcaption class="photo-credit">Photo: Paul Gross and Richard Zhang, public domain, via Wikimedia Commons</figcaption></figure>
       <h2>Goji</h2>
       <p class="latin">Lycium barbarum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A small red berry from a tough, thorny shrub — the wolfberry. Goji has been grown in the dry country of Ningxia, in north-central China, for centuries, and written about as a valued herb there for far longer. Today the berries are sold dried all over the world, sweet and chewy, in trail mix and teas. The honest picture is a good dried fruit with one small, real eye study behind it — and a lot of bigger claims that the evidence does not support.</p>
     </div>
 
@@ -8022,7 +8394,11 @@
       <figure class="entry-photo"><img src="img/img-097.jpg" alt="Miracle Fruit" loading="lazy"><figcaption class="photo-credit">Photo: MiracleFruitFarm, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Miracle Fruit</h2>
       <p class="latin">Synsepalum dulcificum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A small red berry that is barely sweet itself — and yet makes a lemon taste like lemonade. Chew one miracle berry, and for about half an hour sour foods taste sweet: lemons, limes, vinegar, sour gruel. The berry does not add sugar. It carries a protein that changes how the tongue reads sourness, and the effect fades on its own. It is a party trick with a real history, from West Africa to a US food-additive fight.</p>
     </div>
 
@@ -8087,7 +8463,12 @@
       <figure class="entry-photo"><img src="img/img-098.jpg" alt="Pineapple" loading="lazy"><figcaption class="photo-credit">Photo: 總統府 (Presidential Office, Taiwan), CC BY 2.0, via Wikimedia Commons</figcaption></figure>
       <h2>Pineapple</h2>
       <p class="latin">Ananas comosus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A pineapple is a bromeliad — the only one in its family grown around the world for food. The plant is a rosette of stiff, sword-shaped leaves, and the fruit it makes is not one fruit but hundreds of small fruits joined together: each "eye" on the shell was once a single flower. It is sweet, sharp and juicy fresh, and it carries one famous passenger — bromelain, a group of enzymes that break down protein. Fresh pineapple has it; canned pineapple, heated in the tin, does not.</p>
     </div>
 
@@ -8172,7 +8553,10 @@
       <figure class="entry-photo"><img src="img/img-110.jpg" alt="Bromeliad" loading="lazy"><figcaption class="photo-credit">Photo: C T Johansson, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Bromeliad</h2>
       <p class="latin">Bromeliaceae</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Ornamental</span><span class="class-badge">Craft</span><span class="part-badge">Leaf</span><span class="part-badge">Whole plant</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Leaf</span><span class="part-badge">Whole plant</span></p>
+      </div>
       <p class="intro">A bromeliad is not one plant. It is a whole family — about 3,700 species in some 80 groups (genera) — and almost all of them come from the tropical Americas. What they share is the rosette: stiff leaves set in a spiral, often forming a cup in the middle that holds water. Some grow in the ground. Some grow on trees, with no soil at all. One of them, the pineapple, feeds the world. The rest are grown for how they look — bright bracts that last for months, leaves striped, spotted, silvered or blushing red — and for the fibre some of them give.</p>
     </div>
 
@@ -8260,7 +8644,12 @@
       <figure class="entry-photo"><img src="img/img-102.jpg" alt="Blueberry" loading="lazy"><figcaption class="photo-credit">Photo: Glysiak, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Blueberry</h2>
       <p class="latin">Vaccinium corymbosum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Heart Health</span><span class="mini">Mental Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">One of the very few major fruits the world farms that began in North America — and it was farmed there only yesterday, as plant history goes. For thousands of years the blueberry was a wild fruit, gathered and never planted; the first cultivated crop was sold in 1916. The berries grow in clusters on a long-lived bush, each one wearing a dusty pale coating called the bloom, and each one marked at its end with a neat five-pointed star — the scar left by the flower. Sweet, mild and only gently sharp, they are eaten fresh by the handful, baked into pies and muffins, dried like raisins, and frozen without losing much of what they carry.</p>
     </div>
 
@@ -8352,7 +8741,12 @@
       <figure class="entry-photo"><img src="img/img-107.jpg" alt="Raspberry" loading="lazy"><figcaption class="photo-credit">Photo: ulleo (via Pixabay), CC0, via Wikimedia Commons</figcaption></figure>
       <h2>Raspberry</h2>
       <p class="latin">Rubus idaeus</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A raspberry is not one fruit but a cluster: dozens of tiny bead-like fruits, each with its own seed, joined around a hollow centre. Pick it and the cluster slips off its white core, which stays on the plant — that hollow is the raspberry's signature, and the quickest way to tell it from a blackberry, which keeps its core. The plant is a thicket of upright canes that lives for years by its roots, though each cane lives only two. And the raspberry leads a double life: the fruit is a food, eaten fresh around the world, while the leaf is a remedy with a history of its own — the two are told separately here, because their stories and their evidence are not the same.</p>
     </div>
 
@@ -8443,7 +8837,12 @@
       <figure class="entry-photo"><img src="img/img-101.jpg" alt="Blackberry" loading="lazy"><figcaption class="photo-credit">Photo: Ragesoss, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Blackberry</h2>
       <p class="latin">Rubus fruticosus agg.</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Root</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Root</span></p>
+      </div>
       <p class="intro">The hedgerow fruit. A blackberry is not one fruit but a cluster of tiny fruits, each with its own seed, and it comes away from the plant with its soft core still inside — that is how you tell it from a raspberry, which leaves its core behind. Nor is it one species: <em>Rubus fruticosus</em> is an aggregate, a family of hundreds of microspecies that set seed without fertilisation, so each one breeds true and every hedge has its own local kind. The plant — the bramble — is a scrambling thicket of arching, thorny canes, and the fruit ripens green, then red, then black. Red is not ripe. Only the black ones are sweet, and they have been gathered from the hedge for as long as there have been people living beside it.</p>
     </div>
 
@@ -8535,7 +8934,12 @@
       <figure class="entry-photo"><img src="img/img-103.jpg" alt="Cranberry" loading="lazy"><figcaption class="photo-credit">Photo: Superraptor123, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Cranberry</h2>
       <p class="latin">Vaccinium macrocarpon</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Urinary Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">The sourest berry in North America, and one of only a few fruits the continent gave the world. The cranberry grows as a low, trailing evergreen vine in cold bogs, and its fruit is so sharp that almost nobody eats it fresh — it reaches the table cooked into sauce, sweetened into juice, or dried with sugar. What it does have, beyond the sourness, is the best-tested health record of any berry in this library: not a cure for anything, but real human evidence, from dozens of trials, that it helps some people keep urinary infections from coming back.</p>
     </div>
 
@@ -8615,7 +9019,12 @@
       <figure class="entry-photo"><img src="img/img-104.jpg" alt="Elderberry" loading="lazy"><figcaption class="photo-credit">Photo: Taubenflieger68, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Elderberry</h2>
       <p class="latin">Sambucus nigra</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span><span class="part-badge">Berry</span><span class="part-badge">Flower</span><span class="part-badge">Bark</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Berry</span><span class="part-badge">Flower</span><span class="part-badge">Bark</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">The elder is a hedgerow shrub — in Europe it can grow into a small tree — that gives two harvests a year. In early summer it covers itself in flat plates of creamy, sweet-scented flowers; by late summer those plates have become heavy, drooping clusters of small purple-black berries. Both harvests are food, and both are medicine in the old records. But this plant has a rule, and it comes before everything else on this page: <strong>the berries are eaten cooked, never raw.</strong> Raw or unripe elderberries — and the leaves, bark, stems and roots in any form — carry cyanide-making compounds and gut-irritating proteins that bring on nausea, vomiting and severe diarrhoea. Cooking destroys them, which is why every traditional preparation in this entry, from syrup to jam to wine, heats the fruit. Follow that rule and the elder is generous; ignore it and the elder bites.</p>
     </div>
 
@@ -8707,7 +9116,12 @@
       <figure class="entry-photo"><img src="img/img-106.jpg" alt="Mulberry" loading="lazy"><figcaption class="photo-credit">Photo: Miloslav Bahna, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Mulberry</h2>
       <p class="latin">Morus spp.</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Bark</span><span class="part-badge">Wood</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Bark</span><span class="part-badge">Wood</span></p>
+      </div>
       <p class="intro">A mulberry is not one fruit but a crowd. Each berry-shaped cluster is dozens of tiny fruits joined together — every bump on it was once a single flower — and it ripens soft, sweet and so full of dark juice that it stains fingers, tongues and pavements on contact. Three species share the name: the white mulberry of China, grown for five thousand years as the one food of the silkworm; the black mulberry of Persia, grown for the fruit itself and the richest-flavoured of the three; and the red mulberry, North America's own. Between them they fed an industry that dressed emperors and bankrupted speculators — and the fruit was almost a by-product.</p>
     </div>
 
@@ -8796,7 +9210,12 @@
       <figure class="entry-photo"><img src="img/img-100.jpg" alt="Black Currant" loading="lazy"><figcaption class="photo-credit">Photo: Karelj, public domain, via Wikimedia Commons</figcaption></figure>
       <h2>Black Currant</h2>
       <p class="latin">Ribes nigrum</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span><span class="part-badge">Bud</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span><span class="class-badge">Craft</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Leaf</span><span class="part-badge">Seed</span><span class="part-badge">Bud</span></p>
+      </div>
       <p class="intro">The most intensely flavoured berry in this library, and the richest in vitamin C by a wide margin. The black currant is a small, glossy, near-black berry that hangs in dangling strings — called strigs — from a thornless northern bush. Raw, it is tart, musky and resinous, too much for most people straight off the bush; cooked, juiced or made into the French liqueur cassis, it is one of the great fruit flavours of the cold countries. It also carries the strangest history of any berry here: for much of the 1900s it was against the law to grow it in the United States.</p>
     </div>
 
@@ -8885,7 +9304,12 @@
       <figure class="entry-photo"><img src="img/img-105.jpg" alt="Gooseberry" loading="lazy"><figcaption class="photo-credit">Photo: GT1976, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Gooseberry</h2>
       <p class="latin">Ribes uva-crispa</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Digestive Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A small, tart berry on a fiercely thorny bush, and for two hundred years the most competed-over fruit in Britain. Gooseberries live two lives: picked hard and green in late spring, they are a sour cooking fruit for sauces, pies and jam; left to ripen in summer, the dessert kinds turn sweet enough to eat from the bush. The berries come green, yellow, white and red, smooth or softly hairy, and in Britain they are still called goosegogs in the garden. One name to keep separate: the Indian gooseberry, or amla, is a different fruit from a different tree, and none of its story belongs to this plant.</p>
     </div>
 
@@ -8966,7 +9390,12 @@
       <figure class="entry-photo"><img src="img/img-109.jpg" alt="Sea Buckthorn" loading="lazy"><figcaption class="photo-credit">Photo: Niepokój Zbigniew, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
       <h2>Sea Buckthorn</h2>
       <p class="latin">Hippophae rhamnoides</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Cooked</span><span class="part-badge">Fruit</span><span class="part-badge">Seed</span><span class="part-badge">Leaf</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row entry-health-row"><span class="mini">Eye Health</span><span class="mini">Immune Health</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Cooked</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span><span class="part-badge">Seed</span><span class="part-badge">Leaf</span></p>
+      </div>
       <p class="intro">A thorny, silver-leaved shrub carrying dense ropes of orange berries so sour that almost nobody eats them raw by the handful — and so rich in what they hold that peoples across Asia and northern Europe have prized them for well over a thousand years. One berry carries two different oils: one in its seed, one in its flesh, and they are not the same oil. The plant itself is a survivor — it makes its own nitrogen fertiliser in its roots, holds sand dunes and broken riverbanks together, and fruits through winters that kill softer plants.</p>
     </div>
 
@@ -9049,7 +9478,11 @@
       <figure class="entry-photo"><img src="img/img-108.jpg" alt="Schisandra" loading="lazy"><figcaption class="photo-credit">Photo: Vladimir Kosolapov, CC BY 3.0, via Wikimedia Commons</figcaption></figure>
       <h2>Schisandra</h2>
       <p class="latin">Schisandra chinensis</p>
-      <p class="entry-class"><span class="use-tags"><span class="class-badge">Culinary</span><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span><span class="part-badge">Fruit</span></span></p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Culinary</span></p>
+        <p class="entry-tag-row"><span class="prep-badge">Fresh</span><span class="prep-badge">Dried</span></p>
+        <p class="entry-tag-row"><span class="part-badge">Fruit</span></p>
+      </div>
       <p class="intro">A climbing vine from the cold forests of north-east Asia, grown for one remarkable fruit. Its red berries hold five flavours in a single bite — sweet, sour, bitter, pungent and salty — and its Chinese name says exactly that: <em>wu wei zi</em>, "five-flavour fruit." The skin and flesh are sweet and sour; the seed inside is bitter and peppery; chewed whole, the berry finishes faintly salty. For two thousand years it has been one of China's treasured tonic herbs. In the last century it became a showpiece of Soviet science, and in Korea its dried berries still make omija, the five-flavour tea. One warning belongs at the top, because it is the best-proven fact on this page: schisandra changes how the body handles many medicines (see Health Benefits), so anyone on regular prescription medicine should be careful with the concentrated extracts.</p>
     </div>
 
