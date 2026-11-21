@@ -132,9 +132,6 @@
   .entry-view{display:none;padding:28px 0 40px}
   .entry-view.open{display:block}
   .back-btn{border:0;background:#44506A;color:#fff;border-radius:10px;padding:9px 18px;font-weight:600;font-size:14.5px;margin-bottom:24px}
-  .copy-link-btn{border:1px solid #44506A;background:transparent;color:#44506A;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-top:14px;cursor:pointer}
-  .copy-link-btn:hover{background:#44506A;color:#fff}
-  .copy-link-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
   .entry-head{background:#F2EBDC;border-radius:12px;padding:28px 28px 26px}
   .entry-head h2{font-size:34px}
   .entry-head .latin{margin-top:4px;font-size:17px}
@@ -10758,6 +10755,18 @@
 
   // Entry open/close
   var indexView = document.getElementById('indexView');
+  // The address follows the plant: opening an entry points the address
+  // at that plant's own page (/<id>.html), returning to the index points
+  // it back at the library home (/). A history replace is used, so no
+  // extra history entries pile up, and the new address sits at the same
+  // level as the home address, so relative image paths keep working.
+  var homePath = window.location.pathname;
+  var basePath = homePath.substring(0, homePath.lastIndexOf('/') + 1) || '/';
+  function setAddress(url){
+    try{ window.history.replaceState(null, '', url); }catch(e){}
+  }
+  function plantAddress(id){ setAddress(basePath + id + '.html'); }
+  function homeAddress(){ setAddress(basePath); }
   function setTab(entryEl, name){
     if(!entryEl) return;
     entryEl.querySelectorAll('[role="tab"]').forEach(function(t){
@@ -10775,7 +10784,7 @@
     if(tvEl) tvEl.hidden = true;
     document.querySelectorAll('.entry-view').forEach(function(v){ v.classList.remove('open'); });
     var el = document.getElementById('entry-'+id);
-    if(el){ el.classList.add('open'); setTab(el, tab || 'tradition'); window.scrollTo(0,0); var h=el.querySelector('h2'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } }
+    if(el){ el.classList.add('open'); setTab(el, tab || 'tradition'); window.scrollTo(0,0); var h=el.querySelector('h2'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } if(id!=='linalool') plantAddress(id); }
   }
   document.querySelectorAll('[data-tabs]').forEach(function(box){
     var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
@@ -10803,6 +10812,7 @@
       if(tvEl2) tvEl2.hidden = false;
     } else {
       indexView.style.display='';
+      homeAddress();
     }
     window.scrollTo(0,0);
   }
@@ -10829,6 +10839,7 @@
     document.querySelectorAll('.view-btn').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-view')===v ? 'true':'false'); });
     indexSection.style.display = (v==='index') ? '' : 'none';
     treeView.hidden = (v!=='tree');
+    homeAddress();
     window.scrollTo(0,0);
   }
   document.querySelectorAll('.view-btn').forEach(function(b){
@@ -10847,6 +10858,7 @@
   function leaveTerpeneGuide(){
     if(terpeneView) terpeneView.hidden = true;
     indexView.style.display='';
+    homeAddress();
     window.scrollTo(0,0);
   }
   var bandLink = document.getElementById('terpeneBandLink');
@@ -10929,46 +10941,6 @@
   if(showPlantsBtn) showPlantsBtn.addEventListener('click', closePanel);
   document.addEventListener('keydown', function(e){
     if(e.key==='Escape' && filterPanel.classList.contains('open')) closePanel();
-  });
-
-  // Copy link: one small button in every entry's head area. Tapping it
-  // copies that plant's own page link and shows "Link copied" briefly.
-  document.querySelectorAll('.entry-view').forEach(function(v){
-    if(v.id === 'entry-linalool') return;
-    var id = v.id.replace('entry-','');
-    var head = v.querySelector('.entry-head');
-    if(!head || !id) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'copy-link-btn';
-    btn.textContent = 'Copy link to this plant';
-    btn.addEventListener('click', function(){
-      var url = 'https://library.starlightessentials.shop/' + id + '.html';
-      function done(){
-        btn.textContent = 'Link copied';
-        setTimeout(function(){ btn.textContent = 'Copy link to this plant'; }, 1800);
-      }
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(url).then(done, function(){ fallbackCopy(url); done(); });
-      } else {
-        fallbackCopy(url); done();
-      }
-      function fallbackCopy(text){
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.setAttribute('readonly','');
-        ta.style.position = 'absolute';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        try{ document.execCommand('copy'); }catch(e){}
-        document.body.removeChild(ta);
-      }
-    });
-    var tags = head.querySelector('.entry-tags');
-    if(tags && tags.nextSibling) head.insertBefore(btn, tags.nextSibling);
-    else if(tags) head.appendChild(btn);
-    else head.appendChild(btn);
   });
 
   apply();
