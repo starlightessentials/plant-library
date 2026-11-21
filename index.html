@@ -347,6 +347,97 @@
   #healthSection.is-blocked .chip{pointer-events:none}
   @media (max-width:560px){ .filter-panel{width:88vw} }
   @media (prefers-reduced-motion:reduce){ .filter-panel{transition:none} }
+
+  /* Terpene Guide */
+  .band-nav{margin:14px auto 0}
+  .band-nav a{color:#fff;font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:4px}
+  .band-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .inline-link{border:0;background:none;color:#44506A;font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:2px 1px;min-height:0;cursor:pointer}
+  .inline-link:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .terpene-line{margin:12px 0 0;font-size:15px}
+  /* Terpene Guide card on the library home, under the plant index */
+  .terpene-home-card{margin-top:22px;background:#F2EBDC;border-radius:12px;padding:24px 22px;display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;cursor:pointer}
+  .terpene-home-card:hover{background:#eee3cb}
+  .terpene-home-card:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .terpene-home-card .thc-text{flex:1 1 300px;min-width:0}
+  .terpene-home-card h3{font-size:24px;margin-bottom:4px}
+  .terpene-home-card p{margin:0;font-size:15px;line-height:1.55}
+  .thc-btn{flex:none;background:#44506A;color:#fff;font-size:14px;font-weight:600;border-radius:999px;padding:10px 20px}
+  /* Terpene Guide view */
+  #terpeneView{padding:28px 0 40px}
+  #terpeneView[hidden]{display:none}
+  .tg-title{font-size:32px}
+  .tg-fineprint{font-size:13.5px;font-style:italic;color:#55534c;margin:8px 0 22px}
+  .wheel-panel{background:#F2EBDC;border-radius:12px;padding:26px 20px 22px}
+  @media(min-width:760px){ .wheel-panel{padding:32px 34px 26px} }
+  .wheel-grid{display:grid;gap:26px;align-items:center}
+  @media(min-width:820px){ .wheel-grid{grid-template-columns:400px 1fr;gap:40px} }
+  .wheel-holder{position:relative;width:min(400px,88vw);margin:0 auto;aspect-ratio:1}
+  .wheel-holder svg{width:100%;height:100%;display:block;overflow:visible}
+  .slice{cursor:pointer;stroke:#F2EBDC;stroke-width:3;transition:opacity .25s ease,transform .25s ease;transform-origin:200px 200px}
+  .slice.dim{opacity:.28}
+  .slice:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .wheel-centre{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 19%}
+  .wheel-centre .big{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:30px;line-height:1.1}
+  .wheel-centre .small{font-size:12.5px;color:#55534c;margin-top:4px;line-height:1.45}
+  .wheel-labels{position:absolute;inset:0;pointer-events:none}
+  .wlabel{position:absolute;transform:translate(-50%,-50%);font-size:11.5px;font-weight:600;letter-spacing:.02em;text-align:center;line-height:1.25;max-width:64px;color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.35)}
+  .family-list{display:flex;flex-direction:column;gap:8px}
+  .fam-btn{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:transparent;border:1px solid #d8d0bd;border-radius:12px;padding:10px 14px;color:#111;font-size:15px}
+  .fam-btn:hover{border-color:#44506A}
+  .fam-btn.active{background:#f5efe4;border-color:#44506A}
+  .fam-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .fam-dot{width:16px;height:16px;border-radius:50%;flex:none}
+  .fam-btn .fname{font-weight:600}
+  .fam-btn .fcount{margin-left:auto;color:#55534c;font-size:13px;white-space:nowrap}
+  .fam-btn .fdesc{display:block;font-size:13px;color:#55534c;font-weight:400;margin-top:1px}
+  .fam-text{min-width:0}
+  .show-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+  .show-row .lbl{font-size:13px;color:#55534c}
+  .show-state{font-size:14px;font-weight:600}
+  .pill-btn{border:1px solid #44506A;background:#44506A;color:#fff;border-radius:999px;padding:9px 20px;font-size:14px;font-weight:600;min-height:44px}
+  .pill-btn.ghost{background:transparent;color:#44506A}
+  .pill-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){ .slice{transition:none} }
+  .results-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin:28px 0 14px}
+  .results-head h3{font-size:22px}
+  .results-head span{color:#55534c;font-size:14px}
+  .tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:820px){ .tcards{grid-template-columns:1fr 1fr} }
+  @media (max-width:560px){ .tcards{grid-template-columns:1fr} }
+  .tcard{background:#F2EBDC;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .tcard[hidden]{display:none}
+  .tcard-photo{margin:0}
+  .tcard-photo img{display:block;width:100%;height:168px;object-fit:cover}
+  .tcard-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .tcard-body h3{font-size:22px}
+  .trow{margin:0;font-size:14px;line-height:1.55}
+  .tlab{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#766f80;font-weight:700;margin-bottom:1px}
+  .tmore{margin:auto 0 0;padding-top:10px}
+  .tcard-btn{display:inline-block;background:#44506A;color:#fff;font-size:13.5px;font-weight:600;border-radius:999px;padding:9px 18px;text-decoration:none;border:0;min-height:44px;line-height:1.45;cursor:pointer}
+  a.tcard-btn{display:inline-flex;align-items:center}
+  .tcard-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  /* Linalool entry */
+  .terp-caption{font-size:13.5px;color:#55534c}
+  .t-fineprint{font-size:13.5px;font-style:italic;color:#55534c;margin:10px 0 0}
+  .t-also{margin:16px 0 0;font-size:15.5px;line-height:1.65;max-width:72ch}
+  .scent-box{background:#f5efe4;border-radius:10px;padding:14px 18px;margin-top:16px}
+  .scent-box p{margin:0;font-size:15.5px;line-height:1.6}
+  #entry-linalool .entry-section p{margin:0 0 12px;line-height:1.65;font-size:16.5px}
+  #entry-linalool .entry-section p:last-child{margin-bottom:0}
+  .found-in strong{font-weight:600}
+  .research-item{margin-bottom:18px}
+  .research-item:last-of-type{margin-bottom:0}
+  .rh{font-weight:600}
+  .ev{font-size:14px;font-style:italic;color:#766f80;font-weight:500;white-space:nowrap}
+  .t-nav{align-items:center;flex-wrap:wrap}
+  .t-back-pill{border:0;background:#44506A;color:#fff;border-radius:999px;padding:10px 22px;font-size:14.5px;font-weight:600;min-height:44px}
+  .t-back-pill:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .t-nav-side{display:flex;gap:10px;flex-wrap:wrap}
+  .t-pill{display:inline-flex;align-items:center;border:1px solid #44506A;background:#fff;color:#44506A;border-radius:999px;padding:9px 18px;font-size:14.5px;font-weight:600;min-height:44px;text-decoration:none}
+  .t-pill:hover{background:#eee3cb}
+  .t-pill:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  @media (max-width:560px){ .t-nav{flex-direction:column;align-items:stretch} .t-nav-side{justify-content:space-between} }
 </style>
 </head>
 <body>
@@ -355,6 +446,7 @@
   <div class="band-inner">
     <h1>The Botanical Library</h1>
     <p>Discover what the Earth provides.</p>
+    <p class="band-nav"><a href="#" id="terpeneBandLink">Terpene Guide</a></p>
   </div>
 </header>
 
@@ -1130,6 +1222,14 @@
 
       </div>
       <div class="empty" id="emptyState"><p style="margin:0">No entries match. Clear the search or filters to see the full library.</p></div>
+
+      <article class="terpene-home-card" id="terpeneHomeCard" tabindex="0" role="button" aria-label="Open the Terpene Guide">
+        <div class="thc-text">
+          <h3>Terpene Guide</h3>
+          <p>The scent compounds behind the plants — 18 terpenes grouped by scent family, each with its own page.</p>
+        </div>
+        <span class="thc-btn">Open the guide</span>
+      </article>
     </section>
 
     <section class="tree-view" id="treeView" hidden aria-label="Botanical Families">
@@ -1942,6 +2042,239 @@
       <div class="empty" id="treeEmpty"><p style="margin:0">No entries match. Clear the search or filters to see the full library.</p></div>
     </section>
 
+  </div>
+
+  <!-- TERPENE GUIDE VIEW -->
+  <div id="terpeneView" hidden>
+    <button class="back-btn" type="button" id="terpeneBackBtn">← Back to the library</button>
+    <h2 class="tg-title">Terpene Guide</h2>
+    <p class="tg-fineprint">Most benefits below come from early, animal, or lab studies — not human trials.</p>
+
+    <div class="wheel-panel">
+      <div class="wheel-grid">
+        <div class="wheel-holder">
+          <svg id="wheelSvg" viewBox="0 0 400 400" role="group" aria-label="Scent wheel. Choose a family."></svg>
+          <div class="wheel-labels" id="wheelLabels"></div>
+          <div class="wheel-centre">
+            <div class="big" id="centreBig">18</div>
+            <div class="small" id="centreSmall">terpenes<br>6 scent families</div>
+          </div>
+        </div>
+        <div>
+          <div class="family-list" id="familyList"></div>
+          <div class="show-row">
+            <span class="lbl">Showing:</span>
+            <span class="show-state" id="showState">All 18 terpenes</span>
+            <button class="pill-btn ghost" id="wheelReset" type="button">Show all</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-head">
+      <h3 id="tgResultsTitle">All terpenes</h3>
+      <span id="tgResultsCount">18 terpenes · A to Z</span>
+    </div>
+
+    <div class="tcards" id="terpeneCards">
+      <article class="tcard" data-fam="floral">
+        <figure class="tcard-photo"><img src="img/img-112.jpg" alt="German chamomile flowers" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Bisabolol</h3>
+          <p class="trow"><span class="tlab">Also called</span>α-bisabolol, also called levomenol</p>
+          <p class="trow"><span class="tlab">The scent</span>Mild, sweet and gently floral.</p>
+          <p class="trow"><span class="tlab">Found in</span>German chamomile · Candeia tree</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/bisabolol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="pine">
+        <figure class="tcard-photo"><img src="img/img-113.jpg" alt="Camphor tree leaves and buds" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Borneol</h3>
+          <p class="trow"><span class="tlab">Also called</span>Borneo camphor</p>
+          <p class="trow"><span class="tlab">The scent</span>Cool and camphor-like, with pine and a gentle minty freshness.</p>
+          <p class="trow"><span class="tlab">Found in</span>Borneo camphor tree · Ngai camphor plant</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/borneol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="pine">
+        <figure class="tcard-photo"><img src="img/img-114.jpg" alt="Conifer branches in a dark forest" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Camphene</h3>
+          <p class="trow"><span class="tlab">Also called</span>No common synonym</p>
+          <p class="trow"><span class="tlab">The scent</span>Pungent and camphor-like — damp earth, fir needles and forest floor after rain.</p>
+          <p class="trow"><span class="tlab">Found in</span>Camphor oil · Fir and cypress oils</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/camphene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="spicy">
+        <figure class="tcard-photo"><img src="img/img-115.jpg" alt="Black peppercorns" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Caryophyllene</h3>
+          <p class="trow"><span class="tlab">Also called</span>β-caryophyllene, often shortened to BCP</p>
+          <p class="trow"><span class="tlab">The scent</span>Woody and spicy — peppery and dry, like cloves.</p>
+          <p class="trow"><span class="tlab">Found in</span>Black pepper · Cloves · Copaiba</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/caryophyllene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="fresh">
+        <figure class="tcard-photo"><img src="img/img-116.jpg" alt="Eucalyptus leaves" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Eucalyptol</h3>
+          <p class="trow"><span class="tlab">Also called</span>1,8-cineole, also written 1,8-cineol</p>
+          <p class="trow"><span class="tlab">The scent</span>Fresh, cooling and camphor-like, with a minty sweetness.</p>
+          <p class="trow"><span class="tlab">Found in</span>Eucalyptus oils · Rosemary</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/eucalyptol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="floral">
+        <figure class="tcard-photo"><img src="img/img-117.jpg" alt="Pink roses" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Geraniol</h3>
+          <p class="trow"><span class="tlab">Also called</span>The (E) form; its (Z) partner is nerol</p>
+          <p class="trow"><span class="tlab">The scent</span>Sweet, soft rose, with a faint fruity, almost peachy edge.</p>
+          <p class="trow"><span class="tlab">Found in</span>Palmarosa oil · Geranium and rose oils</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/geraniol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="earthy">
+        <figure class="tcard-photo"><img src="img/img-118.jpg" alt="Hop cones and leaves" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Humulene</h3>
+          <p class="trow"><span class="tlab">Also called</span>α-humulene, also called α-caryophyllene</p>
+          <p class="trow"><span class="tlab">The scent</span>Earthy, woody and herbal — hoppy, with a spicy edge.</p>
+          <p class="trow"><span class="tlab">Found in</span>Hops · Sage, coriander and ginseng</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/humulene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="citrus">
+        <figure class="tcard-photo"><img src="img/img-119.jpg" alt="Lemons growing on the tree" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Limonene</h3>
+          <p class="trow"><span class="tlab">Also called</span>d-limonene, the common citrus form</p>
+          <p class="trow"><span class="tlab">The scent</span>Fresh citrus — lemon and orange, bright and clean.</p>
+          <p class="trow"><span class="tlab">Found in</span>Citrus peel, where it is the main part of the peel oil</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/limonene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="floral">
+        <figure class="tcard-photo"><img src="img/img-120.jpg" alt="A bunch of lavender" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Linalool</h3>
+          <p class="trow"><span class="tlab">Also called</span>Found in more than 200 plant species</p>
+          <p class="trow"><span class="tlab">The scent</span>Soft, sweet and floral, with a woody lavender note.</p>
+          <p class="trow"><span class="tlab">Found in</span>Lavender · Sweet basil and coriander</p>
+          <p class="tmore"><button class="tcard-btn" type="button" data-open="linalool">Read the full page</button></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="earthy">
+        <figure class="tcard-photo"><img src="img/img-121.jpg" alt="Half a ripe mango with a sprig of thyme" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Myrcene</h3>
+          <p class="trow"><span class="tlab">Also called</span>β-myrcene, the common natural form</p>
+          <p class="trow"><span class="tlab">The scent</span>Herbaceous, resinous and green, like fresh hops and balsam.</p>
+          <p class="trow"><span class="tlab">Found in</span>Hops · Lemongrass · Mango</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/myrcene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="floral">
+        <figure class="tcard-photo"><img src="img/img-122.jpg" alt="Jasmine flowers and ginger root" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Nerolidol</h3>
+          <p class="trow"><span class="tlab">Also called</span>Also known as peruviol or penetrol</p>
+          <p class="trow"><span class="tlab">The scent</span>Woody and floral — a faint rose-and-apple softness.</p>
+          <p class="trow"><span class="tlab">Found in</span>Ginger, jasmine and tea tree · Neroli</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/nerolidol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="fresh">
+        <figure class="tcard-photo"><img src="img/img-123.jpg" alt="Basil leaves" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Ocimene</h3>
+          <p class="trow"><span class="tlab">Also called</span>An acyclic monoterpene, in a few close forms</p>
+          <p class="trow"><span class="tlab">The scent</span>Sweet, herbaceous and green, with a soft floral warmth — often called orchid-like.</p>
+          <p class="trow"><span class="tlab">Found in</span>Basil, mint, parsley, mango, orchids, lavender</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/ocimene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="fresh">
+        <figure class="tcard-photo"><img src="img/img-124.jpg" alt="Sunlit green leaves" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Phytol</h3>
+          <p class="trow"><span class="tlab">Also called</span>Sometimes nicknamed the “chlorophyll alcohol”</p>
+          <p class="trow"><span class="tlab">The scent</span>Mild, soft and green, with a faint floral-balsamic note.</p>
+          <p class="trow"><span class="tlab">Found in</span>Chlorophyll itself — in every green plant and leaf</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/phytol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="pine">
+        <figure class="tcard-photo"><img src="img/img-125.jpg" alt="Pine needles" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Pinene</h3>
+          <p class="trow"><span class="tlab">Also called</span>Two forms, α-pinene and β-pinene</p>
+          <p class="trow"><span class="tlab">The scent</span>Fresh pine — resinous, woody, crisp and green.</p>
+          <p class="trow"><span class="tlab">Found in</span>Pine · Rosemary and sage</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/pinene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="spicy">
+        <figure class="tcard-photo"><img src="img/img-126.jpg" alt="Juniper berries on the branch" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Sabinene</h3>
+          <p class="trow"><span class="tlab">Also called</span>A bicyclic monoterpene, built on the thujane skeleton</p>
+          <p class="trow"><span class="tlab">The scent</span>Warm, woody and spicy, with black-pepper heat softened by pine.</p>
+          <p class="trow"><span class="tlab">Found in</span>Juniper berries, black pepper, nutmeg, marjoram</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/sabinene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="floral">
+        <figure class="tcard-photo"><img src="img/img-127.jpg" alt="Tea tree in flower" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Terpineol</h3>
+          <p class="trow"><span class="tlab">Also called</span>Two close relatives share this name — α-terpineol and terpinen-4-ol</p>
+          <p class="trow"><span class="tlab">The scent</span>Soft and floral — lilac and lily, with a gentle pine freshness.</p>
+          <p class="trow"><span class="tlab">Found in</span>Tea tree oil, pine oil and lilac</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/terpineol-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="fresh">
+        <figure class="tcard-photo"><img src="img/img-128.jpg" alt="Lilac flowers and a nutmeg" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Terpinolene</h3>
+          <p class="trow"><span class="tlab">Also called</span>Also called δ-terpinene — not the same as terpineol</p>
+          <p class="trow"><span class="tlab">The scent</span>Fresh pine first, then floral, herbal and citrus — like green apple and lilac.</p>
+          <p class="trow"><span class="tlab">Found in</span>Nutmeg · Apple · Cumin</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/terpinolene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+
+      <article class="tcard" data-fam="citrus">
+        <figure class="tcard-photo"><img src="img/img-129.jpg" alt="Oranges growing on the tree" loading="lazy"></figure>
+        <div class="tcard-body">
+          <h3>Valencene</h3>
+          <p class="trow"><span class="tlab">Also called</span>(+)-valencene — a larger, heavier sesquiterpene</p>
+          <p class="trow"><span class="tlab">The scent</span>Sweet, warm orange peel, with a soft woody depth.</p>
+          <p class="trow"><span class="tlab">Found in</span>Sweet orange and Valencia orange peel oil, grapefruit, tangerine</p>
+          <p class="tmore"><a class="tcard-btn" href="https://starlightessentials.shop/valencene-field-guide" target="_blank" rel="noopener">Read on the Field Guide</a></p>
+        </div>
+      </article>
+    </div>
   </div>
 
   <!-- ENTRY: OKRA -->
@@ -6378,6 +6711,7 @@
         <p class="entry-tag-row"><span class="part-badge">Flower</span></p>
       </div>
       <p class="intro">A compact, grey-leaved shrub from the dry hills of the Mediterranean, in the mint family, grown for its spikes of violet buds — the part used, picked just before the flowers fully open. Lavender is at once a medicine, a perfume and a food: the buds flavour sugar, syrups, baking and the herb blend herbes de Provence. It is also the herb with the strongest trial evidence — provided the evidence is credited to the exact preparation that was studied, and to nothing else.</p>
+      <p class="terpene-line">Terpenes in this plant: <button class="inline-link" type="button" data-open="linalool">Linalool</button></p>
     </div>
 
     <section class="entry-section"><h3>Varieties</h3><ul>
@@ -6440,6 +6774,60 @@
     </ul></section>
 
     <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="lambs-quarters">← Lamb&#x27;s Quarters</button><button class="nav-btn" type="button" data-open="lemon-balm">Lemon Balm →</button></nav>
+  </article>
+
+  <!-- ENTRY: LINALOOL (TERPENE) -->
+  <article class="entry-view" id="entry-linalool" aria-label="Linalool">
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-130.jpg" alt="A bunch of lavender"><figcaption class="photo-credit terp-caption">Lavender — linalool's best-known source, and the one with human trials behind it.</figcaption></figure>
+      <h2>Linalool</h2>
+      <p class="t-fineprint">Most benefits below come from early, animal, or lab studies — not human trials.</p>
+      <p class="t-also"><span class="tlab">Also called</span>Linalool has two mirror-image forms — one sweeter and more floral, the other woodier and more lavender-like. It is found in more than 200 plant species.</p>
+      <div class="scent-box">
+        <span class="tlab">The scent</span>
+        <p>Soft, sweet and floral with a woody lavender note. Its two mirror-image forms differ slightly — one sweeter and more floral, the other woodier and more lavender-like.</p>
+      </div>
+    </div>
+
+    <section class="entry-section"><h3>Where It Comes From</h3>
+      <p>Linalool is one of the most common scent compounds in the plant world. Lavender (Lavandula angustifolia) is its best-known source. It is also found in sweet basil and coriander; rosewood, bergamot and citrus blossom.</p>
+      <p class="found-in"><strong>Found in:</strong> <button class="inline-link" type="button" data-open="lavender">Lavender</button> · Sweet basil · Coriander · Rosewood · Bergamot · Citrus blossom</p>
+    </section>
+
+    <section class="entry-section"><h3>What the Research Shows</h3>
+      <div class="research-item">
+        <p><span class="rh">Calms anxiety — as lavender oil</span> <span class="ev">Human trials</span></p>
+        <p>The strongest human evidence in this guide, with an important catch: it belongs to lavender oil, not linalool alone. A standardised oral lavender-oil preparation (Silexan, 80 mg) reduced anxiety across randomised trials and meta-analyses — in one analysis of 697 people with subthreshold anxiety, and in a 539-person trial of generalised anxiety disorder — performing comparably to low-dose lorazepam and paroxetine in head-to-head trials, without sedation. Many of these trials were linked to the manufacturer.</p>
+      </div>
+      <div class="research-item">
+        <p><span class="rh">Supports sleep quality — as lavender scent</span> <span class="ev">Human · small</span></p>
+        <p>A meta-analysis of 11 trials (628 adults) found breathing lavender oil improved sleep quality, though the authors call for higher-quality studies to confirm it. Europe's herbal regulator, the EMA, is more cautious: it lists lavender flower and oil as traditional use only for mild mental stress and exhaustion and to aid sleep, judging the trials too small to establish the effect.</p>
+      </div>
+      <div class="research-item">
+        <p><span class="rh">Linalool on its own</span> <span class="ev">Animal studies</span></p>
+        <p>Isolated linalool shows calming and sedative effects in mice, acting on GABA pathways. That has not been demonstrated in people.</p>
+      </div>
+      <p>“Improves sleep” and “anti-anxiety” belong to lavender oil and to one standardised oral product — not to linalool alone, not to inhaled linalool, and not to lavender products in general. The meta-analyses themselves warn the results can't be generalised to other products, linalool is not a proven sedative in people, and the US National Center for Complementary and Integrative Health (NCCIH, February 2025) states it is unclear whether lavender aromatherapy helps sleep quality or insomnia at all.</p>
+    </section>
+
+    <section class="entry-section"><h3>What to Keep in Mind</h3>
+      <p>Fresh linalool is only a weak skin sensitiser, but once it oxidises in air, its breakdown products are potent ones — in a large patch-test study, 3.1% of patients reacted to oxidised linalool. Keep oils fresh, dark and cool, and never use old, oxidised oil on skin; in the EU it must be declared on fragrance labels. A disputed 2007 report linked lavender products to breast swelling in three prepubertal boys — causality is unproven, but avoiding concentrated daily topical lavender in young boys is a reasonable precaution. It may also add to the effect of sedatives, alcohol and sleep aids.</p>
+    </section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>Kasper et al. (2014) — lavender oil capsule for anxiety, head-to-head trial</li>
+      <li>Lucena et al. (2024) — review of lavender scent and sleep quality</li>
+      <li>NCCIH (2025) — lavender and sleep, plain-language summary</li>
+      <li>Contact Dermatitis (2026) — patch-test study of oxidised linalool, 6,719 patients</li>
+    </ul></section>
+
+    <nav class="entry-nav t-nav" aria-label="Terpene Guide pages">
+      <button class="t-back-pill" type="button" data-back>← Back to the Terpene Guide</button>
+      <span class="t-nav-side">
+        <a class="t-pill" href="https://starlightessentials.shop/limonene-field-guide" target="_blank" rel="noopener">← Limonene</a>
+        <a class="t-pill" href="https://starlightessentials.shop/myrcene-field-guide" target="_blank" rel="noopener">Myrcene →</a>
+      </span>
+    </nav>
   </article>
 
   <!-- ENTRY: HOPS -->
@@ -10383,6 +10771,8 @@
   }
   function openEntry(id, tab){
     indexView.style.display='none';
+    var tvEl = document.getElementById('terpeneView');
+    if(tvEl) tvEl.hidden = true;
     document.querySelectorAll('.entry-view').forEach(function(v){ v.classList.remove('open'); });
     var el = document.getElementById('entry-'+id);
     if(el){ el.classList.add('open'); setTab(el, tab || 'tradition'); window.scrollTo(0,0); var h=el.querySelector('h2'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } }
@@ -10405,8 +10795,15 @@
     b.addEventListener('click', function(){ openEntry(b.getAttribute('data-open')); });
   });
   function closeEntries(){
+    var linEl = document.getElementById('entry-linalool');
+    var toGuide = !!(linEl && linEl.classList.contains('open'));
     document.querySelectorAll('.entry-view').forEach(function(v){ v.classList.remove('open'); });
-    indexView.style.display='';
+    if(toGuide){
+      var tvEl2 = document.getElementById('terpeneView');
+      if(tvEl2) tvEl2.hidden = false;
+    } else {
+      indexView.style.display='';
+    }
     window.scrollTo(0,0);
   }
   cards.forEach(function(c){
@@ -10437,6 +10834,30 @@
   document.querySelectorAll('.view-btn').forEach(function(b){
     b.addEventListener('click', function(){ setView(b.getAttribute('data-view')); });
   });
+
+  // Terpene Guide: its own view, reached from the link in the top
+  // band and from the card under the plant index.
+  var terpeneView = document.getElementById('terpeneView');
+  function showTerpeneGuide(){
+    document.querySelectorAll('.entry-view').forEach(function(v){ v.classList.remove('open'); });
+    indexView.style.display='none';
+    if(terpeneView) terpeneView.hidden = false;
+    window.scrollTo(0,0);
+  }
+  function leaveTerpeneGuide(){
+    if(terpeneView) terpeneView.hidden = true;
+    indexView.style.display='';
+    window.scrollTo(0,0);
+  }
+  var bandLink = document.getElementById('terpeneBandLink');
+  if(bandLink) bandLink.addEventListener('click', function(e){ e.preventDefault(); showTerpeneGuide(); });
+  var homeCard = document.getElementById('terpeneHomeCard');
+  if(homeCard){
+    homeCard.addEventListener('click', showTerpeneGuide);
+    homeCard.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); showTerpeneGuide(); } });
+  }
+  var terpeneBackBtn = document.getElementById('terpeneBackBtn');
+  if(terpeneBackBtn) terpeneBackBtn.addEventListener('click', leaveTerpeneGuide);
 
   // Botanical Families: hovering a plant (or its family root) lights its line back
   // to the root and dims the rest; moving away restores the full view.
@@ -10513,6 +10934,7 @@
   // Copy link: one small button in every entry's head area. Tapping it
   // copies that plant's own page link and shows "Link copied" briefly.
   document.querySelectorAll('.entry-view').forEach(function(v){
+    if(v.id === 'entry-linalool') return;
     var id = v.id.replace('entry-','');
     var head = v.querySelector('.entry-head');
     if(!head || !id) return;
@@ -10562,6 +10984,136 @@
       if(document.getElementById('entry-' + id)) openEntry(id);
     }
   })();
+})();
+</script>
+
+<script>
+// Terpene Guide scent wheel: six families, slices sized by how many
+// terpenes each family holds. Tapping a slice or a family name filters
+// the cards below; Show all brings back all 18.
+(function(){
+  "use strict";
+  var svg = document.getElementById('wheelSvg');
+  if(!svg) return;
+  var labelsBox = document.getElementById('wheelLabels');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#terpeneCards .tcard'));
+
+  var FAMILIES = [
+    { id:'citrus', name:'Citrus',         desc:'Bright peel and zest',           color:'#d9a441' },
+    { id:'floral', name:'Floral',         desc:'Petals, blossom, soft and sweet', color:'#b98ba6' },
+    { id:'pine',   name:'Pine & Wood',    desc:'Resin, needles, forest air',      color:'#6d7f4e' },
+    { id:'fresh',  name:'Fresh & Herbal', desc:'Green leaves, cool and clean',    color:'#8a9a7b' },
+    { id:'spicy',  name:'Spicy',          desc:'Pepper, clove, warm spice',       color:'#bd7042' },
+    { id:'earthy', name:'Earthy',         desc:'Hops, roots, deep and musky',     color:'#97835f' }
+  ];
+  var activeFam = null;
+
+  function famById(id){ for(var i=0;i<FAMILIES.length;i++) if(FAMILIES[i].id===id) return FAMILIES[i]; return null; }
+  function countFor(id){ var n=0; cards.forEach(function(c){ if(c.getAttribute('data-fam')===id) n++; }); return n; }
+
+  var CX=200, CY=200, R_OUT=168, R_IN=104;
+  var sliceEls = {}, labelEls = {};
+  function polar(cx,cy,r,deg){ var rad=(deg-90)*Math.PI/180; return [cx+r*Math.cos(rad), cy+r*Math.sin(rad)]; }
+  function slicePath(start,end){
+    var gap=1.6, s=start+gap/2, e=end-gap/2;
+    var p1=polar(CX,CY,R_OUT,s), p2=polar(CX,CY,R_OUT,e), p3=polar(CX,CY,R_IN,e), p4=polar(CX,CY,R_IN,s);
+    var large=(e-s)>180?1:0;
+    return 'M'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+
+      ' A'+R_OUT+' '+R_OUT+' 0 '+large+' 1 '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)+
+      ' L'+p3[0].toFixed(1)+' '+p3[1].toFixed(1)+
+      ' A'+R_IN+' '+R_IN+' 0 '+large+' 0 '+p4[0].toFixed(1)+' '+p4[1].toFixed(1)+' Z';
+  }
+  function buildWheel(){
+    var total=cards.length, angle=0;
+    FAMILIES.forEach(function(f){
+      var n=countFor(f.id), sweep=n/total*360;
+      var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', slicePath(angle, angle+sweep));
+      path.setAttribute('fill', f.color);
+      path.setAttribute('class','slice');
+      path.setAttribute('tabindex','0');
+      path.setAttribute('role','button');
+      path.setAttribute('aria-label', f.name+' — '+n+' terpenes. Show them.');
+      path.addEventListener('click', function(){ selectFamily(activeFam===f.id?null:f.id); });
+      path.addEventListener('keydown', function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); selectFamily(activeFam===f.id?null:f.id); } });
+      svg.appendChild(path);
+      sliceEls[f.id]=path;
+      var mid=angle+sweep/2;
+      var lp=polar(CX,CY,(R_OUT+R_IN)/2, mid);
+      var lab=document.createElement('div');
+      lab.className='wlabel';
+      lab.style.left=(lp[0]/400*100)+'%';
+      lab.style.top=(lp[1]/400*100)+'%';
+      lab.textContent=f.name;
+      labelsBox.appendChild(lab);
+      labelEls[f.id]=lab;
+      angle+=sweep;
+    });
+  }
+  function paintWheel(){
+    FAMILIES.forEach(function(f){
+      var el=sliceEls[f.id]; if(!el) return;
+      var on=(activeFam===null || activeFam===f.id);
+      el.classList.toggle('dim', !on);
+      el.style.transform = activeFam===f.id ? 'scale(1.035)' : 'scale(1)';
+      if(labelEls[f.id]) labelEls[f.id].style.opacity = on ? '1' : '.35';
+    });
+    var big=document.getElementById('centreBig'), small=document.getElementById('centreSmall');
+    if(activeFam){
+      var f=famById(activeFam);
+      big.textContent=f.name;
+      big.style.fontSize = f.name.length>9 ? '22px' : '26px';
+      small.innerHTML=countFor(activeFam)+' terpenes<br>'+f.desc;
+    } else {
+      big.textContent='18';
+      big.style.fontSize='30px';
+      small.innerHTML='terpenes<br>6 scent families';
+    }
+  }
+
+  var famList=document.getElementById('familyList');
+  var famBtns={};
+  FAMILIES.forEach(function(f){
+    var b=document.createElement('button');
+    b.type='button'; b.className='fam-btn';
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="fam-dot"></span><span class="fam-text"><span class="fname"></span><span class="fdesc"></span></span><span class="fcount"></span>';
+    b.querySelector('.fam-dot').style.background=f.color;
+    b.querySelector('.fname').textContent=f.name;
+    b.querySelector('.fdesc').textContent=f.desc;
+    b.querySelector('.fcount').textContent=countFor(f.id)+' terpenes';
+    b.addEventListener('click', function(){ selectFamily(activeFam===f.id?null:f.id); });
+    famList.appendChild(b);
+    famBtns[f.id]=b;
+  });
+  function paintFamBtns(){
+    FAMILIES.forEach(function(f){
+      var on=activeFam===f.id;
+      famBtns[f.id].classList.toggle('active', on);
+      famBtns[f.id].setAttribute('aria-pressed', on?'true':'false');
+    });
+    document.getElementById('showState').textContent = activeFam ? famById(activeFam).name : 'All 18 terpenes';
+  }
+
+  function paintCards(){
+    var n=0;
+    cards.forEach(function(c){
+      var show = !activeFam || c.getAttribute('data-fam')===activeFam;
+      c.hidden = !show;
+      if(show) n++;
+    });
+    document.getElementById('tgResultsTitle').textContent = activeFam ? famById(activeFam).name : 'All terpenes';
+    document.getElementById('tgResultsCount').textContent = n+(n===1?' terpene':' terpenes')+(activeFam?' in this family':' · A to Z');
+  }
+
+  function selectFamily(id){
+    activeFam=id;
+    paintWheel(); paintFamBtns(); paintCards();
+    if(id) document.getElementById('tgResultsTitle').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  document.getElementById('wheelReset').addEventListener('click', function(){ selectFamily(null); });
+
+  buildWheel(); paintWheel(); paintFamBtns(); paintCards();
 })();
 </script>
 </body>
