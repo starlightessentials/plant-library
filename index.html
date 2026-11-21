@@ -487,6 +487,11 @@
             <div class="chips"><button class="chip spice-chip" type="button" data-spice="bark" aria-pressed="false">Bark</button><button class="chip spice-chip" type="button" data-spice="fruit" aria-pressed="false">Fruit</button><button class="chip spice-chip" type="button" data-spice="leaf" aria-pressed="false">Leaf</button><button class="chip spice-chip" type="button" data-spice="root-rhizome" aria-pressed="false">Root &amp; Rhizome</button><button class="chip spice-chip" type="button" data-spice="seed" aria-pressed="false">Seed</button></div>
           </section>
 
+          <section class="panel-section" aria-label="Part Harvested">
+            <h3 class="panel-label">Part Harvested</h3>
+            <div class="chips"><button class="chip part-chip" type="button" data-part="roots-bulbs" aria-pressed="false">Root</button><button class="chip part-chip" type="button" data-part="greens" aria-pressed="false">Greens</button><button class="chip part-chip" type="button" data-part="flowers" aria-pressed="false">Flowers</button><button class="chip part-chip" type="button" data-part="fruit-seeds" aria-pressed="false">Fruit &amp; Seeds</button><button class="chip part-chip" type="button" data-part="whole-plant" aria-pressed="false">Whole Plant</button><button class="chip part-chip" type="button" data-part="bark" aria-pressed="false">Bark</button></div>
+          </section>
+
           <section class="panel-section" id="healthSection" aria-label="Health Benefits">
             <h3 class="panel-label">Health Benefits</h3>
             <p class="fg-blocked-note" id="benefitBlockedNote" hidden>Ornamental is kept separate from Health Benefits. Clear it above to use these filters.</p>
@@ -10414,7 +10419,7 @@
 
   function activeFilterCount(){
     var n = 0;
-    ['cls','spice','bsys','other','benefit','plant','season','lifespan','sun','space','water','soil','climate'].forEach(function(k){ if(state[k]) n++; });
+    ['cls','spice','part','bsys','other','benefit','plant','season','lifespan','sun','space','water','soil','climate'].forEach(function(k){ if(state[k]) n++; });
     return n;
   }
   function updateCounts(visible){
