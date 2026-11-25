@@ -37,7 +37,7 @@
      two filter rectangles — small, plain words so the two kinds of
      buttons are easy to tell apart */
   /* Hierarchy: three levels, told apart by shape, size and colour.
-     1) Display — a joined segmented bar in dusty purple (changes the view).
+     1) Display — three large buttons, one per way of looking (changes the view).
      2) Large filter choices (Use tiles, the two filter bars) — big
         rectangles in navy, never round.
      3) Fine details inside the panels — small round pills, kept round. */
@@ -109,6 +109,7 @@
   .chip[aria-pressed="true"]{background:#44506A;color:#fff}
   .chip:focus-visible,.clear-btn:focus-visible,.back-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
   .count-line{margin:20px 0 0;font-size:15px}
+  .stage-note{margin:6px 0 0;font-size:14px;color:#55534c}
   /* Index */
   .index{padding:20px 0 8px}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -171,18 +172,22 @@
     .search-row{flex-direction:column}
     .search-box{flex:none;width:100%;height:52px}
     .clear-btn{width:100%}
+    .filters-btn{width:100%;justify-content:center}
   }
   @media (max-width:560px){ .fg-bar{font-size:15.5px;padding:10px 8px;gap:6px} .fg-bar .chev{width:18px;height:18px} .fg-row{gap:8px} }
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .fg-bar .chev{transition:none} .gcat-head .chev{transition:none} .hucat-head .chev{transition:none} .bcat-head .chev{transition:none} }
 
-  /* View switch — Display: one joined segmented bar in dusty purple,
-     the colour of the header and footer bands. Joined and rectangular,
+  /* View switch — Display: three large buttons, one per way of looking
+     (All Plants, Plant Families, Family Tree). The picked one is navy,
      so it reads as "choose how the page is shown", not as a filter. */
-  .view-switch{display:inline-flex;gap:3px;flex-wrap:nowrap;margin-bottom:22px;justify-content:flex-start;background:#fff;border:1.5px solid #766f80;border-radius:10px;padding:3px}
-  .view-btn{border:0;background:transparent;color:#766f80;border-radius:7px;padding:10px 24px;font-size:15px;font-weight:600;min-height:46px}
-  .view-btn[aria-pressed="true"]{background:#766f80;color:#fff}
-  .view-btn:focus-visible{outline:3px solid #766f80;outline-offset:2px}
-  @media (max-width:560px){ .view-switch{display:flex} .view-btn{flex:1 1 0;padding:10px 8px} .use-first .chips{grid-template-columns:1fr 1fr} }
+  .view-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+  .view-btn{border:2px solid #d8d0bd;background:#f5efe4;color:#111;border-radius:10px;padding:12px 10px 11px;text-align:center;min-height:64px}
+  .view-btn .vb-name{display:block;font-family:"Playfair Display",Georgia,serif;font-size:19px;font-weight:600;line-height:1.2}
+  .view-btn .vb-sub{display:block;font-size:12.5px;color:#55534c;margin-top:3px;line-height:1.35}
+  .view-btn[aria-pressed="true"]{background:#44506A;border-color:#44506A;color:#fff}
+  .view-btn[aria-pressed="true"] .vb-sub{color:#dbe2ef}
+  .view-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  @media (max-width:560px){ .view-switch{grid-template-columns:1fr} .view-btn{min-height:56px} .use-first .chips{grid-template-columns:1fr 1fr} }
   /* Class badges */
   .class-badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.03em;border-radius:999px;padding:4px 10px;line-height:1.4;border:1px solid #44506A;background:#44506A;color:#fff;white-space:nowrap}
   /* Split tag pills: each use and preparation gets its own pill,
@@ -234,6 +239,36 @@
     .branch::before{left:-21px;width:18px}
     .ladder-row{grid-template-columns:68px 1fr 100px;font-size:12px}
   }
+  /* Plant Families view — the same cards, grouped under family headings */
+  .families-view{padding:20px 0 8px}
+  .family-block{margin-bottom:30px}
+  .family-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid #766f80;padding-bottom:7px}
+  .family-head h3{font-size:21px}
+  .family-head .fam-latin{font-style:italic;color:#55534c;font-size:15px}
+  .family-head .fam-note{font-size:13.5px;color:#55534c;margin-left:auto}
+  .family-block .grid{margin-top:14px}
+  .family-block[hidden]{display:none}
+  /* Family Tree — SVG lines from the library root to each family and
+     from each family to its plants. On small screens the tree stacks,
+     the lines stay off, and the plain left-hand connectors show. */
+  .tree-scroll{margin-top:6px}
+  .tree{position:relative}
+  .tree svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .tree svg.wires path{fill:none;stroke:#766f80;stroke-width:2;opacity:.55}
+  .tree-layout{position:relative;display:grid;grid-template-columns:150px 1fr;column-gap:56px}
+  .tree-layout>*{min-width:0}
+  .tree-root{background:#766f80;color:#fff;border-radius:10px;padding:16px 14px;text-align:center;align-self:start;position:sticky;top:24px}
+  .tree-root .tr-name{font-family:"Playfair Display",Georgia,serif;font-size:19px;font-weight:600;line-height:1.25}
+  .tree-root .tr-sub{font-size:12.5px;opacity:.9;margin-top:4px}
+  .tree .branches{border-left-color:transparent}
+  .tree .branch::before{display:none}
+  @media (max-width:700px){
+    .tree svg.wires{display:none}
+    .tree-layout{grid-template-columns:1fr}
+    .tree-root{align-self:auto;position:static;margin-bottom:22px}
+    .tree .branches{border-left-color:#cfc6ae}
+    .tree .branch::before{display:block}
+  }
 
 
   /* Part badges & entry part sub-headings */
@@ -246,7 +281,7 @@
   .entry-photo{margin-bottom:18px}
   .entry-photo img{display:block;width:100%;height:340px;object-fit:cover;border-radius:10px}
   .variety-photo{margin:0 0 12px}
-  .variety-photo img{display:block;width:100%;height:180px;object-fit:cover;border-radius:8px}
+  .variety-photo img{display:block;width:100%;height:300px;object-fit:cover;border-radius:8px}
   .photo-credit{font-size:12px;line-height:1.45;color:#55534c;margin-top:5px}
   @media (max-width:560px){ .entry-photo img{height:220px} .card-photo img{height:180px} }
 
@@ -314,8 +349,9 @@
   .entry-health-row .mini{font-size:12.5px;padding:4px 11px}
 
   /* Sliding filter panel */
-  .filters-row{margin-top:14px}
-  .filters-btn{border:0;background:#44506A;color:#fff;border-radius:10px;padding:11px 26px;font-weight:600;font-size:15.5px;min-height:48px}
+  .filters-btn{border:0;background:#44506A;color:#fff;border-radius:10px;padding:11px 26px;font-weight:600;font-size:15.5px;min-height:48px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+  .filters-btn .count{background:#fff;color:#44506A;border-radius:999px;font-size:12.5px;font-weight:700;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center}
+  .filters-btn .count[hidden]{display:none}
   .filters-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
   .panel-overlay{position:fixed;inset:0;background:rgba(20,18,12,.48);z-index:60}
   .panel-overlay[hidden]{display:none}
@@ -501,21 +537,19 @@
   <!-- INDEX VIEW -->
   <div id="indexView">
     <section class="controls" aria-label="Find an entry">
-      <p class="group-label" id="displayLabel">Display</p>
+      <p class="group-label" id="displayLabel">How do you want to look?</p>
       <div class="view-switch" role="group" aria-labelledby="displayLabel">
-        <button class="view-btn" type="button" data-view="index" aria-pressed="true">Index</button>
-        <button class="view-btn" type="button" data-view="tree" aria-pressed="false">Botanical Families</button>
+        <button class="view-btn" type="button" data-view="all" aria-pressed="true"><span class="vb-name">All Plants</span><span class="vb-sub">Every plant, A–Z</span></button>
+        <button class="view-btn" type="button" data-view="families" aria-pressed="false"><span class="vb-name">Plant Families</span><span class="vb-sub">Grouped under their family</span></button>
+        <button class="view-btn" type="button" data-view="tree" aria-pressed="false"><span class="vb-name">Family Tree</span><span class="vb-sub">How the families connect</span></button>
       </div>
       <div class="search-row">
         <label class="search-box">
           <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search the library</span>
           <input id="searchInput" type="search" placeholder="Search by name — try okra, roselle, yarrow, sweet potato…" autocomplete="off">
         </label>
+        <button class="filters-btn" id="filtersBtn" type="button" aria-haspopup="dialog" aria-controls="filterPanel">Filters <span class="count" id="filterCount" hidden>0</span></button>
         <button class="clear-btn" id="clearAll" type="button">Show all</button>
-      </div>
-
-      <div class="filters-row">
-        <button class="filters-btn" id="filtersBtn" type="button" aria-haspopup="dialog" aria-controls="filterPanel">Filters</button>
       </div>
 
       <div class="panel-overlay" id="panelOverlay" hidden></div>
@@ -603,6 +637,7 @@
       </aside>
 
       <p class="count-line" id="countLine" aria-live="polite">128 entries</p>
+      <p class="stage-note" id="stageNote">Every plant in one list, A–Z.</p>
     </section>
 
     <section class="index" aria-label="Library index">
@@ -1516,8 +1551,17 @@
       </article>
     </section>
 
-    <section class="tree-view" id="treeView" hidden aria-label="Botanical Families">
-      <div class="tree-toolbar"><button class="clear-btn" id="treeReset" type="button">Show all</button></div>
+    <section class="families-view" id="familiesView" hidden aria-label="Plant Families">
+      <div id="familiesGroups"></div>
+      <div class="empty" id="familiesEmpty"><p style="margin:0">No entries match. Clear the search or filters to see the full library.</p></div>
+    </section>
+
+    <section class="tree-view" id="treeView" hidden aria-label="Family Tree">
+      <div class="tree-toolbar"><p class="tree-hint">One line runs from the library to each family, and from each family to its plants. Tap a plant to open its entry.</p><button class="clear-btn" id="treeReset" type="button">Show all</button></div>
+      <div class="tree-scroll"><div class="tree" id="treeBox">
+      <svg class="wires" id="treeWires" aria-hidden="true"></svg>
+      <div class="tree-layout">
+      <div class="tree-root" id="treeRoot"><div class="tr-name">The Botanical Library</div><div class="tr-sub">Every plant belongs to a family</div></div>
       <div id="treeGroups">
         <section class="family">
           <div class="family-root"><h3>Achote family</h3><p class="family-latin">Bixaceae</p></div>
@@ -2589,6 +2633,7 @@
           </div>
         </section>
       </div>
+      </div></div></div>
       
       <div class="empty" id="treeEmpty"><p style="margin:0">No entries match. Clear the search or filters to see the full library.</p></div>
     </section>
@@ -2870,7 +2915,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-okra-tradition" aria-controls="panel-okra-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-okra-tradition" aria-controls="panel-okra-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-okra-health" aria-controls="panel-okra-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-okra-growing" aria-controls="panel-okra-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -2984,7 +3029,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-peppers-tradition" aria-controls="panel-peppers-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-peppers-tradition" aria-controls="panel-peppers-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-peppers-health" aria-controls="panel-peppers-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-peppers-growing" aria-controls="panel-peppers-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3077,7 +3122,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-sweet-potato-tradition" aria-controls="panel-sweet-potato-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-sweet-potato-tradition" aria-controls="panel-sweet-potato-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sweet-potato-health" aria-controls="panel-sweet-potato-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sweet-potato-growing" aria-controls="panel-sweet-potato-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3175,7 +3220,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-tomato-tradition" aria-controls="panel-tomato-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-tomato-tradition" aria-controls="panel-tomato-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-tomato-health" aria-controls="panel-tomato-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-tomato-growing" aria-controls="panel-tomato-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3264,7 +3309,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-onion-tradition" aria-controls="panel-onion-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-onion-tradition" aria-controls="panel-onion-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-onion-health" aria-controls="panel-onion-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-onion-growing" aria-controls="panel-onion-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3363,7 +3408,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-green-beans-tradition" aria-controls="panel-green-beans-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-green-beans-tradition" aria-controls="panel-green-beans-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-green-beans-health" aria-controls="panel-green-beans-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-green-beans-growing" aria-controls="panel-green-beans-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3446,7 +3491,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cardamom-tradition" aria-controls="panel-cardamom-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cardamom-tradition" aria-controls="panel-cardamom-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cardamom-health" aria-controls="panel-cardamom-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cardamom-growing" aria-controls="panel-cardamom-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3532,7 +3577,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-carrot-tradition" aria-controls="panel-carrot-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-carrot-tradition" aria-controls="panel-carrot-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-carrot-health" aria-controls="panel-carrot-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-carrot-growing" aria-controls="panel-carrot-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3624,7 +3669,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cabbage-tradition" aria-controls="panel-cabbage-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cabbage-tradition" aria-controls="panel-cabbage-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cabbage-health" aria-controls="panel-cabbage-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cabbage-growing" aria-controls="panel-cabbage-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3718,7 +3763,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-banana-tradition" aria-controls="panel-banana-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-banana-tradition" aria-controls="panel-banana-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-banana-health" aria-controls="panel-banana-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-banana-growing" aria-controls="panel-banana-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3813,7 +3858,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-apple-tradition" aria-controls="panel-apple-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-apple-tradition" aria-controls="panel-apple-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-apple-health" aria-controls="panel-apple-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-apple-growing" aria-controls="panel-apple-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -3899,7 +3944,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-arnica-tradition" aria-controls="panel-arnica-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-arnica-tradition" aria-controls="panel-arnica-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-arnica-health" aria-controls="panel-arnica-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-arnica-growing" aria-controls="panel-arnica-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4001,7 +4046,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-mango-tradition" aria-controls="panel-mango-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-mango-tradition" aria-controls="panel-mango-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mango-health" aria-controls="panel-mango-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mango-growing" aria-controls="panel-mango-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4087,7 +4132,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-burdock-tradition" aria-controls="panel-burdock-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-burdock-tradition" aria-controls="panel-burdock-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-burdock-health" aria-controls="panel-burdock-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-burdock-growing" aria-controls="panel-burdock-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4157,7 +4202,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-calendula-tradition" aria-controls="panel-calendula-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-calendula-tradition" aria-controls="panel-calendula-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-calendula-health" aria-controls="panel-calendula-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-calendula-growing" aria-controls="panel-calendula-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4245,7 +4290,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cannabis-tradition" aria-controls="panel-cannabis-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cannabis-tradition" aria-controls="panel-cannabis-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cannabis-health" aria-controls="panel-cannabis-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cannabis-growing" aria-controls="panel-cannabis-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4327,7 +4372,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-chickweed-tradition" aria-controls="panel-chickweed-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-chickweed-tradition" aria-controls="panel-chickweed-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-chickweed-health" aria-controls="panel-chickweed-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-chickweed-growing" aria-controls="panel-chickweed-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4433,7 +4478,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cilantro-tradition" aria-controls="panel-cilantro-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cilantro-tradition" aria-controls="panel-cilantro-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cilantro-health" aria-controls="panel-cilantro-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cilantro-growing" aria-controls="panel-cilantro-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4513,7 +4558,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cleavers-tradition" aria-controls="panel-cleavers-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cleavers-tradition" aria-controls="panel-cleavers-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cleavers-health" aria-controls="panel-cleavers-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cleavers-growing" aria-controls="panel-cleavers-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4594,7 +4639,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-clover-tradition" aria-controls="panel-clover-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-clover-tradition" aria-controls="panel-clover-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-clover-health" aria-controls="panel-clover-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-clover-growing" aria-controls="panel-clover-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4680,7 +4725,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-comfrey-tradition" aria-controls="panel-comfrey-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-comfrey-tradition" aria-controls="panel-comfrey-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-comfrey-health" aria-controls="panel-comfrey-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-comfrey-growing" aria-controls="panel-comfrey-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4753,7 +4798,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-curly-dock-tradition" aria-controls="panel-curly-dock-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-curly-dock-tradition" aria-controls="panel-curly-dock-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-curly-dock-health" aria-controls="panel-curly-dock-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-curly-dock-growing" aria-controls="panel-curly-dock-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4836,7 +4881,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-dandelion-tradition" aria-controls="panel-dandelion-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-dandelion-tradition" aria-controls="panel-dandelion-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-dandelion-health" aria-controls="panel-dandelion-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-dandelion-growing" aria-controls="panel-dandelion-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -4907,7 +4952,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-echinacea-tradition" aria-controls="panel-echinacea-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-echinacea-tradition" aria-controls="panel-echinacea-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-echinacea-health" aria-controls="panel-echinacea-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-echinacea-growing" aria-controls="panel-echinacea-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5013,7 +5058,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-eggplant-tradition" aria-controls="panel-eggplant-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-eggplant-tradition" aria-controls="panel-eggplant-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-eggplant-health" aria-controls="panel-eggplant-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-eggplant-growing" aria-controls="panel-eggplant-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5073,7 +5118,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-goldenrod-tradition" aria-controls="panel-goldenrod-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-goldenrod-tradition" aria-controls="panel-goldenrod-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-goldenrod-health" aria-controls="panel-goldenrod-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-goldenrod-growing" aria-controls="panel-goldenrod-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5159,7 +5204,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-ground-ivy-tradition" aria-controls="panel-ground-ivy-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-ground-ivy-tradition" aria-controls="panel-ground-ivy-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-ground-ivy-health" aria-controls="panel-ground-ivy-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-ground-ivy-growing" aria-controls="panel-ground-ivy-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5237,7 +5282,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-lambs-quarters-tradition" aria-controls="panel-lambs-quarters-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-lambs-quarters-tradition" aria-controls="panel-lambs-quarters-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lambs-quarters-health" aria-controls="panel-lambs-quarters-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lambs-quarters-growing" aria-controls="panel-lambs-quarters-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5329,7 +5374,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-mallow-tradition" aria-controls="panel-mallow-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-mallow-tradition" aria-controls="panel-mallow-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mallow-health" aria-controls="panel-mallow-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mallow-growing" aria-controls="panel-mallow-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5399,7 +5444,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-mullein-tradition" aria-controls="panel-mullein-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-mullein-tradition" aria-controls="panel-mullein-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mullein-health" aria-controls="panel-mullein-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mullein-growing" aria-controls="panel-mullein-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5471,7 +5516,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-nettle-tradition" aria-controls="panel-nettle-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-nettle-tradition" aria-controls="panel-nettle-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-nettle-health" aria-controls="panel-nettle-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-nettle-growing" aria-controls="panel-nettle-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5551,7 +5596,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-plantain-tradition" aria-controls="panel-plantain-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-plantain-tradition" aria-controls="panel-plantain-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-plantain-health" aria-controls="panel-plantain-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-plantain-growing" aria-controls="panel-plantain-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5638,7 +5683,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-purple-dead-nettle-tradition" aria-controls="panel-purple-dead-nettle-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-purple-dead-nettle-tradition" aria-controls="panel-purple-dead-nettle-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-purple-dead-nettle-health" aria-controls="panel-purple-dead-nettle-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-purple-dead-nettle-growing" aria-controls="panel-purple-dead-nettle-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5707,7 +5752,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-purslane-tradition" aria-controls="panel-purslane-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-purslane-tradition" aria-controls="panel-purslane-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-purslane-health" aria-controls="panel-purslane-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-purslane-growing" aria-controls="panel-purslane-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5774,7 +5819,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-red-clover-tradition" aria-controls="panel-red-clover-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-red-clover-tradition" aria-controls="panel-red-clover-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-red-clover-health" aria-controls="panel-red-clover-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-red-clover-growing" aria-controls="panel-red-clover-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5887,7 +5932,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-rose-tradition" aria-controls="panel-rose-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-rose-tradition" aria-controls="panel-rose-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-rose-health" aria-controls="panel-rose-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-rose-growing" aria-controls="panel-rose-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -5955,7 +6000,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-roselle-tradition" aria-controls="panel-roselle-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-roselle-tradition" aria-controls="panel-roselle-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-roselle-health" aria-controls="panel-roselle-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-roselle-growing" aria-controls="panel-roselle-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6047,7 +6092,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-rosemary-tradition" aria-controls="panel-rosemary-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-rosemary-tradition" aria-controls="panel-rosemary-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-rosemary-health" aria-controls="panel-rosemary-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-rosemary-growing" aria-controls="panel-rosemary-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6119,7 +6164,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-sage-tradition" aria-controls="panel-sage-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-sage-tradition" aria-controls="panel-sage-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sage-health" aria-controls="panel-sage-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sage-growing" aria-controls="panel-sage-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6195,7 +6240,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-self-heal-tradition" aria-controls="panel-self-heal-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-self-heal-tradition" aria-controls="panel-self-heal-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-self-heal-health" aria-controls="panel-self-heal-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-self-heal-growing" aria-controls="panel-self-heal-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6276,7 +6321,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-shepherds-purse-tradition" aria-controls="panel-shepherds-purse-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-shepherds-purse-tradition" aria-controls="panel-shepherds-purse-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-shepherds-purse-health" aria-controls="panel-shepherds-purse-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-shepherds-purse-growing" aria-controls="panel-shepherds-purse-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6356,7 +6401,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-sorrel-tradition" aria-controls="panel-sorrel-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-sorrel-tradition" aria-controls="panel-sorrel-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sorrel-health" aria-controls="panel-sorrel-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sorrel-growing" aria-controls="panel-sorrel-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6439,7 +6484,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-st-johns-wort-tradition" aria-controls="panel-st-johns-wort-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-st-johns-wort-tradition" aria-controls="panel-st-johns-wort-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-st-johns-wort-health" aria-controls="panel-st-johns-wort-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-st-johns-wort-growing" aria-controls="panel-st-johns-wort-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6506,7 +6551,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-violet-tradition" aria-controls="panel-violet-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-violet-tradition" aria-controls="panel-violet-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-violet-health" aria-controls="panel-violet-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-violet-growing" aria-controls="panel-violet-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6601,7 +6646,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-vitex-tradition" aria-controls="panel-vitex-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-vitex-tradition" aria-controls="panel-vitex-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-vitex-health" aria-controls="panel-vitex-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-vitex-growing" aria-controls="panel-vitex-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6677,7 +6722,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-yarrow-tradition" aria-controls="panel-yarrow-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-yarrow-tradition" aria-controls="panel-yarrow-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-yarrow-health" aria-controls="panel-yarrow-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-yarrow-growing" aria-controls="panel-yarrow-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6791,7 +6836,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-garlic-tradition" aria-controls="panel-garlic-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-garlic-tradition" aria-controls="panel-garlic-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-garlic-health" aria-controls="panel-garlic-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-garlic-growing" aria-controls="panel-garlic-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6882,7 +6927,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-ginger-tradition" aria-controls="panel-ginger-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-ginger-tradition" aria-controls="panel-ginger-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-ginger-health" aria-controls="panel-ginger-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-ginger-growing" aria-controls="panel-ginger-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -6966,7 +7011,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-kale-tradition" aria-controls="panel-kale-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-kale-tradition" aria-controls="panel-kale-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-kale-health" aria-controls="panel-kale-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-kale-growing" aria-controls="panel-kale-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7052,7 +7097,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-corn-tradition" aria-controls="panel-corn-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-corn-tradition" aria-controls="panel-corn-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-corn-health" aria-controls="panel-corn-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-corn-growing" aria-controls="panel-corn-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7142,7 +7187,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-collards-tradition" aria-controls="panel-collards-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-collards-tradition" aria-controls="panel-collards-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-collards-health" aria-controls="panel-collards-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-collards-growing" aria-controls="panel-collards-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7224,7 +7269,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-potato-tradition" aria-controls="panel-potato-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-potato-tradition" aria-controls="panel-potato-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-potato-health" aria-controls="panel-potato-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-potato-growing" aria-controls="panel-potato-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7309,7 +7354,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-pumpkin-tradition" aria-controls="panel-pumpkin-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-pumpkin-tradition" aria-controls="panel-pumpkin-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-pumpkin-health" aria-controls="panel-pumpkin-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-pumpkin-growing" aria-controls="panel-pumpkin-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7402,7 +7447,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-strawberry-tradition" aria-controls="panel-strawberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-strawberry-tradition" aria-controls="panel-strawberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-strawberry-health" aria-controls="panel-strawberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-strawberry-growing" aria-controls="panel-strawberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7470,7 +7515,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-lemon-balm-tradition" aria-controls="panel-lemon-balm-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-lemon-balm-tradition" aria-controls="panel-lemon-balm-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lemon-balm-health" aria-controls="panel-lemon-balm-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lemon-balm-growing" aria-controls="panel-lemon-balm-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7545,7 +7590,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-chamomile-tradition" aria-controls="panel-chamomile-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-chamomile-tradition" aria-controls="panel-chamomile-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-chamomile-health" aria-controls="panel-chamomile-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-chamomile-growing" aria-controls="panel-chamomile-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7616,7 +7661,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-valerian-tradition" aria-controls="panel-valerian-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-valerian-tradition" aria-controls="panel-valerian-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-valerian-health" aria-controls="panel-valerian-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-valerian-growing" aria-controls="panel-valerian-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7707,7 +7752,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-papaya-tradition" aria-controls="panel-papaya-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-papaya-tradition" aria-controls="panel-papaya-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-papaya-health" aria-controls="panel-papaya-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-papaya-growing" aria-controls="panel-papaya-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7791,7 +7836,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-parsley-tradition" aria-controls="panel-parsley-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-parsley-tradition" aria-controls="panel-parsley-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-parsley-health" aria-controls="panel-parsley-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-parsley-growing" aria-controls="panel-parsley-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7852,7 +7897,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-passionflower-tradition" aria-controls="panel-passionflower-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-passionflower-tradition" aria-controls="panel-passionflower-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-passionflower-health" aria-controls="panel-passionflower-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-passionflower-growing" aria-controls="panel-passionflower-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -7928,7 +7973,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-lavender-tradition" aria-controls="panel-lavender-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-lavender-tradition" aria-controls="panel-lavender-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lavender-health" aria-controls="panel-lavender-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lavender-growing" aria-controls="panel-lavender-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -8959,7 +9004,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-hops-tradition" aria-controls="panel-hops-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-hops-tradition" aria-controls="panel-hops-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-hops-health" aria-controls="panel-hops-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-hops-growing" aria-controls="panel-hops-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9027,7 +9072,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-thyme-tradition" aria-controls="panel-thyme-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-thyme-tradition" aria-controls="panel-thyme-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-thyme-health" aria-controls="panel-thyme-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-thyme-growing" aria-controls="panel-thyme-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9113,7 +9158,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-peppermint-tradition" aria-controls="panel-peppermint-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-peppermint-tradition" aria-controls="panel-peppermint-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-peppermint-health" aria-controls="panel-peppermint-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-peppermint-growing" aria-controls="panel-peppermint-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9186,7 +9231,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-elecampane-tradition" aria-controls="panel-elecampane-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-elecampane-tradition" aria-controls="panel-elecampane-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-elecampane-health" aria-controls="panel-elecampane-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-elecampane-growing" aria-controls="panel-elecampane-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9254,7 +9299,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-fenugreek-tradition" aria-controls="panel-fenugreek-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-fenugreek-tradition" aria-controls="panel-fenugreek-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-fenugreek-health" aria-controls="panel-fenugreek-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-fenugreek-growing" aria-controls="panel-fenugreek-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9330,7 +9375,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-hawthorn-tradition" aria-controls="panel-hawthorn-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-hawthorn-tradition" aria-controls="panel-hawthorn-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-hawthorn-health" aria-controls="panel-hawthorn-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-hawthorn-growing" aria-controls="panel-hawthorn-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9400,7 +9445,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-arrowhead-tradition" aria-controls="panel-arrowhead-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-arrowhead-tradition" aria-controls="panel-arrowhead-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-arrowhead-growing" aria-controls="panel-arrowhead-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9474,7 +9519,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-heartleaf-philodendron-tradition" aria-controls="panel-heartleaf-philodendron-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-heartleaf-philodendron-tradition" aria-controls="panel-heartleaf-philodendron-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-heartleaf-philodendron-growing" aria-controls="panel-heartleaf-philodendron-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9532,7 +9577,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-pothos-tradition" aria-controls="panel-pothos-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-pothos-tradition" aria-controls="panel-pothos-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-pothos-growing" aria-controls="panel-pothos-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9589,7 +9634,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-snake-plant-tradition" aria-controls="panel-snake-plant-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-snake-plant-tradition" aria-controls="panel-snake-plant-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-snake-plant-growing" aria-controls="panel-snake-plant-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9649,7 +9694,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-spider-plant-tradition" aria-controls="panel-spider-plant-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-spider-plant-tradition" aria-controls="panel-spider-plant-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-spider-plant-growing" aria-controls="panel-spider-plant-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9711,7 +9756,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-monstera-tradition" aria-controls="panel-monstera-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-monstera-tradition" aria-controls="panel-monstera-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-monstera-health" aria-controls="panel-monstera-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-monstera-growing" aria-controls="panel-monstera-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9778,7 +9823,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-peace-lily-tradition" aria-controls="panel-peace-lily-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-peace-lily-tradition" aria-controls="panel-peace-lily-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-peace-lily-growing" aria-controls="panel-peace-lily-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9835,7 +9880,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-zz-plant-tradition" aria-controls="panel-zz-plant-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-zz-plant-tradition" aria-controls="panel-zz-plant-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-zz-plant-growing" aria-controls="panel-zz-plant-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9898,7 +9943,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-almond-tradition" aria-controls="panel-almond-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-almond-tradition" aria-controls="panel-almond-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-almond-health" aria-controls="panel-almond-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-almond-growing" aria-controls="panel-almond-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -9993,7 +10038,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-aloe-vera-tradition" aria-controls="panel-aloe-vera-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-aloe-vera-tradition" aria-controls="panel-aloe-vera-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-aloe-vera-health" aria-controls="panel-aloe-vera-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-aloe-vera-growing" aria-controls="panel-aloe-vera-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10066,7 +10111,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-fiddle-leaf-fig-tradition" aria-controls="panel-fiddle-leaf-fig-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-fiddle-leaf-fig-tradition" aria-controls="panel-fiddle-leaf-fig-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-fiddle-leaf-fig-growing" aria-controls="panel-fiddle-leaf-fig-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10140,7 +10185,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-basil-tradition" aria-controls="panel-basil-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-basil-tradition" aria-controls="panel-basil-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-basil-health" aria-controls="panel-basil-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-basil-growing" aria-controls="panel-basil-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10234,7 +10279,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-beets-tradition" aria-controls="panel-beets-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-beets-tradition" aria-controls="panel-beets-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-beets-health" aria-controls="panel-beets-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-beets-growing" aria-controls="panel-beets-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10327,7 +10372,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-parsnip-tradition" aria-controls="panel-parsnip-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-parsnip-tradition" aria-controls="panel-parsnip-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-parsnip-health" aria-controls="panel-parsnip-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-parsnip-growing" aria-controls="panel-parsnip-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10414,7 +10459,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-turnip-tradition" aria-controls="panel-turnip-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-turnip-tradition" aria-controls="panel-turnip-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-turnip-health" aria-controls="panel-turnip-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-turnip-growing" aria-controls="panel-turnip-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10508,7 +10553,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-radish-tradition" aria-controls="panel-radish-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-radish-tradition" aria-controls="panel-radish-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-radish-health" aria-controls="panel-radish-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-radish-growing" aria-controls="panel-radish-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10604,7 +10649,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cucumber-tradition" aria-controls="panel-cucumber-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cucumber-tradition" aria-controls="panel-cucumber-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cucumber-health" aria-controls="panel-cucumber-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cucumber-growing" aria-controls="panel-cucumber-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10699,7 +10744,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-zucchini-tradition" aria-controls="panel-zucchini-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-zucchini-tradition" aria-controls="panel-zucchini-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-zucchini-health" aria-controls="panel-zucchini-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-zucchini-growing" aria-controls="panel-zucchini-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10789,7 +10834,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-watermelon-tradition" aria-controls="panel-watermelon-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-watermelon-tradition" aria-controls="panel-watermelon-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-watermelon-health" aria-controls="panel-watermelon-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-watermelon-growing" aria-controls="panel-watermelon-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10882,7 +10927,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-winter-squash-tradition" aria-controls="panel-winter-squash-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-winter-squash-tradition" aria-controls="panel-winter-squash-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-winter-squash-health" aria-controls="panel-winter-squash-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-winter-squash-growing" aria-controls="panel-winter-squash-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -10956,7 +11001,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-acerola-tradition" aria-controls="panel-acerola-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-acerola-tradition" aria-controls="panel-acerola-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-acerola-health" aria-controls="panel-acerola-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-acerola-growing" aria-controls="panel-acerola-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11025,7 +11070,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-achote-tradition" aria-controls="panel-achote-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-achote-tradition" aria-controls="panel-achote-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-achote-health" aria-controls="panel-achote-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-achote-growing" aria-controls="panel-achote-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11095,7 +11140,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cassava-tradition" aria-controls="panel-cassava-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cassava-tradition" aria-controls="panel-cassava-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cassava-health" aria-controls="panel-cassava-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cassava-growing" aria-controls="panel-cassava-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11168,7 +11213,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-goji-tradition" aria-controls="panel-goji-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-goji-tradition" aria-controls="panel-goji-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-goji-health" aria-controls="panel-goji-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-goji-growing" aria-controls="panel-goji-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11236,7 +11281,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-miracle-fruit-tradition" aria-controls="panel-miracle-fruit-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-miracle-fruit-tradition" aria-controls="panel-miracle-fruit-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-miracle-fruit-health" aria-controls="panel-miracle-fruit-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-miracle-fruit-growing" aria-controls="panel-miracle-fruit-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11318,7 +11363,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-pineapple-tradition" aria-controls="panel-pineapple-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-pineapple-tradition" aria-controls="panel-pineapple-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-pineapple-health" aria-controls="panel-pineapple-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-pineapple-growing" aria-controls="panel-pineapple-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11388,7 +11433,7 @@
     </div>
 
     <section class="entry-section"><h3>Cultivars</h3>
-      <p style="margin:0 0 14px">The ornamental bromeliads a reader will meet fall into a few clear types. These are the main ones; the family holds many more, and the pineapple has its own entry.</p>
+      <p style="margin:0 0 14px">The ornamental bromeliads fall into a few clear types. These are the main ones; the family holds many more.</p>
       <div class="varieties">
       <div class="variety"><h4>Guzmania — the Scarlet Star</h4>
         <figure class="variety-photo"><img src="img/img-131.jpg" alt="Guzmania" loading="lazy"><figcaption class="photo-credit">Photo: Nathaly 1106, CC0, via Wikimedia Commons</figcaption></figure>
@@ -11426,12 +11471,12 @@
       <div class="world-item"><strong>The Andes</strong> — the second centre of kinds, on the mountain slopes of Peru, Colombia and Ecuador, where bromeliads grow from low forest to 4,200 m (nearly 14,000 ft) up.</div>
       <div class="world-item"><strong>Mexico and Central America</strong> — the third centre, and the home of many <em>Tillandsia</em> air plants, which grow on trees, cacti and even telephone wires.</div>
       <div class="world-item"><strong>The American South</strong> — Spanish moss country. It hangs from southern live oak and bald cypress from coastal Virginia to Florida and west to Texas, and its grey garlands are the picture of the old Southern landscape. It takes nothing from its tree — it is not a parasite — and it shelters bats, warblers and spiders among its strands.</div>
-      <div class="world-item"><strong>Hawaii</strong> — the pineapple is the islands' symbol, though the plant is not native there; it was brought as a crop. Its story is told in full in the Pineapple entry.</div>
+      <div class="world-item"><strong>Hawaii</strong> — the pineapple is the islands' symbol, though the plant is not native there; it was brought as a crop.</div>
     </div></section>
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-bromeliad-tradition" aria-controls="panel-bromeliad-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-bromeliad-tradition" aria-controls="panel-bromeliad-tradition" aria-selected="true" data-tab="tradition">History</button>
         
         <button class="tab-btn" type="button" role="tab" id="tab-bromeliad-growing" aria-controls="panel-bromeliad-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11440,14 +11485,14 @@
       <li>Nearly every bromeliad is American. The one exception is <em>Pitcairnia feliciana</em>, a single species in tropical West Africa, thought to have reached Africa by long-distance dispersal about 12 million years ago.</li>
       <li>The family is named for Olof Bromelius (1639–1705), a Swedish doctor and botanist. The French botanist Charles Plumier described some of the first bromeliads known to European science in 1703, and Linnaeus gave the genus <em>Bromelia</em> its name in 1753.</li>
       <li>Europeans first met the family through the pineapple: Columbus found it grown by the Carib people in the West Indies on his second voyage in 1493, and within fifty years it was being grown in India and other warm countries. The ornamental kinds came later and caused a stir of their own — <em>Guzmania lingulata</em> reached Europe in 1776, <em>Aechmea fasciata</em> in 1828, and <em>Vriesea splendens</em> in 1840. In the 1800s, breeders in Belgium, France and the Netherlands began crossing them for the flower trade, and the hybrids they made are still among the most widely grown bromeliads today.</li>
-      <li>The peoples of the Americas used bromeliads long before any of that — for food, for fibre, for protection and for ceremony. The Inca, Aztec and Maya peoples all used them, and still do. Those uses are history, told here as history; no health benefit from bromeliads has been confirmed in studies of people.</li>
+      <li>The peoples of the Americas used bromeliads long before any of that — for food, for fibre, for protection and for ceremony. The Inca, Aztec and Maya peoples all used them, and still do. No health benefit from bromeliads has been confirmed in studies of people.</li>
     </ul>
       <h4 class="part-head">Craft</h4><ul>
       <li><strong>Spanish moss</strong> (<em>Tillandsia usneoides</em>) was the most used bromeliad of the old South. Native peoples — including the Houma, Seminole, Natchez and Koasati — stripped away its outer coat to get the tough, black, curly fibre inside. The fibre lashed together the poles of house frames, was mixed with mud to plaster walls, was woven into clothing and ropes, and was stuffed into mattresses, chairs and saddles. It was also mixed into clay for pottery — there is evidence of that use more than 3,000 years ago — and fresh moss was soaked and stuffed into dugout canoes to keep them from drying out and splitting.</li>
       <li>In the 1920s and 1930s, picking Spanish moss was steady work in Florida and Louisiana. The moss was baled, cleaned in moss gins, and sold to furniture and car makers for stuffing cushions and seats — Henry Ford stuffed the seats of the Model T with it. Foam brought that trade to an end. The moss is still gathered today for flower arranging and for craft, and by the Houma and Koasati for the making and decorating of small dolls.</li>
       <li><strong>Chaguar fibre</strong> comes from <em>Bromelia serra</em> and <em>Bromelia hieronymi</em>, two spiny bromeliads of the Gran Chaco in Argentina. Their strong fibre is a mainstay of the Wichí people's economy, woven into bags, nets and cloth.</li>
-      <li><strong>Piña cloth</strong> is woven from pineapple leaves, above all the Red Spanish type. It belongs to the Pineapple entry, where the full story is told.</li>
-      <li>The folk medicine is told as folk medicine, not as advice: Spanish moss was boiled to make a tea for chills and fever, and used on sprains, swollen joints, insect stings, cuts and muscle strains. No trial supports those uses, and they are not recommended.</li>
+      <li><strong>Piña cloth</strong> is woven from pineapple leaves, above all the Red Spanish type.</li>
+      <li>Spanish moss was boiled to make a tea for chills and fever, and used on sprains, swollen joints, insect stings, cuts and muscle strains. No trial supports those uses, and they are not recommended.</li>
     </ul></div>
       <div class="tab-panel" role="tabpanel" id="panel-bromeliad-growing" aria-labelledby="tab-bromeliad-growing" data-panel="growing" hidden><ul class="growing-lines">
       <li><strong>When to plant:</strong> In spring for pups and new plants; move them outdoors for the summer only once nights stay above 10 °C (50 °F), and bring them in before autumn nights fall to that</li>
@@ -11517,7 +11562,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-blueberry-tradition" aria-controls="panel-blueberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-blueberry-tradition" aria-controls="panel-blueberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-blueberry-health" aria-controls="panel-blueberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-blueberry-growing" aria-controls="panel-blueberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11614,7 +11659,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-raspberry-tradition" aria-controls="panel-raspberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-raspberry-tradition" aria-controls="panel-raspberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-raspberry-health" aria-controls="panel-raspberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-raspberry-growing" aria-controls="panel-raspberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11710,7 +11755,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-blackberry-tradition" aria-controls="panel-blackberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-blackberry-tradition" aria-controls="panel-blackberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-blackberry-health" aria-controls="panel-blackberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-blackberry-growing" aria-controls="panel-blackberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11804,7 +11849,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cranberry-tradition" aria-controls="panel-cranberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cranberry-tradition" aria-controls="panel-cranberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cranberry-health" aria-controls="panel-cranberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cranberry-growing" aria-controls="panel-cranberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11896,7 +11941,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-elderberry-tradition" aria-controls="panel-elderberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-elderberry-tradition" aria-controls="panel-elderberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-elderberry-health" aria-controls="panel-elderberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-elderberry-growing" aria-controls="panel-elderberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -11994,7 +12039,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-mulberry-tradition" aria-controls="panel-mulberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-mulberry-tradition" aria-controls="panel-mulberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mulberry-health" aria-controls="panel-mulberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-mulberry-growing" aria-controls="panel-mulberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12092,7 +12137,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-black-currant-tradition" aria-controls="panel-black-currant-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-black-currant-tradition" aria-controls="panel-black-currant-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-black-currant-health" aria-controls="panel-black-currant-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-black-currant-growing" aria-controls="panel-black-currant-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12189,7 +12234,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-gooseberry-tradition" aria-controls="panel-gooseberry-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-gooseberry-tradition" aria-controls="panel-gooseberry-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-gooseberry-health" aria-controls="panel-gooseberry-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-gooseberry-growing" aria-controls="panel-gooseberry-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12276,7 +12321,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-sea-buckthorn-tradition" aria-controls="panel-sea-buckthorn-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-sea-buckthorn-tradition" aria-controls="panel-sea-buckthorn-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sea-buckthorn-health" aria-controls="panel-sea-buckthorn-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sea-buckthorn-growing" aria-controls="panel-sea-buckthorn-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12364,7 +12409,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-schisandra-tradition" aria-controls="panel-schisandra-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-schisandra-tradition" aria-controls="panel-schisandra-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-schisandra-health" aria-controls="panel-schisandra-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-schisandra-growing" aria-controls="panel-schisandra-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12462,7 +12507,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-fig-tradition" aria-controls="panel-fig-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-fig-tradition" aria-controls="panel-fig-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-fig-health" aria-controls="panel-fig-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-fig-growing" aria-controls="panel-fig-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12566,7 +12611,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-grape-tradition" aria-controls="panel-grape-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-grape-tradition" aria-controls="panel-grape-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-grape-health" aria-controls="panel-grape-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-grape-growing" aria-controls="panel-grape-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12674,7 +12719,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-pomegranate-tradition" aria-controls="panel-pomegranate-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-pomegranate-tradition" aria-controls="panel-pomegranate-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-pomegranate-health" aria-controls="panel-pomegranate-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-pomegranate-growing" aria-controls="panel-pomegranate-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12791,7 +12836,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-olive-tradition" aria-controls="panel-olive-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-olive-tradition" aria-controls="panel-olive-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-olive-health" aria-controls="panel-olive-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-olive-growing" aria-controls="panel-olive-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -12901,7 +12946,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-kiwi-tradition" aria-controls="panel-kiwi-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-kiwi-tradition" aria-controls="panel-kiwi-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-kiwi-health" aria-controls="panel-kiwi-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-kiwi-growing" aria-controls="panel-kiwi-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13018,7 +13063,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-persimmon-tradition" aria-controls="panel-persimmon-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-persimmon-tradition" aria-controls="panel-persimmon-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-persimmon-health" aria-controls="panel-persimmon-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-persimmon-growing" aria-controls="panel-persimmon-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13107,7 +13152,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-breadfruit-tradition" aria-controls="panel-breadfruit-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-breadfruit-tradition" aria-controls="panel-breadfruit-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-breadfruit-health" aria-controls="panel-breadfruit-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-breadfruit-growing" aria-controls="panel-breadfruit-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13200,7 +13245,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-artichoke-tradition" aria-controls="panel-artichoke-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-artichoke-tradition" aria-controls="panel-artichoke-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-artichoke-health" aria-controls="panel-artichoke-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-artichoke-growing" aria-controls="panel-artichoke-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13301,7 +13346,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-asparagus-tradition" aria-controls="panel-asparagus-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-asparagus-tradition" aria-controls="panel-asparagus-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-asparagus-health" aria-controls="panel-asparagus-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-asparagus-growing" aria-controls="panel-asparagus-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13384,7 +13429,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-spinach-tradition" aria-controls="panel-spinach-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-spinach-tradition" aria-controls="panel-spinach-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-spinach-health" aria-controls="panel-spinach-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-spinach-growing" aria-controls="panel-spinach-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13494,7 +13539,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-fennel-tradition" aria-controls="panel-fennel-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-fennel-tradition" aria-controls="panel-fennel-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-fennel-health" aria-controls="panel-fennel-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-fennel-growing" aria-controls="panel-fennel-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13576,7 +13621,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-cinnamon-tradition" aria-controls="panel-cinnamon-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-cinnamon-tradition" aria-controls="panel-cinnamon-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cinnamon-health" aria-controls="panel-cinnamon-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-cinnamon-growing" aria-controls="panel-cinnamon-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13663,7 +13708,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-black-pepper-tradition" aria-controls="panel-black-pepper-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-black-pepper-tradition" aria-controls="panel-black-pepper-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-black-pepper-health" aria-controls="panel-black-pepper-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-black-pepper-growing" aria-controls="panel-black-pepper-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13746,7 +13791,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-vanilla-tradition" aria-controls="panel-vanilla-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-vanilla-tradition" aria-controls="panel-vanilla-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-vanilla-health" aria-controls="panel-vanilla-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-vanilla-growing" aria-controls="panel-vanilla-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13839,7 +13884,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-saffron-tradition" aria-controls="panel-saffron-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-saffron-tradition" aria-controls="panel-saffron-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-saffron-health" aria-controls="panel-saffron-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-saffron-growing" aria-controls="panel-saffron-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -13931,7 +13976,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-bay-laurel-tradition" aria-controls="panel-bay-laurel-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-bay-laurel-tradition" aria-controls="panel-bay-laurel-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-bay-laurel-health" aria-controls="panel-bay-laurel-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-bay-laurel-growing" aria-controls="panel-bay-laurel-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14017,7 +14062,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-lentils-tradition" aria-controls="panel-lentils-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-lentils-tradition" aria-controls="panel-lentils-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lentils-health" aria-controls="panel-lentils-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-lentils-growing" aria-controls="panel-lentils-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14104,7 +14149,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-chickpea-tradition" aria-controls="panel-chickpea-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-chickpea-tradition" aria-controls="panel-chickpea-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-chickpea-health" aria-controls="panel-chickpea-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-chickpea-growing" aria-controls="panel-chickpea-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14195,7 +14240,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-oats-tradition" aria-controls="panel-oats-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-oats-tradition" aria-controls="panel-oats-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-oats-health" aria-controls="panel-oats-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-oats-growing" aria-controls="panel-oats-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14315,7 +14360,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-quinoa-tradition" aria-controls="panel-quinoa-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-quinoa-tradition" aria-controls="panel-quinoa-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-quinoa-health" aria-controls="panel-quinoa-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-quinoa-growing" aria-controls="panel-quinoa-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14415,7 +14460,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-walnut-tradition" aria-controls="panel-walnut-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-walnut-tradition" aria-controls="panel-walnut-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-walnut-health" aria-controls="panel-walnut-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-walnut-growing" aria-controls="panel-walnut-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14520,7 +14565,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-sunflower-tradition" aria-controls="panel-sunflower-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-sunflower-tradition" aria-controls="panel-sunflower-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sunflower-health" aria-controls="panel-sunflower-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-sunflower-growing" aria-controls="panel-sunflower-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14608,7 +14653,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-tea-tradition" aria-controls="panel-tea-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-tea-tradition" aria-controls="panel-tea-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-tea-health" aria-controls="panel-tea-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-tea-growing" aria-controls="panel-tea-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14722,7 +14767,7 @@
 
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
-        <button class="tab-btn" type="button" role="tab" id="tab-coffee-tradition" aria-controls="panel-coffee-tradition" aria-selected="true" data-tab="tradition">Traditional Uses</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-coffee-tradition" aria-controls="panel-coffee-tradition" aria-selected="true" data-tab="tradition">History</button>
         <button class="tab-btn" type="button" role="tab" id="tab-coffee-health" aria-controls="panel-coffee-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
         <button class="tab-btn" type="button" role="tab" id="tab-coffee-growing" aria-controls="panel-coffee-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
       </div>
@@ -14962,6 +15007,61 @@
     if(bc) bc.appendChild(buildGardenTags(b));
   });
 
+  // Plant Families view: the same cards, grouped under family headings.
+  // Built from the tree's own family groups, so the families and their
+  // plants always match the tree. Plants run A-Z inside each family.
+  var familiesView = document.getElementById('familiesView');
+  var familiesGroups = document.getElementById('familiesGroups');
+  var familiesEmpty = document.getElementById('familiesEmpty');
+  var famCards = [];
+  var famBlocks = [];
+  var cardById = {};
+  cards.forEach(function(c){ cardById[c.getAttribute('data-id')] = c; });
+  families.forEach(function(f){
+    var fRoot = f.querySelector('.family-root');
+    var fName = (fRoot && fRoot.querySelector('h3')) ? fRoot.querySelector('h3').textContent : '';
+    var fLatin = (fRoot && fRoot.querySelector('.family-latin')) ? fRoot.querySelector('.family-latin').textContent : '';
+    var block = document.createElement('section');
+    block.className = 'family-block';
+    var head = document.createElement('div');
+    head.className = 'family-head';
+    var h = document.createElement('h3');
+    h.textContent = fName;
+    head.appendChild(h);
+    var lat = document.createElement('span');
+    lat.className = 'fam-latin';
+    lat.textContent = fLatin;
+    head.appendChild(lat);
+    var note = document.createElement('span');
+    note.className = 'fam-note';
+    head.appendChild(note);
+    block.appendChild(head);
+    var g = document.createElement('div');
+    g.className = 'grid';
+    block.appendChild(g);
+    var ids = [];
+    Array.prototype.forEach.call(f.querySelectorAll('.branch'), function(b){ ids.push(b.getAttribute('data-id')); });
+    ids.sort(function(a, b){
+      var na = (cardById[a] ? cardById[a].getAttribute('data-name') : a).toLowerCase();
+      var nb = (cardById[b] ? cardById[b].getAttribute('data-name') : b).toLowerCase();
+      return na < nb ? -1 : na > nb ? 1 : 0;
+    });
+    var n = 0;
+    ids.forEach(function(id){
+      var src = cardById[id];
+      if(!src) return;
+      var clone = src.cloneNode(true);
+      clone.addEventListener('click', function(){ openEntry(id); });
+      clone.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openEntry(id); } });
+      g.appendChild(clone);
+      famCards.push(clone);
+      n++;
+    });
+    note.textContent = n === 1 ? '1 plant' : n + ' plants';
+    familiesGroups.appendChild(block);
+    famBlocks.push(block);
+  });
+
   function matches(el){
     if(state.q){
       var hay = (el.getAttribute('data-search')+' '+el.getAttribute('data-name')+' '+el.getAttribute('data-latin')+' '+(entryText[el.getAttribute('data-id')]||'')).toLowerCase();
@@ -15063,8 +15163,8 @@
     return n;
   }
   function updateCounts(visible){
-    var btn = document.getElementById('filtersBtn');
-    if(btn){ var n = activeFilterCount(); btn.textContent = n ? ('Filters \u00b7 ' + n + ' on') : 'Filters'; }
+    var badge = document.getElementById('filterCount');
+    if(badge){ var n = activeFilterCount(); badge.hidden = n===0; badge.textContent = n; }
     var show = document.getElementById('showPlantsBtn');
     if(show) show.textContent = 'Show ' + visible + (visible===1 ? ' plant' : ' plants');
   }
@@ -15107,9 +15207,14 @@
       }
     });
     branches.forEach(function(b){ b.style.display = matches(b) ? '' : 'none'; });
+    famCards.forEach(function(c){ c.style.display = matches(c) ? '' : 'none'; });
     families.forEach(function(f){
       var any = Array.prototype.some.call(f.querySelectorAll('.branch'), function(b){ return b.style.display!=='none'; });
       f.style.display = any ? '' : 'none';
+    });
+    famBlocks.forEach(function(blk){
+      var anyFam = Array.prototype.some.call(blk.querySelectorAll('.card'), function(c){ return c.style.display!=='none'; });
+      blk.hidden = !anyFam;
     });
     // Order what is shown by search rank, best first; ties keep the
     // order the entries already sit in (A-Z). Cards move inside the
@@ -15132,6 +15237,13 @@
       g.sort(function(a, b){ return (a.r-b.r) || (a.i-b.i); });
       g.forEach(function(x){ branchParents[gi].appendChild(x.el); });
     });
+    famBlocks.forEach(function(blk){
+      var gEl = blk.querySelector('.grid');
+      if(!gEl) return;
+      var items = Array.prototype.slice.call(gEl.querySelectorAll('.card')).map(function(c, i){ return { el:c, i:i, r:searchRank(c) }; });
+      items.sort(function(a, b){ return (a.r-b.r) || (a.i-b.i); });
+      items.forEach(function(x){ gEl.appendChild(x.el); });
+    });
     var treeGroups = document.getElementById('treeGroups');
     if(treeGroups){
       var rankedFams = families.map(function(f, i){
@@ -15148,12 +15260,14 @@
       rankedFams.forEach(function(x){ treeGroups.appendChild(x.el); });
     }
     empty.classList.toggle('show', visible===0 && !state.season);
+    familiesEmpty.classList.toggle('show', visible===0);
     treeEmpty.classList.toggle('show', visible===0);
     countLine.textContent = visible===1 ? '1 entry' : visible + ' entries';
     refreshPicked();
     refreshHealthBlock();
     updateCounts(visible);
     document.body.classList.toggle('grow-open', !!(state.plant || state.season || state.lifespan || state.sun || state.space || state.water || state.soil || state.climate));
+    requestAnimationFrame(drawWires);
   }
 
   // Category rectangles in one row: a collapsed rectangle is highlighted
@@ -15554,15 +15668,25 @@
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEntries(); });
 
-  // View switch: Index / Botanical Families — same entries, same filters
-  var currentView = 'index';
+  // View switch: All Plants / Plant Families / Family Tree — three looks
+  // at the same entries, same search, same filters.
+  var currentView = 'all';
+  var VIEW_NOTES = {
+    all: 'Every plant in one list, A–Z.',
+    families: 'The same plants, grouped under their family. Families A–Z, plants A–Z inside.',
+    tree: 'The same plants, drawn by how the families connect.'
+  };
+  var stageNote = document.getElementById('stageNote');
   function setView(v){
     currentView = v;
     document.querySelectorAll('.view-btn').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-view')===v ? 'true':'false'); });
-    indexSection.style.display = (v==='index') ? '' : 'none';
+    indexSection.style.display = (v==='all') ? '' : 'none';
+    familiesView.hidden = (v!=='families');
     treeView.hidden = (v!=='tree');
+    if(stageNote) stageNote.textContent = VIEW_NOTES[v] || '';
     homeAddress();
     window.scrollTo(0,0);
+    requestAnimationFrame(drawWires);
   }
   document.querySelectorAll('.view-btn').forEach(function(b){
     b.addEventListener('click', function(){ setView(b.getAttribute('data-view')); });
@@ -15635,6 +15759,42 @@
     });
   });
   document.getElementById('treeReset').addEventListener('click', clearTreeLight);
+
+  // Family Tree wires: SVG curves from the library root to each family,
+  // and from each family to its plants. Desktop only; on small screens
+  // the tree stacks and the wires stay off.
+  var treeBox = document.getElementById('treeBox');
+  var treeWires = document.getElementById('treeWires');
+  var treeRoot = document.getElementById('treeRoot');
+  function drawWires(){
+    if(!treeBox || !treeWires || !treeRoot) return;
+    if(currentView!=='tree' || window.innerWidth<=700){ treeWires.innerHTML=''; return; }
+    var boxR = treeBox.getBoundingClientRect();
+    treeWires.setAttribute('viewBox', '0 0 ' + treeBox.offsetWidth + ' ' + treeBox.offsetHeight);
+    var paths = '';
+    function rel(el){ var r = el.getBoundingClientRect(); return { l:r.left-boxR.left, r:r.right-boxR.left, t:r.top-boxR.top, b:r.bottom-boxR.top, cy:r.top-boxR.top+r.height/2 }; }
+    var rp = rel(treeRoot);
+    families.forEach(function(f){
+      if(f.style.display==='none') return;
+      var rootEl = f.querySelector('.family-root');
+      if(!rootEl) return;
+      var fp = rel(rootEl);
+      var mid1 = rp.r + (fp.l - rp.r) / 2;
+      paths += '<path d="M' + rp.r + ' ' + rp.cy + ' C' + mid1 + ' ' + rp.cy + ', ' + mid1 + ' ' + fp.cy + ', ' + fp.l + ' ' + fp.cy + '"/>';
+      var fx = fp.l + 24;
+      Array.prototype.forEach.call(f.querySelectorAll('.branch'), function(b){
+        if(b.style.display==='none') return;
+        var bp = rel(b);
+        var my = (fp.b + bp.cy) / 2;
+        paths += '<path d="M' + fx + ' ' + fp.b + ' C' + fx + ' ' + my + ', ' + bp.l + ' ' + my + ', ' + bp.l + ' ' + bp.cy + '"/>';
+      });
+    });
+    treeWires.innerHTML = paths;
+  }
+  window.addEventListener('resize', function(){ requestAnimationFrame(drawWires); });
+  // The root stays pinned near the top of the screen while the reader
+  // scrolls down the tree, so the lines are redrawn on scroll too.
+  window.addEventListener('scroll', function(){ requestAnimationFrame(drawWires); }, {passive:true});
 
   // Sliding filter panel: opens over the grid, closes back to the
   // exact scroll position the reader left.
