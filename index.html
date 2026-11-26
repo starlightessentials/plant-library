@@ -288,8 +288,8 @@
   /* Entry tabs */
   .entry-view{max-width:880px;margin-left:auto;margin-right:auto}
   .tabs{margin-top:30px}
-  .tab-list{display:flex;gap:8px;flex-wrap:wrap;border-bottom:2px solid #d8d0bd;padding-bottom:12px}
-  .tab-btn{border:1px solid #44506A;background:#fff;color:#44506A;border-radius:8px;padding:9px 18px;font-size:14.5px;font-weight:600;min-height:44px}
+  .tab-list{display:flex;gap:8px;flex-wrap:nowrap;border-bottom:2px solid #d8d0bd;padding-bottom:12px}
+  .tab-btn{border:1px solid #44506A;background:#fff;color:#44506A;border-radius:8px;padding:9px 18px;font-size:14.5px;font-weight:600;min-height:44px;flex-shrink:1;min-width:0}
   .tab-btn[aria-selected="true"]{background:#44506A;color:#fff}
   .tab-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
   .tab-panel{padding:24px 4px 4px;max-width:78ch}
@@ -298,6 +298,8 @@
   .tab-panel li{margin-bottom:10px;line-height:1.65;font-size:16.5px}
   .tab-panel li:last-child{margin-bottom:0}
   .tab-panel p{line-height:1.65;font-size:16.5px}
+  @media (max-width:560px){ .tab-btn{padding:9px 10px;font-size:13px} }
+  @media (max-width:400px){ .tab-btn{padding:9px 8px;font-size:12px} }
   .growing-lines{list-style:none;padding-left:0 !important}
   .growing-lines li{margin-bottom:8px}
   .growing-lines strong{font-weight:600}
@@ -379,6 +381,17 @@
   #healthSection.is-blocked .chip{pointer-events:none}
   @media (max-width:560px){ .filter-panel{width:88vw} }
   @media (prefers-reduced-motion:reduce){ .filter-panel{transition:none} }
+  /* Filter view toggle: Health benefits / Growing conditions */
+  .filter-toggle{display:flex;gap:8px;padding:14px 0 4px}
+  .ft-btn{flex:1 1 0;min-width:0;border:1px solid #44506A;background:#fff;color:#44506A;border-radius:999px;padding:9px 10px;font-size:13.5px;font-weight:600;min-height:44px}
+  .ft-btn[aria-pressed="true"]{background:#44506A;color:#fff}
+  .ft-btn:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .ft-hidden-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#766f80;margin:10px 0 6px}
+  .ft-hidden-chips{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:6px}
+  .ft-hidden-chips[hidden]{display:none}
+  .ft-pick{border:1px solid #766f80;background:#efe8d6;color:#44506A;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;min-height:30px}
+  .ft-pick:focus-visible{outline:3px solid #44506A;outline-offset:2px}
+  .panel-section[hidden]{display:none}
 
   /* Terpene Guide */
   .band-nav{margin:14px auto 0}
@@ -560,6 +573,12 @@
           <button class="panel-close" id="panelClose" type="button" aria-label="Close filters">&times;</button>
         </div>
         <div class="panel-body">
+          <div class="filter-toggle" role="group" aria-label="Filter view">
+            <button class="ft-btn" type="button" id="ftHealthBtn" aria-pressed="true">Health benefits</button>
+            <button class="ft-btn" type="button" id="ftGrowBtn" aria-pressed="false">Growing conditions</button>
+          </div>
+          <p class="ft-hidden-label" id="ftHiddenLabel" hidden>Also on:</p>
+          <div class="ft-hidden-chips" id="ftHiddenChips"></div>
           <section class="panel-section" aria-label="Use">
             <h3 class="panel-label">Use</h3>
             <div class="chips"><button class="chip class-chip" type="button" data-class="culinary" aria-pressed="false">Culinary</button><button class="chip class-chip" type="button" data-class="medicinal" aria-pressed="false">Medicinal</button><button class="chip class-chip" type="button" data-class="ornamental" aria-pressed="false">Ornamental</button></div>
@@ -589,7 +608,7 @@
             <p class="fg-fineprint">Tags only show what has been tested.</p>
           </section>
 
-          <section class="panel-section" aria-label="Grow Guide">
+          <section class="panel-section" id="growSection" aria-label="Grow Guide">
             <h3 class="panel-label">Grow Guide</h3>
             <div class="p-group">
               <p class="panel-grouplabel">Season</p>
@@ -633,11 +652,11 @@
         </div>
         <div class="panel-foot">
           <button class="clear-all-btn" id="clearFilters" type="button">Clear all</button>
-          <button class="show-plants-btn" id="showPlantsBtn" type="button">Show 177 plants</button>
+          <button class="show-plants-btn" id="showPlantsBtn" type="button">Show 183 plants</button>
         </div>
       </aside>
 
-      <p class="count-line" id="countLine" aria-live="polite">177 entries</p>
+      <p class="count-line" id="countLine" aria-live="polite">183 entries</p>
       <p class="stage-note" id="stageNote">Every plant in one list, A–Z.</p>
     </section>
 
@@ -1554,6 +1573,41 @@
           <div class="card-tags"><span class="use-tags"><span class="class-badge">Culinary</span><span class="class-badge">Medicinal</span></span></div>
         </article>
 
+<article class="card" tabindex="0" data-id="birkin" data-name="philodendron 'birkin'" data-latin="philodendron 'birkin'" data-letter="P" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade shade" data-space="planter indoors" data-water="regular" data-soil="rich well-drained" data-climate="frost-tender" data-search="philodendron birkin white wave rojo congo pink birkin pinstripe houseplant spring ornamental" data-classes="ornamental" data-usedas="" data-lifespan="perennial">
+          <figure class="card-photo"><img src="img/img-278.jpg" alt="Philodendron 'Birkin'" loading="lazy"><figcaption class="photo-credit">Photo: Yercaud-elango, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Philodendron 'Birkin'</h3>
+          <p class="latin">Philodendron 'Birkin'</p>
+          <div class="card-tags"><span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+        </article>
+
+<article class="card" tabindex="0" data-id="pink-princess" data-name="philodendron 'pink princess'" data-latin="philodendron erubescens 'pink princess'" data-letter="P" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="rich well-drained" data-climate="frost-tender" data-search="philodendron pink princess ppp philodendron erubescens blushing philodendron pink houseplant spring ornamental" data-classes="ornamental" data-usedas="" data-lifespan="perennial">
+          <figure class="card-photo"><img src="img/img-279.jpg" alt="Philodendron 'Pink Princess'" loading="lazy"><figcaption class="photo-credit">Photo: Srikandi73, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Philodendron 'Pink Princess'</h3>
+          <p class="latin">Philodendron erubescens 'Pink Princess'</p>
+          <div class="card-tags"><span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+        </article>
+
+<article class="card" tabindex="0" data-id="ring-of-fire" data-name="philodendron 'ring of fire'" data-latin="philodendron 'ring of fire'" data-letter="P" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="well-drained" data-climate="frost-tender" data-search="philodendron ring of fire hendersons pride wendlandii tortum houseplant spring ornamental" data-classes="ornamental" data-usedas="" data-lifespan="perennial">
+          <figure class="card-photo"><img src="img/img-282.jpg" alt="Philodendron 'Ring of Fire'" loading="lazy"><figcaption class="photo-credit">Photo: Yercaud-elango, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Philodendron 'Ring of Fire'</h3>
+          <p class="latin">Philodendron 'Ring of Fire'</p>
+          <div class="card-tags"><span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+        </article>
+
+<article class="card" tabindex="0" data-id="gloriosum" data-name="philodendron gloriosum" data-latin="philodendron gloriosum" data-letter="P" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="well-drained" data-climate="frost-tender" data-search="philodendron gloriosum velvet dark form zebra pink back round form houseplant spring ornamental" data-classes="ornamental" data-usedas="" data-lifespan="perennial">
+          <figure class="card-photo"><img src="img/img-280.jpg" alt="Philodendron gloriosum" loading="lazy"><figcaption class="photo-credit">Photo: Myplantcollection, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Philodendron gloriosum</h3>
+          <p class="latin">Philodendron gloriosum</p>
+          <div class="card-tags"><span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+        </article>
+
+<article class="card" tabindex="0" data-id="micans" data-name="philodendron micans" data-latin="philodendron hederaceum var. hederaceum" data-letter="P" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade shade" data-space="planter indoors" data-water="regular" data-soil="rich well-drained" data-climate="frost-tender" data-search="philodendron micans philodendron hederaceum var hederaceum velvet heartleaf micans lime velvet leaf houseplant spring ornamental" data-classes="ornamental" data-usedas="" data-lifespan="perennial">
+          <figure class="card-photo"><img src="img/img-277.jpg" alt="Philodendron micans" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Philodendron micans</h3>
+          <p class="latin">Philodendron hederaceum var. hederaceum</p>
+          <div class="card-tags"><span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+        </article>
+
 <article class="card" tabindex="0" data-id="pineapple" data-name="pineapple" data-latin="ananas comosus" data-letter="P" data-benefits="immune-health digestive-health" data-nutrients="vitamin-c" data-seasons="" data-plant="spring summer" data-sun="full-sun" data-space="ground planter" data-water="low" data-soil="sandy well-drained" data-climate="heat-loving frost-tender" data-search="pineapple ananas comosus bromeliad bromeliaceae bromelain md-2 del monte gold smooth cayenne queen red spanish sugarloaf kona singapore spanish pernambuco pina cloth tepache pina colada hawaii dole vitamin c manganese immune digestion spring summer craft" data-classes="culinary" data-usedas="fresh cooked" data-lifespan="perennial">
           <figure class="card-photo"><img src="img/img-098.jpg" alt="Pineapple" loading="lazy"><figcaption class="photo-credit">Photo: 總統府 (Presidential Office, Taiwan), CC BY 2.0, via Wikimedia Commons</figcaption></figure>
           <h3>Pineapple</h3>
@@ -1799,6 +1853,13 @@
           <div class="card-tags"><span class="use-tags"><span class="class-badge">Culinary</span></span><span class="card-health-row"><span class="mini tag-eye">Eye Health</span><span class="mini tag-heart">Heart Health</span></span></div>
         </article>
 
+        <article class="card" tabindex="0" data-id="tree-philodendron" data-name="tree philodendron" data-latin="philodendron bipinnatifidum" data-letter="T" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade shade" data-space="ground planter indoors" data-water="regular" data-soil="rich moist well-drained" data-climate="frost-tender" data-search="tree philodendron philodendron bipinnatifidum thaumatophyllum bipinnatifidum philodendron selloum hope guaimbe monkey banana houseplant spring ornamental" data-classes="ornamental" data-usedas="" data-lifespan="perennial">
+          <figure class="card-photo"><img src="img/img-281.jpg" alt="Tree Philodendron" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+          <h3>Tree Philodendron</h3>
+          <p class="latin">Philodendron bipinnatifidum</p>
+          <div class="card-tags"><span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+        </article>
+
         <article class="card" tabindex="0" data-id="turnip" data-name="turnip" data-latin="brassica rapa" data-letter="T" data-benefits="immune-health eye-health bone-health" data-nutrients="vitamin-a vitamin-c calcium potassium" data-seasons="spring autumn" data-plant="spring" data-sun="full-sun" data-space="ground planter" data-water="high" data-soil="well-drained" data-climate="cool-season" data-search="turnip brassica rapa root greens leaves purple top white globe hakurei golden ball seven top purple top milan neeps immune eye bone spring autumn craft" data-classes="culinary" data-usedas="fresh cooked" data-lifespan="biennial">
           <figure class="card-photo"><img src="img/img-086.jpg" alt="Turnip" loading="lazy"><figcaption class="photo-credit">Photo: thebittenword.com, CC BY 2.0, via Wikimedia Commons</figcaption></figure>
           <h3>Turnip</h3>
@@ -1999,10 +2060,28 @@
                 <span class="branch-latin">Syngonium podophyllum 'Gold Allusion'</span>
                 <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
             </div>
+            <div class="branch" tabindex="0" data-id="birkin" data-name="Philodendron 'Birkin'" data-latin="philodendron 'birkin'" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade shade" data-space="planter indoors" data-water="regular" data-soil="rich well-drained" data-climate="frost-tender" data-classes="ornamental" data-search="philodendron birkin white wave rojo congo pink birkin pinstripe houseplant spring ornamental" data-usedas="" data-lifespan="perennial">
+              <div class="branch-card">
+                <span class="branch-name">Philodendron 'Birkin'</span>
+                <span class="branch-latin">Philodendron 'Birkin'</span>
+                <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+            </div>
+            <div class="branch" tabindex="0" data-id="gloriosum" data-name="Philodendron gloriosum" data-latin="philodendron gloriosum" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="well-drained" data-climate="frost-tender" data-classes="ornamental" data-search="philodendron gloriosum velvet dark form zebra pink back round form houseplant spring ornamental" data-usedas="" data-lifespan="perennial">
+              <div class="branch-card">
+                <span class="branch-name">Philodendron gloriosum</span>
+                <span class="branch-latin">Philodendron gloriosum</span>
+                <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+            </div>
             <div class="branch" tabindex="0" data-id="heartleaf-philodendron" data-name="Heartleaf Philodendron" data-latin="philodendron hederaceum" data-benefits="" data-seasons="" data-plant="" data-sun="part-shade shade" data-space="planter indoors" data-water="regular" data-soil="well-drained" data-climate="" data-classes="ornamental" data-search="heartleaf philodendron philodendron hederaceum the sweetheart plant: a trailing or climbing vine with glossy, heart-shaped leaves, two to four inches across, that unfold bronze and settle to deep green. one of the most forgiving houseplants ever sold — and one of the" data-usedas="" data-lifespan="perennial">
               <div class="branch-card">
                 <span class="branch-name">Heartleaf Philodendron</span>
                 <span class="branch-latin">Philodendron hederaceum</span>
+                <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+            </div>
+            <div class="branch" tabindex="0" data-id="micans" data-name="Philodendron micans" data-latin="philodendron hederaceum var. hederaceum" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade shade" data-space="planter indoors" data-water="regular" data-soil="rich well-drained" data-climate="frost-tender" data-classes="ornamental" data-search="philodendron micans philodendron hederaceum var hederaceum velvet heartleaf micans lime velvet leaf houseplant spring ornamental" data-usedas="" data-lifespan="perennial">
+              <div class="branch-card">
+                <span class="branch-name">Philodendron micans</span>
+                <span class="branch-latin">Philodendron hederaceum var. hederaceum</span>
                 <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
             </div>
             <div class="branch" tabindex="0" data-id="monstera" data-name="Monstera" data-latin="monstera deliciosa" data-benefits="" data-seasons="" data-plant="" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="well-drained" data-climate="" data-classes="culinary" data-search="monstera monstera deliciosa swiss cheese plant, ceriman, mexican breadfruit, or — mistakenly — split-leaf philodendron. a monstera grows large and bold indoors. in the wild it is a climbing vine of the tropical forest, scrambling up tree t craft floral arrangements leaves" data-usedas="fresh" data-lifespan="perennial">
@@ -2017,10 +2096,28 @@
                 <span class="branch-latin">Spathiphyllum wallisii</span>
                 <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
             </div>
+            <div class="branch" tabindex="0" data-id="pink-princess" data-name="Philodendron 'Pink Princess'" data-latin="philodendron erubescens 'pink princess'" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="rich well-drained" data-climate="frost-tender" data-classes="ornamental" data-search="philodendron pink princess ppp philodendron erubescens blushing philodendron pink houseplant spring ornamental" data-usedas="" data-lifespan="perennial">
+              <div class="branch-card">
+                <span class="branch-name">Philodendron 'Pink Princess'</span>
+                <span class="branch-latin">Philodendron erubescens 'Pink Princess'</span>
+                <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+            </div>
             <div class="branch" tabindex="0" data-id="pothos" data-name="Pothos" data-latin="epipremnum aureum" data-benefits="" data-seasons="" data-plant="" data-sun="part-shade shade" data-space="planter indoors" data-water="regular" data-soil="moist" data-climate="" data-classes="ornamental" data-search="pothos epipremnum aureum golden pothos — also called devil's ivy and hunter's robe. a glossy vine with heart-shaped green leaves marbled in gold, so hard to kill that folklore gave it the devil's name. a common first houseplant" data-usedas="" data-lifespan="perennial">
               <div class="branch-card">
                 <span class="branch-name">Pothos</span>
                 <span class="branch-latin">Epipremnum aureum</span>
+                <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+            </div>
+            <div class="branch" tabindex="0" data-id="ring-of-fire" data-name="Philodendron 'Ring of Fire'" data-latin="philodendron 'ring of fire'" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade" data-space="planter indoors" data-water="regular" data-soil="well-drained" data-climate="frost-tender" data-classes="ornamental" data-search="philodendron ring of fire hendersons pride wendlandii tortum houseplant spring ornamental" data-usedas="" data-lifespan="perennial">
+              <div class="branch-card">
+                <span class="branch-name">Philodendron 'Ring of Fire'</span>
+                <span class="branch-latin">Philodendron 'Ring of Fire'</span>
+                <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
+            </div>
+            <div class="branch" tabindex="0" data-id="tree-philodendron" data-name="Tree Philodendron" data-latin="philodendron bipinnatifidum" data-benefits="" data-nutrients="" data-seasons="" data-plant="spring" data-sun="part-shade shade" data-space="ground planter indoors" data-water="regular" data-soil="rich moist well-drained" data-climate="frost-tender" data-classes="ornamental" data-search="tree philodendron philodendron bipinnatifidum thaumatophyllum bipinnatifidum philodendron selloum hope guaimbe monkey banana houseplant spring ornamental" data-usedas="" data-lifespan="perennial">
+              <div class="branch-card">
+                <span class="branch-name">Tree Philodendron</span>
+                <span class="branch-latin">Philodendron bipinnatifidum</span>
                 <span class="use-tags"><span class="class-badge">Ornamental</span></span></div>
             </div>
             <div class="branch" tabindex="0" data-id="zz-plant" data-name="ZZ Plant" data-latin="zamioculcas zamiifolia" data-benefits="" data-seasons="" data-plant="" data-sun="part-shade shade" data-space="planter indoors" data-water="low" data-soil="well-drained" data-climate="" data-classes="ornamental" data-search="zz plant zamioculcas zamiifolia zanzibar gem, aroid palm, emerald palm, eternity plant — or simply the zz. the zz plant is built for neglect. from the dry grasslands and forest edges of eastern africa, it is built for neglect: it stores its own w" data-usedas="" data-lifespan="perennial">
@@ -3972,7 +4069,7 @@
       <li>Seed Savers Exchange — Cherokee Purple provenance; Appalachian Seeds catalogue variety notes</li>
     </ul></section>
 
-    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="thyme">← Thyme</button><button class="nav-btn" type="button" data-open="turnip">Turnip →</button></nav>
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="thyme">← Thyme</button><button class="nav-btn" type="button" data-open="tree-philodendron">Tree Philodendron →</button></nav>
   </article>
 
   <!-- ENTRY: ONION -->
@@ -10364,6 +10461,14 @@
       <p class="intro">The sweetheart plant: a trailing or climbing vine with glossy, heart-shaped leaves, two to four inches across, that unfold bronze and settle to deep green. One of the most forgiving houseplants ever sold — and one of the first to be sold to everyone.</p>
     </div>
 
+    <section class="entry-section"><h3>Cultivars</h3>
+      <div class="varieties">
+      <div class="variety"><h4>'Brasil'</h4>
+        <figure class="variety-photo"><img src="img/img-283.jpg" alt="'Brasil'" loading="lazy"><figcaption class="photo-credit">Photo: David Stang, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+        <p>The best-known form of this plant. Every heart-shaped leaf is dark green at the edges with a band of lime or yellow down the middle, and no two leaves are quite alike. It was not bred: a single plant with green and yellow-green leaves turned up in 1991 among plain heartleaf plants in a growing house in Holambra, Brazil, and was spotted by Ruben Ernesto Acosta. Cuttings taken from it over several generations showed the stripe came back true every time. A plant patent was granted in the United States in 2002, and it has since expired — every 'Brasil' sold today descends from that one plant. The name is the Portuguese spelling of Brazil, and the green and yellow match the Brazilian flag. It is kept going by cuttings only, since seed would not carry the pattern. It needs bright, indirect light to hold its stripe: in a dim spot the new leaves come plain green, and a stem that has gone all green rarely colours up again — cut it back to the last striped leaf. Its care and its toxicity are the same as the plain plant's.</p></div>
+      </div>
+    </section>
+
     <div class="tabs" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Entry sections">
         <button class="tab-btn" type="button" role="tab" id="tab-heartleaf-philodendron-tradition" aria-controls="panel-heartleaf-philodendron-tradition" aria-selected="true" data-tab="tradition">History</button>
@@ -10404,6 +10509,7 @@
       <li>Wolverton (1989) — NASA Clean Air Study, sealed-chamber tests</li>
       <li>Cummings &amp; Waring (2019) — review of sealed-chamber plant air studies and real rooms</li>
       <li>ASPCA — Philodendron hederaceum toxicity (calcium oxalate crystals)</li>
+      <li>Acosta (2002) — US Plant Patent 12,956, Philodendron 'Brasil'</li>
     </ul></section>
 
     <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="hawthorn">← Hawthorn</button><button class="nav-btn" type="button" data-open="hops">Hops →</button></nav>
@@ -11362,7 +11468,7 @@
     <li>National Museum of Ireland — the carved “ghost turnip” of Fintown, Co. Donegal (c. 1900) and the Samhain lantern tradition</li>
       </ul></section>
 
-    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="tomato">← Tomato</button><button class="nav-btn" type="button" data-open="valerian">Valerian →</button></nav>
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="tree-philodendron">← Tree Philodendron</button><button class="nav-btn" type="button" data-open="valerian">Valerian →</button></nav>
   </article>
 
   <!-- ENTRY: RADISH -->
@@ -12287,7 +12393,7 @@
       <li>UNESCO (2023) — Aklan piña handloom weaving, Representative List of the Intangible Cultural Heritage of Humanity</li>
     </ul></section>
 
-    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="persimmon">← Persimmon</button><button class="nav-btn" type="button" data-open="plantain">Plantain →</button></nav>
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="micans">← Philodendron micans</button><button class="nav-btn" type="button" data-open="plantain">Plantain →</button></nav>
   </article>
 
   <article class="entry-view" id="entry-bromeliad" aria-label="Bromeliad">
@@ -14000,7 +14106,7 @@
       <li>Seattle Japanese Garden (2019) — Persimmon: the divine fruit of autumn — the name, hoshigaki, and the fruit's place in Japanese autumn</li>
     </ul></section>
 
-    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="peppers">← Peppers</button><button class="nav-btn" type="button" data-open="pineapple">Pineapple →</button></nav>
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="peppers">← Peppers</button><button class="nav-btn" type="button" data-open="birkin">Philodendron 'Birkin' →</button></nav>
   </article>
 
 <article class="entry-view" id="entry-breadfruit" aria-label="Breadfruit">
@@ -20632,6 +20738,406 @@
     <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="hops">← Hops</button><button class="nav-btn" type="button" data-open="kale">Kale →</button></nav>
   </article>
 
+
+  <article class="entry-view" id="entry-birkin" aria-label="Philodendron 'Birkin'">
+    <button class="back-btn" type="button" data-back>← Back to the library</button>
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-278.jpg" alt="Philodendron 'Birkin'" loading="lazy"><figcaption class="photo-credit">Photo: Yercaud-elango, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+      <h2>Philodendron 'Birkin'</h2>
+      <p class="latin">Philodendron 'Birkin'</p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
+      <p class="intro">A compact, upright houseplant with dark green, glossy leaves striped with fine cream pinstripes. No two leaves carry the same pattern, and the stripes grow stronger as the plant ages. It stands on its own — it does not climb or trail — so it fits a desk, a tabletop or a shelf. It is grown for its leaves alone — it has no food, medicine or oil use.</p>
+    </div>
+
+    <section class="entry-section"><h3>Cultivars</h3>
+      <div class="varieties">
+      <div class="variety"><h4>'Pink Birkin'</h4>
+        <p>A pink-striped sport, with pink striping in place of the usual cream. It is a nursery trade name, and no registration was found for it in this round.</p></div>
+      </div>
+    </section>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Entry sections">
+        <button class="tab-btn" type="button" role="tab" id="tab-birkin-tradition" aria-controls="panel-birkin-tradition" aria-selected="true" data-tab="tradition">History</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-birkin-health" aria-controls="panel-birkin-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-birkin-growing" aria-controls="panel-birkin-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-birkin-tradition" aria-labelledby="tab-birkin-tradition" data-panel="tradition"><ul>
+      <li>'Birkin' is not a wild plant. It came into the trade in 2010, and where it came from is still not settled: it is believed to be a chance change — a sport — of the dark-leaved 'Rojo Congo', or a cross of the cultivars 'Congo' and 'Imperial Green'. Either way, its roots go back to the rainforest philodendrons of Central and South America, and it is also sold under the name 'White Wave'. The stripes come from two kinds of cells growing side by side in each leaf, one dark green and one pale. Because the pattern lives in that mix, it is unsteady: a leaf or a whole stem can go back to plain dark red-green, the look of its parent 'Rojo Congo', and low light fades the stripes. Growers prize it all the same, and it became one of the most loved houseplants of the 2010s and 2020s.</li>
+    </ul>
+</div>
+      <div class="tab-panel" role="tabpanel" id="panel-birkin-health" aria-labelledby="tab-birkin-health" data-panel="health" hidden><ul>
+      <li>No health benefit is earned. No human trial tests this plant for any health use, and no traditional medicine record was found for it. It is grown for its leaves.</li>
+    </ul></div>
+      <div class="tab-panel" role="tabpanel" id="panel-birkin-growing" aria-labelledby="tab-birkin-growing" data-panel="growing" hidden><ul class="growing-lines">
+      <li><strong>When to plant:</strong> Spring, when growth starts again</li>
+      <li><strong>Light:</strong> Bright, filtered light; too much sun scorches the leaves, and low light fades the stripes</li>
+      <li><strong>Soil:</strong> Moist, well-drained loam or sand, slightly acid to neutral</li>
+      <li><strong>Water:</strong> Water when the top inch or two of soil is dry; do not let the pot sit wet</li>
+      <li><strong>Environment:</strong> Warm and humid, 65–85°F and 50–60% humidity; not frost-tolerant; keep away from cold drafts</li>
+      <li><strong>Space:</strong> Pot on a desk, tabletop or shelf; no pole needed</li>
+    </ul>
+      <h4 class="part-head">Garden notes</h4><ul>
+      <li>A self-heading plant — all its leaves rise from one tight crown — 6 inches to 3 feet tall and as wide. The white-striped new leaves open pale and darken as they age. Water at soil level, not over the leaves, since wet leaves can spot. Feed with a balanced liquid feed at half strength every two to three weeks in spring and summer. Brown leaf tips mean the air is too dry. Watch for spider mites, mealybugs, aphids and scale, and check the roots if the leaves yellow — overwatering rots them. Repot every year or two in spring.</li>
+      <li>The one caution that matters: a cutting may not keep the stripes. Because the pattern comes from two kinds of cells growing side by side, a new plant can grow back plain dark green, like its parent 'Rojo Congo'. Cuttings from the most strongly striped stems give the best chance of keeping the pattern.</li>
+    </ul>
+      <h4 class="part-head">Propagation</h4><p>Stem cuttings, in spring or summer when the plant is growing strongly. Cut a stem piece with at least one node — the small bump where a leaf joins the stem — and two or three leaves, let the cut end dry for a few hours, then set it in water or moist soil.</p>
+</div>
+    </div>
+
+    <section class="entry-section"><h3>Safety</h3><ul>
+      <li>Do not eat any part of this plant, and keep it away from children and pets. All philodendrons hold tiny needle-shaped crystals of calcium oxalate in their leaves, stems and roots. Chewing a leaf burns and swells the mouth, lips and tongue, brings on drooling and vomiting, and makes swallowing hard. The ASPCA lists philodendrons as toxic to dogs and cats. The sap can also irritate skin — wash your hands after handling cuttings, and wear gloves if your skin is sensitive.</li>
+    </ul></section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>North Carolina Extension — Philodendron 'Birkin' (introduced 2010; origin unclear; care, size, pests)</li>
+      <li>ASPCA — Tree Philodendron (calcium oxalate crystals; toxic to dogs and cats)</li>
+      <li>ASPCA — Split Leaf Philodendron (insoluble calcium oxalates; toxic to dogs and cats)</li>
+      <li>TwoLeaf Garden — Philodendron Birkin care ('Pink Birkin' as a separate sport; stem cuttings)</li>
+    </ul></section>
+
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="persimmon">← Persimmon</button><button class="nav-btn" type="button" data-open="pink-princess">Philodendron 'Pink Princess' →</button></nav>
+  </article>
+
+
+  <article class="entry-view" id="entry-pink-princess" aria-label="Philodendron 'Pink Princess'">
+    <button class="back-btn" type="button" data-back>← Back to the library</button>
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-279.jpg" alt="Philodendron 'Pink Princess'" loading="lazy"><figcaption class="photo-credit">Photo: Srikandi73, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+      <h2>Philodendron 'Pink Princess'</h2>
+      <p class="latin">Philodendron erubescens 'Pink Princess'</p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
+      <p class="intro">A climbing houseplant with dark burgundy-green, heart-shaped leaves splashed with bubblegum pink. No two leaves carry the same pink, and new leaves open red before they darken. The pink patches hold no green colouring — the green matter that feeds a plant — so this plant needs more light than a plain green philodendron, and its pink is the whole reason growers want it. It is grown for its leaves alone — it has no food, medicine or oil use. Collectors shorten its name to PPP.</p>
+    </div>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Entry sections">
+        <button class="tab-btn" type="button" role="tab" id="tab-pink-princess-tradition" aria-controls="panel-pink-princess-tradition" aria-selected="true" data-tab="tradition">History</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-pink-princess-health" aria-controls="panel-pink-princess-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-pink-princess-growing" aria-controls="panel-pink-princess-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-pink-princess-tradition" aria-labelledby="tab-pink-princess-tradition" data-panel="tradition"><ul>
+      <li>'Pink Princess' is man-made, not a wild plant, and its true origin is still not fully known. The most likely account is that it was bred in Florida in the 1970s, from the blushing philodendron, Philodendron erubescens, a climber native to Colombia, crossed with other philodendrons such as P. tatei and P. wendlandii. The breeder Robert McColley, who raised many philodendron crosses, is often named as its maker, though no papers prove the link. It has been on sale since the 1970s, but it stayed a collector's plant until social media made it famous — then it became a must-have that sold for hundreds of dollars a plant. The pink comes from a layer of cells with no green colouring, so the pattern is unsteady: a stem can go back to plain green, or turn all pink, and all-pink growth cannot feed itself and dies back. Growers keep the pink by cutting back stems that have lost it.</li>
+    </ul>
+</div>
+      <div class="tab-panel" role="tabpanel" id="panel-pink-princess-health" aria-labelledby="tab-pink-princess-health" data-panel="health" hidden><ul>
+      <li>No health benefit is earned. No human trial tests this plant for any health use, and no traditional medicine record was found for it. It is grown for its leaves.</li>
+    </ul></div>
+      <div class="tab-panel" role="tabpanel" id="panel-pink-princess-growing" aria-labelledby="tab-pink-princess-growing" data-panel="growing" hidden><ul class="growing-lines">
+      <li><strong>When to plant:</strong> Spring, when growth starts again</li>
+      <li><strong>Light:</strong> Bright, indirect light; strong light keeps the pink vivid, and direct sun burns the pink patches</li>
+      <li><strong>Soil:</strong> Airy, well-drained, rich in organic matter</li>
+      <li><strong>Water:</strong> Keep the soil moist but not wet; water again when the top 1 to 2 inches are dry</li>
+      <li><strong>Environment:</strong> Warm and humid, 65–85°F and around 60% humidity; not frost-tolerant; keep away from cold drafts</li>
+      <li><strong>Space:</strong> Pot with a moss pole or trellis to climb</li>
+    </ul>
+      <h4 class="part-head">Garden notes</h4><ul>
+      <li>A climbing vine, 2 to 4 feet tall indoors, where its wild parent can climb 60 feet up a rainforest tree. Give it a pole and it climbs; without one it sprawls. Set it a couple of feet back from an east- or west-facing window. Feed once a month in spring and summer with a balanced liquid feed. Too much water rots the roots fast, and this plant holds water longer than a plain heartleaf, so err on the dry side. Dry air dulls the pink and can tear new leaves as they open. Watch for spider mites and mealybugs. Cut back any stem that has gone all green, to push new growth from a node that may still carry pink, and cut back any stem that has gone all pink.</li>
+      <li>The one caution that matters: the pink may not carry over. A cutting from a plain green stem grows plain green, and a cutting that is all pink cannot feed itself. Cut only from a stem that shows pink beside green, and keep at least one green leaf on every cutting.</li>
+    </ul>
+      <h4 class="part-head">Propagation</h4><p>Stem cuttings, in spring when the plant is growing strongly. Cut a stem piece with at least one node — the small bump where a leaf joins the stem — and two or three leaves, and set it in water or moist soil. It multiplies at a slow pace from cuttings, with few side shoots, so one plant gives few new plants each year.</p>
+</div>
+    </div>
+
+    <section class="entry-section"><h3>Safety</h3><ul>
+      <li>Do not eat any part of this plant, and keep it away from children and pets. All philodendrons hold tiny needle-shaped crystals of calcium oxalate in their leaves, stems and roots. Chewing a leaf burns and swells the mouth, lips and tongue, brings on drooling and vomiting, and makes swallowing hard. The ASPCA lists philodendrons as toxic to dogs and cats, and North Carolina Extension lists the blushing philodendron as a problem for cats, dogs and children. The sap can also irritate skin — wash your hands after handling cuttings, and wear gloves if your skin is sensitive.</li>
+    </ul></section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>North Carolina Extension — Philodendron erubescens (native Colombia; 'Pink Princess' listed as a cultivar; care, size, toxicity)</li>
+      <li>Epic Gardening — Pink Princess Philodendron care (Florida origin theory; on sale since the 1970s; height 2–4 feet)</li>
+      <li>The Nature of Home — Pink Princess Philodendron care (McColley link unproven; temperature 55–80°F; cutting care)</li>
+      <li>ASPCA — Split Leaf Philodendron (insoluble calcium oxalates; toxic to dogs and cats)</li>
+    </ul></section>
+
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="birkin">← Philodendron 'Birkin'</button><button class="nav-btn" type="button" data-open="ring-of-fire">Philodendron 'Ring of Fire' →</button></nav>
+  </article>
+
+
+  <article class="entry-view" id="entry-ring-of-fire" aria-label="Philodendron 'Ring of Fire'">
+    <button class="back-btn" type="button" data-back>← Back to the library</button>
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-282.jpg" alt="Philodendron 'Ring of Fire'" loading="lazy"><figcaption class="photo-credit">Photo: Yercaud-elango, CC BY 4.0, via Wikimedia Commons</figcaption></figure>
+      <h2>Philodendron 'Ring of Fire'</h2>
+      <p class="latin">Philodendron 'Ring of Fire'</p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
+      <p class="intro">A hybrid philodendron grown for leaves that look lit from within. The leaves are long and narrow with saw-toothed edges, and no two are alike: a new leaf opens orange, red or cream, and over the following weeks the green creeps in — some leaves keep a blaze of colour along one edge for the rest of their lives, and some come out almost entirely gold next to one that is nearly all green. It has no wild home, because no wild plant exists: it was bred, not found. It is grown for its leaves alone — no food, medicine or oil use is recorded for it.</p>
+    </div>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Entry sections">
+        <button class="tab-btn" type="button" role="tab" id="tab-ring-of-fire-tradition" aria-controls="panel-ring-of-fire-tradition" aria-selected="true" data-tab="tradition">History</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-ring-of-fire-health" aria-controls="panel-ring-of-fire-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-ring-of-fire-growing" aria-controls="panel-ring-of-fire-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-ring-of-fire-tradition" aria-labelledby="tab-ring-of-fire-tradition" data-panel="tradition"><ul>
+      <li>It is a hybrid, not a wild species. It was bred by the hybridizer Keith Henderson, and first sold under the name 'Henderson's Pride'. Its parentage is still argued over among growers: most listings call it a cross of Philodendron wendlandii and Philodendron tortum, which would explain the two things you notice first — the long, narrow, serrated leaves of the tortum parent and the stocky, self-heading habit of the wendlandii parent. Another account names Philodendron pinnatifidum and Philodendron wendlandii as the parents instead. The breeder's own records were never published, so the parentage stays open.</li>
+      <li>The variegation is the plant. The colour sits in sectors — a wedge of cream here, a streak of orange there — and it changes as the leaf ages and as the plant matures. Young leaves are narrow and lightly notched; older leaves grow broad, ruffled and more deeply cut, and on a mature plant indoors a leaf measures 35–60 cm (14–24 in) long.</li>
+      <li>The colour is not fixed. It needs bright light to hold: a plant kept in a dim corner grows greener and greener, and a stem that has gone all green rarely colours up again. The same goes the other way — a leaf that comes out almost all cream has little green in it to feed itself, so it stays small beside its neighbours.</li>
+      <li>Young, the plant sits upright on a short stem and makes a rosette of leaves. As it matures it turns semi-climbing, with a stout stem and aerial roots, and it grows taller and straighter with bigger, more deeply cut leaves if it is given a moss pole to climb. Left without one it stays compact and bushy, which is how most people keep it on a sideboard.</li>
+    </ul>
+</div>
+      <div class="tab-panel" role="tabpanel" id="panel-ring-of-fire-health" aria-labelledby="tab-ring-of-fire-health" data-panel="health" hidden><ul>
+      <li>No health benefit is earned. No human trial tests this plant for any health use, and no traditional medicine record exists for it — it is a garden hybrid with no wild history at all. The air-cleaning claim sometimes made for philodendrons comes from tests in sealed chambers, and it does not hold in a real room. It is grown for its leaves.</li>
+    </ul></div>
+      <div class="tab-panel" role="tabpanel" id="panel-ring-of-fire-growing" aria-labelledby="tab-ring-of-fire-growing" data-panel="growing" hidden><ul class="growing-lines">
+      <li><strong>When to plant:</strong> Spring, when growth starts again</li>
+      <li><strong>Light:</strong> Bright, indirect light — essential for the colour; an east window, or a few feet back from a bright south or west window behind a sheer curtain. Direct sun scorches the leaves</li>
+      <li><strong>Soil:</strong> Chunky, airy aroid mix — potting soil, orchid bark, perlite and coco coir; pH 6.0–6.8</li>
+      <li><strong>Water:</strong> Water well when the top 1–2 inches feel dry; never leave it soggy</li>
+      <li><strong>Environment:</strong> Warm and humid, 18–29°C, humidity 50–70%; never below 10–13°C, which blackens the leaves</li>
+      <li><strong>Space:</strong> Pot indoors; give it a moss pole if you want it tall, or leave it without one to keep it compact</li>
+    </ul>
+      <h4 class="part-head">Garden notes</h4><ul>
+      <li>Light is the whole secret of this plant: bright, indirect light keeps the orange, red and cream coming, and dim light takes them away. Water when the top inch or two of the mix feels dry, then water well until it drains freely, and empty the saucer. The fine roots rot fast in a pot with no drainage or in soil that stays wet. Feed with a balanced liquid feed at half strength once a month in spring and summer only. Keep it warm — growth stalls below 15°C, and cold below 10°C blackens the tissue and drops the leaves. A humidifier or a pebble tray helps in a dry heated room. Give a young plant a moss pole early if you want height: staked plants grow taller, straighter and with bigger, more deeply cut leaves. Repot every one to two years in spring, only one pot size up.</li>
+      <li>The one caution that matters: choose the cutting by its colour. A cutting taken from an all-cream section will usually fail, because those cells hold no green and cannot feed themselves. Take a piece with a good mix of green and colour, and if a stem turns plain green, cut it back to the last leaf that held its colour — the new shoot from that point usually carries the pattern again.</li>
+    </ul>
+      <h4 class="part-head">Propagation</h4><p>By stem cuttings, in spring or summer when the plant is growing strongly. Cut a piece of stem with at least one node — the small bump where a leaf joins the stem — and one or two leaves, and set it in water or straight into moist, airy mix in bright, indirect light. Air layering also works on a tall stem: wound the stem, wrap it in damp moss, and cut the rooted top off once roots show.</p>
+</div>
+    </div>
+
+    <section class="entry-section"><h3>Safety</h3><ul>
+      <li>All parts of this plant are toxic if eaten. The sap and tissues hold tiny needle-shaped crystals of calcium oxalate, which sting and burn the mouth, lips and tongue, bring on drooling and vomiting, and make swallowing hard. Sap on skin can irritate it, and in the eyes it stings and waters. Keep it out of reach of children and pets — the ASPCA lists philodendrons as toxic to dogs and cats. If a pet or a child chews it, call a vet or a doctor at once.</li>
+    </ul></section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>Thursd — Philodendron 'Ring of Fire' (hybrid, wendlandii × tortum listing, variegation, reversion)</li>
+      <li>MyOrangerie — Philodendron 'Ring of Fire' (Henderson's Pride, Keith Henderson, pinnatifidum × wendlandii account, leaf size, care)</li>
+      <li>Monsteraholic — Philodendron 'Ring of Fire' care (hybrid, calcium oxalate, care table)</li>
+      <li>Healthy Houseplants — Philodendron 'Ring of Fire' care (soil, water, light, temperature, propagation)</li>
+      <li>ASPCA — Philodendron toxicity (calcium oxalate crystals)</li>
+      <li>Cummings &amp; Waring (2019) — review of sealed-chamber plant air studies and real rooms</li>
+    </ul></section>
+
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="pink-princess">← Philodendron 'Pink Princess'</button><button class="nav-btn" type="button" data-open="gloriosum">Philodendron gloriosum →</button></nav>
+  </article>
+
+
+  <article class="entry-view" id="entry-gloriosum" aria-label="Philodendron gloriosum">
+    <button class="back-btn" type="button" data-back>← Back to the library</button>
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-280.jpg" alt="Philodendron gloriosum" loading="lazy"><figcaption class="photo-credit">Photo: Myplantcollection, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+      <h2>Philodendron gloriosum</h2>
+      <p class="latin">Philodendron gloriosum</p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
+      <p class="intro">A creeping philodendron from the rainforests of Colombia, grown for leaves like dark green velvet with white veins. It does not climb. Its thick stem crawls along the ground, and the leaves rise from it, each one heart-shaped and up to 90 cm (three feet) long on a mature plant. It is grown for its leaves alone — no food, medicine or oil use is recorded for it.</p>
+    </div>
+
+    <section class="entry-section"><h3>Cultivars</h3>
+      <p style="margin:0 0 14px">The named forms sold in the trade are all forms of the leaf, not separate plants:</p>
+      <div class="varieties">
+      <div class="variety"><h4>'Dark Form'</h4>
+        <p>Darker, rounder leaves with fine veins and a reddish edge.</p></div>
+      <div class="variety"><h4>'Zebra'</h4>
+        <p>Brighter, bolder white veins.</p></div>
+      <div class="variety"><h4>'Pink Back'</h4>
+        <p>The backs of the leaves and the veins flushed pale pink.</p></div>
+      <div class="variety"><h4>'Round Form'</h4>
+        <p>Rounder leaves with no point at the bottom.</p></div>
+      <div class="variety"><h4>Variegated</h4>
+        <p>Yellow or cream patches among the green.</p></div>
+      </div>
+      <p style="margin:14px 0 0">These are trade names in the houseplant trade, and no formal cultivar registration was found for any of them in this round.</p>
+    </section>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Entry sections">
+        <button class="tab-btn" type="button" role="tab" id="tab-gloriosum-tradition" aria-controls="panel-gloriosum-tradition" aria-selected="true" data-tab="tradition">History</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-gloriosum-health" aria-controls="panel-gloriosum-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-gloriosum-growing" aria-controls="panel-gloriosum-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-gloriosum-tradition" aria-labelledby="tab-gloriosum-tradition" data-panel="tradition"><ul>
+      <li>It comes from Colombia, from the wet rainforests of the west, in the departments of Chocó and Cauca. There it grows on the forest floor, in the dappled light under tall trees, creeping across leaf litter rather than climbing a trunk.</li>
+      <li>Most philodendrons climb. This one crawls. Its thick stem, called a rhizome, runs flat along the surface of the ground, sending thin roots down at each joint and new leaves up. A plant that lives this way needs room to move forward, not something to climb.</li>
+      <li>It was described in 1876 by the French botanist Édouard-François André, who found it in Colombia. The name gloriosum means glorious, and it was given for the leaves.</li>
+      <li>The leaves are the whole reason for the plant. They are broad and heart-shaped, matte and velvety to the touch, dark green with veins of white or pale pink that stand out against the dark leaf. Young leaves open pale and soft, sometimes flushed pink, then darken as they grow. On a mature plant in good conditions a leaf can reach 50–90 cm (20–35 in) long.</li>
+      <li>In recent years it became one of the most sought-after houseplants in the world, and one of the dearest — a single leaf can cost more than a whole plant of its plainer cousins. The price follows the leaves: big, velvety and white-veined, and years in the growing to full size.</li>
+    </ul>
+</div>
+      <div class="tab-panel" role="tabpanel" id="panel-gloriosum-health" aria-labelledby="tab-gloriosum-health" data-panel="health" hidden><ul>
+      <li>No health benefit is earned. No human trial tests this plant for any health use, and no traditional medicine record was found for it. The air-cleaning claim sometimes made for philodendrons comes from tests in sealed chambers, and it does not hold in a real room. It is grown for its leaves.</li>
+    </ul></div>
+      <div class="tab-panel" role="tabpanel" id="panel-gloriosum-growing" aria-labelledby="tab-gloriosum-growing" data-panel="growing" hidden><ul class="growing-lines">
+      <li><strong>When to plant:</strong> Spring, when growth starts again</li>
+      <li><strong>Light:</strong> Bright, indirect light; direct sun scorches the velvet leaves</li>
+      <li><strong>Soil:</strong> Chunky, free-draining aroid mix — orchid bark, perlite, coir and a little potting soil</li>
+      <li><strong>Water:</strong> Water well when the top few centimetres feel dry; never leave it soggy</li>
+      <li><strong>Environment:</strong> Warm and humid, 18–29°C, humidity 60–80%; keep above 15°C and away from cold drafts; zones 10–12 outdoors</li>
+      <li><strong>Space:</strong> A wide, shallow pot — the rhizome crawls forward and needs room</li>
+    </ul>
+      <h4 class="part-head">Garden notes</h4><ul>
+      <li>A crawling plant, not a climbing one: it needs a long, wide pot or trough, never a deep one, and it never wants a moss pole. The thick rhizome must lie on top of the soil, with its growing tip exposed to the air — bury it and it rots, and the plant dies within weeks. Only the thin roots that reach down from the rhizome go under the soil. Set the back of the rhizome against the short end of the pot so the tip has the full length to crawl across.</li>
+      <li>Water when the top few centimetres of the mix feel dry, and water well until it drains freely; then empty the saucer, and never leave the pot standing in water. The rhizome stores water and rots easily in soggy soil. Keep water off the velvet leaves where you can — drops sitting on them can leave fungal spots. Feed once a month in spring and summer with a balanced liquid feed at half strength. Dry air brings brown leaf edges and can bring spider mites; low light gives small new leaves. Give it a wide pot before it needs one, since a cramped rhizome stops the leaves growing big.</li>
+      <li>The one caution that matters: a piece of rhizome with no growth point will not grow, even if it has roots. And never bury the rhizome — it rots under the soil. It must sit on the surface, the way it lies on the forest floor.</li>
+    </ul>
+      <h4 class="part-head">Propagation</h4><p>By dividing the rhizome, in spring when growth starts again. Cut a section of rhizome that carries at least one growth point — the tip or a side bud — and some roots, and lay it shallowly on moist, airy mix in a wide pot, with the growth point exposed above the surface. Keep it warm, humid and out of direct sun until new leaves show.</p>
+</div>
+    </div>
+
+    <section class="entry-section"><h3>Safety</h3><ul>
+      <li>All parts of this plant are toxic if eaten. The sap and tissues hold tiny needle-shaped crystals of calcium oxalate, which sting and burn the mouth, lips and tongue, bring on drooling and vomiting, and make swallowing hard. Sap on skin can irritate it, and in the eyes it stings and waters. Keep it out of reach of children and pets — the ASPCA lists philodendrons as toxic to dogs and cats. If a pet or a child chews it, call a vet or a doctor at once.</li>
+    </ul></section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>Kew, Plants of the World Online — Philodendron gloriosum (accepted name, native range)</li>
+      <li>André (1876) — first description of Philodendron gloriosum, from Colombia</li>
+      <li>MyOrangerie — Philodendron gloriosum (description, leaf size, care)</li>
+      <li>PlantSolve — Philodendron gloriosum care (crawling habit, rhizome on the surface)</li>
+      <li>Growli — Philodendron gloriosum 'Colombia' (RHS H1b, USDA 10–12, humidity and temperature)</li>
+      <li>ASPCA — Philodendron toxicity (calcium oxalate crystals)</li>
+      <li>Cummings &amp; Waring (2019) — review of sealed-chamber plant air studies and real rooms</li>
+    </ul></section>
+
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="ring-of-fire">← Philodendron 'Ring of Fire'</button><button class="nav-btn" type="button" data-open="micans">Philodendron micans →</button></nav>
+  </article>
+
+
+  <article class="entry-view" id="entry-micans" aria-label="Philodendron micans">
+    <button class="back-btn" type="button" data-back>← Back to the library</button>
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-277.jpg" alt="Philodendron micans" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+      <h2>Philodendron micans</h2>
+      <p class="latin">Philodendron hederaceum var. hederaceum</p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
+      <p class="intro">A small climbing vine with heart-shaped leaves that feel soft as velvet. New leaves open pink-bronze, then deepen to dark green with a bronze sheen, and the undersides stay reddish-brown. It trails from a hanging basket or climbs a moss pole, and it is grown for its leaves alone — it has no food, medicine or oil use.</p>
+    </div>
+
+    <section class="entry-section"><h3>Cultivars</h3>
+      <div class="varieties">
+      <div class="variety"><h4>'Micans Lime'</h4>
+        <p>A lime-green form of the plant. It is a nursery trade name, and no registration was found for it in this round.</p></div>
+      </div>
+    </section>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Entry sections">
+        <button class="tab-btn" type="button" role="tab" id="tab-micans-tradition" aria-controls="panel-micans-tradition" aria-selected="true" data-tab="tradition">History</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-micans-health" aria-controls="panel-micans-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-micans-growing" aria-controls="panel-micans-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-micans-tradition" aria-labelledby="tab-micans-tradition" data-panel="tradition"><ul>
+      <li>In the wild it grows in the rainforests of Mexico, Central America and the Caribbean, climbing tree trunks with thin aerial roots and reaching for the light above. Its name comes from the Latin micans, meaning glittering or sparkling, for the way the velvet leaves catch the light. Botanists first described it as a species of its own in 1854, and it is still sold under that old name, Philodendron micans. Modern plant lists count it as a form of the heartleaf philodendron, Philodendron hederaceum var. hederaceum — the velvet form of a much plainer green vine. Long known to collectors, it became widely loved in the houseplant boom of the 2010s and 2020s, when its dark, shimmering leaves made it one of the most wanted small philodendrons.</li>
+    </ul>
+</div>
+      <div class="tab-panel" role="tabpanel" id="panel-micans-health" aria-labelledby="tab-micans-health" data-panel="health" hidden><ul>
+      <li>No health benefit is earned. No human trial tests this plant for any health use, and no traditional medicine record was found for it. It is grown for its leaves.</li>
+    </ul></div>
+      <div class="tab-panel" role="tabpanel" id="panel-micans-growing" aria-labelledby="tab-micans-growing" data-panel="growing" hidden><ul class="growing-lines">
+      <li><strong>When to plant:</strong> Spring, when growth starts again</li>
+      <li><strong>Light:</strong> Bright, indirect light; low light turns the leaves plain green and the stems long and bare</li>
+      <li><strong>Soil:</strong> Loose, well-drained, rich in organic matter</li>
+      <li><strong>Water:</strong> Keep the soil lightly moist; let the top 2 to 3 inches dry out between waterings</li>
+      <li><strong>Environment:</strong> Warm and humid; keep above 55°F and away from cold drafts; zones 10–11 outdoors</li>
+      <li><strong>Space:</strong> Pot, hanging basket, or a moss pole to climb</li>
+    </ul>
+      <h4 class="part-head">Garden notes</h4><ul>
+      <li>A fast-growing vine, 4 to 6 feet long indoors, with leaves 2 to 4 inches across. Give it a pole or trellis and it climbs; leave it without one and it trails. Wipe the leaves now and then with a damp cloth, so dust does not dull the velvet. Water less in winter, when growth rests. Too much water in a pot with no drainage rots the roots. Dry air can bring spider mites to the velvet leaves, and mealybugs, aphids and scale are the other pests to watch for. Feed lightly with a balanced houseplant feed in spring and summer only.</li>
+      <li>The one caution that matters: a piece of stem with no node will not grow, even if it has a leaf. Always cut just below a node, and keep the cutting warm and out of direct sun while it roots.</li>
+    </ul>
+      <h4 class="part-head">Propagation</h4><p>Stem cuttings, in spring or summer when the plant is growing strongly. Cut a piece of stem with at least one node — the small bump where a leaf joins the stem — and one or two leaves, and set it in water or straight into moist soil. Roots form in about two weeks in water.</p>
+</div>
+    </div>
+
+    <section class="entry-section"><h3>Safety</h3><ul>
+      <li>Do not eat any part of this plant, and keep it away from children and pets. All philodendrons hold tiny needle-shaped crystals of calcium oxalate in their leaves, stems and roots. Chewing a leaf burns and swells the mouth, lips and tongue, brings on drooling and vomiting, and makes swallowing hard. The ASPCA lists the heartleaf philodendron as toxic to dogs, cats and horses. The sap can also irritate skin — wash your hands after handling cuttings, and wear gloves if your skin is sensitive.</li>
+    </ul></section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>North Carolina Extension — Philodendron hederaceum (climbing habit, light, water, pests)</li>
+      <li>HGTV — Philodendron micans care guide (velvet leaves, zones 10–11, watering)</li>
+      <li>ASPCA — Heartleaf Philodendron (insoluble calcium oxalates; toxic to dogs, cats and horses)</li>
+      <li>Kew, Plants of the World Online — Philodendron hederaceum (micans as a synonym)</li>
+    </ul></section>
+
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="gloriosum">← Philodendron gloriosum</button><button class="nav-btn" type="button" data-open="pineapple">Pineapple →</button></nav>
+  </article>
+
+
+  <article class="entry-view" id="entry-tree-philodendron" aria-label="Tree Philodendron">
+    <button class="back-btn" type="button" data-back>← Back to the library</button>
+    <div class="entry-head">
+      <figure class="entry-photo"><img src="img/img-281.jpg" alt="Tree Philodendron" loading="lazy"><figcaption class="photo-credit">Photo: Krzysztof Ziarnek, Kenraiz, CC BY-SA 4.0, via Wikimedia Commons</figcaption></figure>
+      <h2>Tree Philodendron</h2>
+      <p class="latin">Philodendron bipinnatifidum</p>
+      <div class="entry-tags">
+        <p class="entry-tag-row"><span class="class-badge">Ornamental</span></p>
+      </div>
+      <p class="intro">A giant among houseplants, and one that does not climb. The tree philodendron stands on its own short, thick trunk, ringed with the scars of old leaves, and holds up huge glossy leaves, each one cut so deeply it looks like a green feather nearly a metre long. Outdoors in a warm climate it grows to 15 feet tall and 10 feet wide; indoors it still reaches 6 to 8 feet, and it needs a room that can hold it. It is grown for its leaves alone — its folk medicine and its cooked fruit belong to its home in Brazil.</p>
+    </div>
+
+    <section class="entry-section"><h3>Cultivars</h3>
+      <div class="varieties">
+      <div class="variety"><h4>'Hope'</h4>
+        <p>A compact form — the same plant, bred smaller, for a room that cannot hold the full-sized one. It is a nursery trade name, and no formal cultivar registration was found for it in this round.</p></div>
+      </div>
+    </section>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Entry sections">
+        <button class="tab-btn" type="button" role="tab" id="tab-tree-philodendron-tradition" aria-controls="panel-tree-philodendron-tradition" aria-selected="true" data-tab="tradition">History</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-tree-philodendron-health" aria-controls="panel-tree-philodendron-health" aria-selected="false" tabindex="-1" data-tab="health">Health Benefits</button>
+        <button class="tab-btn" type="button" role="tab" id="tab-tree-philodendron-growing" aria-controls="panel-tree-philodendron-growing" aria-selected="false" tabindex="-1" data-tab="growing">Growing Guide</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-tree-philodendron-tradition" aria-labelledby="tab-tree-philodendron-tradition" data-panel="tradition"><ul>
+      <li>It comes from South America — southern and south-eastern Brazil, north-eastern Argentina, Paraguay and eastern Bolivia — from rainforests, gallery forests along rivers, and the dry woodland called cerrado. In Brazil it is guaimbê, or guaímbé, and also banana-de-macaco, monkey banana, for its fruit.</li>
+      <li>It was first described in the 1830s by the Austrian botanist Heinrich Wilhelm Schott, from plants he had collected in Brazil and grown at Schönbrunn Palace Gardens in Vienna. In 1853 the German botanist Karl Koch described what he took to be a second species, Philodendron selloum, named for H. Sello, head gardener at the Prussian royal estate of Sans Souci. In 1991 the Kew botanist Simon Mayo showed the two were one and the same plant, and since bipinnatifidum was the first name published, it is the name that stands.</li>
+      <li>Then the name moved again. In 2018, DNA work by Cássia Sakuragui and colleagues in Brazil showed that this plant and its tree-like kin are distant enough from other philodendrons to stand as their own genus, and they were given the old name Thaumatophyllum — so the plant became Thaumatophyllum bipinnatifidum on many nursery tags and in many databases. Kew's Plants of the World Online does not accept that move: it still lists the plant as Philodendron bipinnatifidum and treats Thaumatophyllum as a synonym. Either label means the same plant, and the care does not change.</li>
+      <li>Unlike most philodendrons it never climbs. It is self-heading: all its leaves grow close together from a single crown on a short, stout stem, which thickens into a trunk up to 2 metres tall and 10 cm thick, ringed with round leaf scars and stiff scales. The leaves sit on long, smooth stalks and are deeply lobed, the cuts reaching almost to the centre vein.</li>
+      <li>It flowers rarely, and only on a mature plant — outdoors after 15 or 16 years, and almost never indoors. The flower is a white hood around a pale spike, like other aroids, and it makes its own heat for two or three days, giving off a scent that draws in its beetle pollinators. The fruit that follows is a cluster of berries that ripens white or yellow.</li>
+      <li>In its Brazilian home the plant has long been used in folk medicine: the root was used as a strong purgative, the stems against rheumatism, erysipelas, orchitis and ulcers, and the aerial roots are reported as a contraceptive. Laboratory and animal work on stem extracts has shown pain-easing and swelling-easing effects, but no human trial has tested any of it. The ripe fruit is cooked and eaten in parts of its home range, where it is much esteemed, and is gathered from the wild and sometimes grown for local use — a local food use, not a tested health benefit.</li>
+    </ul>
+</div>
+      <div class="tab-panel" role="tabpanel" id="panel-tree-philodendron-health" aria-labelledby="tab-tree-philodendron-health" data-panel="health" hidden><ul>
+      <li>No health benefit is earned. No human trial tests this plant for any health use. Those Brazilian folk uses were never tested in people, and the laboratory and animal work on stem extracts does not show what the plant does in a person. The air-cleaning claim sometimes made for philodendrons comes from tests in sealed chambers, and it does not hold in a real room. It is grown for its leaves.</li>
+    </ul></div>
+      <div class="tab-panel" role="tabpanel" id="panel-tree-philodendron-growing" aria-labelledby="tab-tree-philodendron-growing" data-panel="growing" hidden><ul class="growing-lines">
+      <li><strong>When to plant:</strong> Spring, when growth starts again</li>
+      <li><strong>Light:</strong> Bright, indirect light indoors; it tolerates low light, but the leaves come smaller and with fewer lobes. Outdoors, part shade</li>
+      <li><strong>Soil:</strong> Rich, moist but well-drained, high in organic matter; pH 6.0–6.5</li>
+      <li><strong>Water:</strong> Water when the top 1–2 inches feel dry; keep the soil evenly moist, never soggy and never dry right out</li>
+      <li><strong>Environment:</strong> Warm and humid, 65–80°F; move inside when nights fall below 60°F; zones 9–11 outdoors</li>
+      <li><strong>Space:</strong> Ground outdoors in warm climates, or a large pot indoors — it grows big, and a small pot will not hold it for long</li>
+    </ul>
+      <h4 class="part-head">Garden notes</h4><ul>
+      <li>A big, bold plant that grows fast in the warm months and rests in winter. Give it the brightest spot you have without strong sun on the leaves — full sun scorches them — and room for the leaves to spread: indoors it reaches 6 to 8 feet tall and wide, and it will crowd out its neighbours. Water well when the top inch or two of the mix feels dry, and empty the saucer; the soil must stay moist but never waterlogged, since wet feet rot the roots, yet the plant does not bear drought either. Feed once a month in spring and summer with a balanced liquid feed.</li>
+      <li>It dislikes salt. Tap water and feed leave salts behind in the pot, and the leaf edges brown when they build up — flush the soil with clean water now and then, or water with rainwater or distilled water. Keep it away from cold drafts and hot radiators. Prune only to keep its size in check, cutting back in spring; wear gloves, since the sap irritates skin. Watch for aphids, mealybugs and spider mites, worst indoors in dry air.</li>
+      <li>The one caution that matters: a cutting with no node will not grow, even if it has leaves. And it takes 15 years or more to flower outdoors, and it almost never flowers indoors — so seed is not a way to raise it at home; cuttings are the way.</li>
+    </ul>
+      <h4 class="part-head">Propagation</h4><p>By stem cuttings, in spring or early summer when the plant is growing strongly. Cut a piece about 15 cm (6 in) long that carries a node — the small bump where a leaf joins the stem — and two or three leaves. Dip the cut end in rooting hormone if you have it, and set it in moist potting mix in a warm, bright spot out of direct sun. Roots form over several weeks. Air layering also works on a tall stem: wound the stem, wrap it in damp moss, and cut the rooted top off once roots show.</p>
+</div>
+    </div>
+
+    <section class="entry-section"><h3>Safety</h3><ul>
+      <li>All parts of this plant are toxic if eaten. The sap and tissues hold tiny needle-shaped crystals of calcium oxalate, which sting and burn the mouth, lips and tongue, bring on drooling and vomiting, and make swallowing hard. Sap on skin can irritate it, and in the eyes it stings and waters. Keep it out of reach of children and pets — the ASPCA lists the tree philodendron as toxic to dogs and cats. If a pet or a child chews it, call a vet or a doctor at once.</li>
+    </ul></section>
+
+    <section class="entry-section"><h3>Sources</h3><ul>
+      <li>Kew, Plants of the World Online — Philodendron bipinnatifidum (accepted name; Thaumatophyllum bipinnatifidum and Philodendron selloum as synonyms; native range)</li>
+      <li>Sakuragui et al. (2018) — the move of the tree-like philodendrons to Thaumatophyllum (PhytoKeys 98)</li>
+      <li>Mayo (1991) — Philodendron selloum merged into Philodendron bipinnatifidum (via San Marcos Growers)</li>
+      <li>San Marcos Growers — Thaumatophyllum bipinnatifidum (naming history, size)</li>
+      <li>NC State Extension, Plant Toolbox — Philodendron bipinnatifidum (identification, light, soil, salt)</li>
+      <li>NParks, Flora &amp; Fauna Web — Thaumatophyllum bipinnatifidum (native range, flower heat, beetle pollinators, fruit, toxicity)</li>
+      <li>The Spruce — Tree philodendron care (size, zones 9–11, flowering after 15–16 years)</li>
+      <li>Useful Tropical Plants — Philodendron bipinnatifidum (cooked fruit, root as purgative, folk medicine)</li>
+      <li>de Sousa et al. (2019) — stem extract tested in animals for pain and swelling</li>
+      <li>ASPCA — Tree Philodendron (Philodendron selloum) toxicity (calcium oxalate crystals)</li>
+      <li>Cummings &amp; Waring (2019) — review of sealed-chamber plant air studies and real rooms</li>
+    </ul></section>
+
+    <nav class="entry-nav" aria-label="Previous and next entries"><button class="nav-btn" type="button" data-open="tomato">← Tomato</button><button class="nav-btn" type="button" data-open="turnip">Turnip →</button></nav>
+  </article>
+
 </div>
 
 <footer class="band">
@@ -21074,6 +21580,7 @@
     countLine.textContent = visible===1 ? '1 entry' : visible + ' entries';
     refreshPicked();
     refreshHealthBlock();
+    refreshHiddenChips();
     updateCounts(visible);
     document.body.classList.toggle('grow-open', !!(state.plant || state.season || state.lifespan || state.sun || state.space || state.water || state.soil || state.climate));
     requestAnimationFrame(drawWires);
@@ -21633,6 +22140,57 @@
   document.addEventListener('keydown', function(e){
     if(e.key==='Escape' && filterPanel.classList.contains('open')) closePanel();
   });
+
+  // Filter view toggle: Health benefits or Growing conditions. The
+  // toggle only changes which side is shown; both sides' picks stay
+  // in state and still filter together. The hidden side's active
+  // picks show as small chips under the toggle, so a combined filter
+  // (sleep + full sun) is never lost. Tapping a small chip switches
+  // to that side so the pick can be changed there.
+  var ftHealthBtn = document.getElementById('ftHealthBtn');
+  var ftGrowBtn = document.getElementById('ftGrowBtn');
+  var ftHiddenChips = document.getElementById('ftHiddenChips');
+  var ftHiddenLabel = document.getElementById('ftHiddenLabel');
+  var healthSection = document.getElementById('healthSection');
+  var growSection = document.getElementById('growSection');
+  var filterSide = 'health';
+  function setFilterSide(side){
+    filterSide = side;
+    if(ftHealthBtn) ftHealthBtn.setAttribute('aria-pressed', side==='health' ? 'true' : 'false');
+    if(ftGrowBtn) ftGrowBtn.setAttribute('aria-pressed', side==='growing' ? 'true' : 'false');
+    if(healthSection) healthSection.hidden = side!=='health';
+    if(growSection) growSection.hidden = side!=='growing';
+    refreshHiddenChips();
+  }
+  function hiddenSideChips(){
+    var side = filterSide==='health' ? growSection : healthSection;
+    if(!side) return [];
+    var out = [];
+    side.querySelectorAll('.chip[aria-pressed="true"]').forEach(function(x){
+      if(x.getAttribute('data-season')==='all') return;
+      out.push(x.textContent);
+    });
+    return out;
+  }
+  function refreshHiddenChips(){
+    if(!ftHiddenChips) return;
+    var picks = hiddenSideChips();
+    ftHiddenChips.innerHTML = '';
+    picks.forEach(function(label){
+      var c = document.createElement('button');
+      c.type = 'button';
+      c.className = 'ft-pick';
+      c.textContent = label;
+      c.setAttribute('aria-label', 'Show ' + (filterSide==='health' ? 'Growing conditions' : 'Health benefits') + ' filters: ' + label);
+      c.addEventListener('click', function(){ setFilterSide(filterSide==='health' ? 'growing' : 'health'); });
+      ftHiddenChips.appendChild(c);
+    });
+    if(ftHiddenLabel) ftHiddenLabel.hidden = picks.length===0;
+    ftHiddenChips.hidden = picks.length===0;
+  }
+  if(ftHealthBtn) ftHealthBtn.addEventListener('click', function(){ setFilterSide('health'); });
+  if(ftGrowBtn) ftGrowBtn.addEventListener('click', function(){ setFilterSide('growing'); });
+  setFilterSide('health');
 
   apply();
 
